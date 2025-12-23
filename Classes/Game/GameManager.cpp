@@ -1,9 +1,8 @@
 #include "GameManager.h"
 #include "./UI/MenuScene.h"
-//#include "GameScene.h"
+#include "GameScene.h"
 #include "./Resources/AudioManager.h"
 #include "./Resources/ResourceLoader.h"
-#include <proj.win32/GameScene.h>
 
 USING_NS_CC;
 
