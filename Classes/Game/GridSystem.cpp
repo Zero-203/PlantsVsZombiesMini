@@ -199,7 +199,7 @@ void GridSystem::drawDebugGrid(Node* parent)
     if (_debugNode && _debugNode->getParent())
     {
         _debugNode->removeFromParent();
-    }
+    }  
     */
 
     _debugNode = DrawNode::create();
