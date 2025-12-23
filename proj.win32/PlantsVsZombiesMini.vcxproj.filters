@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="win32">
+      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\UI">
+      <UniqueIdentifier>{f982db0b-fbe0-4e96-9603-f9f768122e93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Game">
+      <UniqueIdentifier>{08eb73a2-92a9-401d-9d7f-fdcab9114f71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Resources">
+      <UniqueIdentifier>{3850921a-4ea9-426a-9bfa-5e8f69ec0290}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Entities">
+      <UniqueIdentifier>{27acf5cf-33fc-4bc0-80ec-20e5bbf11dc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Entities\Plants">
+      <UniqueIdentifier>{c2bd2aa4-ecbf-4b34-b827-f54a4b75906a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Entities\Zombies">
+      <UniqueIdentifier>{b3b83b42-71a1-4838-af52-3d9aab6d3552}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Entities\Projectile">
+      <UniqueIdentifier>{10b97148-6334-48b9-a5e0-c6d52d49a375}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\MenuScene.cpp">
+      <Filter>src\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\GameManager.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Resources\AudioManager.cpp">
+      <Filter>src\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Resources\ResourceLoader.cpp">
+      <Filter>src\Resources</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\MenuScene.h">
+      <Filter>src\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\GameManager.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Resources\AudioManager.h">
+      <Filter>src\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Resources\ResourceLoader.h">
+      <Filter>src\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities.h">
+      <Filter>src\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Plant.h">
+      <Filter>src\Entities\Plants</Filter>
+    </ClInclude>
+    <ClInclude Include="Zombies.h">
+      <Filter>src\Entities\Zombies</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="game.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
