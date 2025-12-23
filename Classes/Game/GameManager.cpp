@@ -3,6 +3,7 @@
 //#include "GameScene.h"
 #include "./Resources/AudioManager.h"
 #include "./Resources/ResourceLoader.h"
+#include <proj.win32/GameScene.h>
 
 USING_NS_CC;
 
@@ -158,33 +159,11 @@ void GameManager::goToGameScene()
     _currentState = GameState::PLAYING;
 
     auto director = Director::getInstance();
-
-    // GameScene测试
-    auto scene = Scene::create();
-
-    // 添加一个标签，表示这是游戏场景
-    auto visibleSize = director->getVisibleSize();
-    auto origin = director->getVisibleOrigin();
-
-    auto label = Label::createWithTTF("Game Scene (To Be Implemented)", ResourceLoader::getInstance()->getFontPath("font_main"), 36);
-    label->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
-    scene->addChild(label);
-
-    // 添加一个返回按钮
-    auto backButton = ui::Button::create();
-    backButton->setTitleText("Back to Menu");
-    backButton->setTitleFontSize(24);
-    backButton->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y - 100));
-    backButton->addTouchEventListener([&](Ref* sender, ui::Widget::TouchEventType type) {
-        if (type == ui::Widget::TouchEventType::ENDED) {
-            goToMenuScene();
-        }
-        });
-    scene->addChild(backButton);
+    auto scene = GameScene::createScene();  // 使用新的GameScene
 
     // 切换场景的过渡效果
     director->replaceScene(TransitionFade::create(0.5f, scene));
 
-    // 播放游戏背景音乐（如果有的话）
-    //AudioManager::getInstance()->playBackgroundMusic("Sounds/BGM/menu_bgm.mp3", true);
+    // 播放游戏背景音乐（在GameScene中已经处理）
+    // AudioManager::getInstance()->playBackgroundMusic("Sounds/BGM/game_bgm.mp3", true);
 }

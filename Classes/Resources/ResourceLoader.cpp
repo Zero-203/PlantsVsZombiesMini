@@ -54,7 +54,7 @@ void ResourceLoader::loadResourceConfig()
     _resourcePaths["menu_logo"] = "Images/UI/menu_logo.png";
 
     // 游戏资源占位符
-    _resourcePaths["game_background"] = "Images/Backgrounds/game_bg.png";
+    _resourcePaths["game_background"] = "Images/Backgrounds/game_bg_1.png";
 
     // 字体
     _resourcePaths["font_main"] = "Fonts/Marker Felt.ttf";

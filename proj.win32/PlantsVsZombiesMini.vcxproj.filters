@@ -51,6 +51,27 @@
     <ClCompile Include="..\Classes\Resources\ResourceLoader.cpp">
       <Filter>src\Resources</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\UI\PlantCard.cpp">
+      <Filter>src\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\GameScene.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Game\GridSystem.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\Plants\PeaShooter.cpp">
+      <Filter>src\Entities\Plants</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\Plants\Plant.cpp">
+      <Filter>src\Entities\Plants</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\Plants\SunFlower.cpp">
+      <Filter>src\Entities\Plants</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\Plants\WallNut.cpp">
+      <Filter>src\Entities\Plants</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -74,11 +95,35 @@
     <ClInclude Include="Entities.h">
       <Filter>src\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="Plant.h">
-      <Filter>src\Entities\Plants</Filter>
-    </ClInclude>
     <ClInclude Include="Zombies.h">
       <Filter>src\Entities\Zombies</Filter>
+    </ClInclude>
+    <ClInclude Include="GridSystem.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="PlantFactory.h">
+      <Filter>src\Entities\Plants</Filter>
+    </ClInclude>
+    <ClInclude Include="PeaShooter.h">
+      <Filter>src\Entities\Plants</Filter>
+    </ClInclude>
+    <ClInclude Include="SunFlower.h">
+      <Filter>src\Entities\Plants</Filter>
+    </ClInclude>
+    <ClInclude Include="WallNut.h">
+      <Filter>src\Entities\Plants</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\PlantCard.h">
+      <Filter>src\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\GameScene.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Game\GridSystem.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\Plants\Plant.h">
+      <Filter>src\Entities\Plants</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
