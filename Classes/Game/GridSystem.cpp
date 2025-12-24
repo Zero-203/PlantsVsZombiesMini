@@ -22,9 +22,9 @@ GridSystem::GridSystem()
 }
 
 GridSystem::~GridSystem()
-{
+    {
     _instance = nullptr;
-}
+    }
 
 bool GridSystem::init(int rows, int cols, const Size& cellSize, const Vec2& gridOrigin)
 {
@@ -165,7 +165,8 @@ void GridSystem::removePlant(int row, int col)
 Plant* GridSystem::getPlantAt(int row, int col) const
 {
     if (!isValidGrid(row, col))
-    {
+{
+    if (row < 0 || row >= ROW_COUNT || col < 0 || col >= COL_COUNT)
         return nullptr;
     }
 
@@ -214,7 +215,8 @@ void GridSystem::reset()
 void GridSystem::drawDebugGrid(Node* parent)
 {
     if (!parent)
-    {
+{
+    if (row < 0 || row >= ROW_COUNT || col < 0 || col >= COL_COUNT)
         return;
     }
 
@@ -223,7 +225,7 @@ void GridSystem::drawDebugGrid(Node* parent)
     if (_debugNode && _debugNode->getParent())
     {
         _debugNode->removeFromParent();
-    }  
+}
     */
 
     _debugNode = DrawNode::create();
@@ -236,7 +238,7 @@ void GridSystem::drawDebugGrid(Node* parent)
     for (int i = 0; i < _rows; i++)
     {
         for (int j = 0; j < _cols; j++)
-        {
+{
             const Rect& rect = _grid[i][j].rect;
 
             // 绘制格子边框
@@ -251,7 +253,7 @@ void GridSystem::drawDebugGrid(Node* parent)
 
             // 如果格子被占用，绘制填充
             if (_grid[i][j].isOccupied)
-            {
+    {
                 Color4F occupiedColor(1.0f, 0.0f, 0.0f, 0.2f); // 红色半透明
                 _debugNode->drawSolidRect(rect.origin,
                     Vec2(rect.origin.x + rect.size.width, rect.origin.y + rect.size.height),
@@ -269,14 +271,14 @@ void GridSystem::drawDebugGrid(Node* parent)
     }
 
     log("GridSystem: Debug grid drawn");
-}
+    }
 
 void GridSystem::clearAll()
 {
     for (int i = 0; i < _rows; i++)
     {
         for (int j = 0; j < _cols; j++)
-        {
+    {
             removePlant(i, j);
         }
     }
