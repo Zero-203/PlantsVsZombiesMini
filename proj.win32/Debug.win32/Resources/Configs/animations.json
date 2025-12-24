@@ -1,0 +1,211 @@
+// Configs/animations.json
+{
+  "version": "1.0",
+  "animations": [
+    {
+      "name": "sunflower_idle",
+      "frames": [
+        "Images/Plants/Sunflower/sunflower_idle_01.png",
+        "Images/Plants/Sunflower/sunflower_idle_02.png",
+        "Images/Plants/Sunflower/sunflower_idle_03.png",
+        "Images/Plants/Sunflower/sunflower_idle_04.png",
+        "Images/Plants/Sunflower/sunflower_idle_05.png",
+        "Images/Plants/Sunflower/sunflower_idle_06.png"
+      ],
+      "delay": 0.15,
+      "loop": true,
+      "restore": false
+    },
+    {
+      "name": "sunflower_produce",
+      "frames": [
+        "Images/Plants/Sunflower/sunflower_produce_01.png",
+        "Images/Plants/Sunflower/sunflower_produce_02.png",
+        "Images/Plants/Sunflower/sunflower_produce_03.png",
+        "Images/Plants/Sunflower/sunflower_produce_04.png"
+      ],
+      "delay": 0.1,
+      "loop": false,
+      "restore": true
+    },
+    {
+      "name": "peashooter_idle",
+      "frames": [
+        "Images/Plants/Peashooter/peashooter_idle_01.png",
+        "Images/Plants/Peashooter/peashooter_idle_02.png",
+        "Images/Plants/Peashooter/peashooter_idle_03.png",
+        "Images/Plants/Peashooter/peashooter_idle_04.png"
+      ],
+      "delay": 0.2,
+      "loop": true,
+      "restore": false
+    },
+    {
+      "name": "peashooter_attack",
+      "frames": [
+        "Images/Plants/Peashooter/peashooter_attack_01.png",
+        "Images/Plants/Peashooter/peashooter_attack_02.png",
+        "Images/Plants/Peashooter/peashooter_attack_03.png",
+        "Images/Plants/Peashooter/peashooter_attack_04.png",
+        "Images/Plants/Peashooter/peashooter_attack_05.png",
+        "Images/Plants/Peashooter/peashooter_attack_06.png"
+      ],
+      "delay": 0.08,
+      "loop": false,
+      "restore": true
+    },
+    {
+      "name": "pea_fly",
+      "frames": [
+        "Images/Projectiles/Pea/pea_01.png",
+        "Images/Projectiles/Pea/pea_02.png",
+        "Images/Projectiles/Pea/pea_03.png",
+        "Images/Projectiles/Pea/pea_04.png"
+      ],
+      "delay": 0.1,
+      "loop": true,
+      "restore": false
+    },
+    {
+      "name": "pea_hit",
+      "frames": [
+        "Images/Projectiles/Pea/pea_hit_01.png",
+        "Images/Projectiles/Pea/pea_hit_02.png",
+        "Images/Projectiles/Pea/pea_hit_03.png",
+        "Images/Projectiles/Pea/pea_hit_04.png"
+      ],
+      "delay": 0.07,
+      "loop": false,
+      "restore": false
+    },
+    {
+      "name": "wallnut_idle",
+      "frames": [
+        "Images/Plants/WallNut/wallnut_idle_01.png",
+        "Images/Plants/WallNut/wallnut_idle_02.png",
+        "Images/Plants/WallNut/wallnut_idle_03.png"
+      ],
+      "delay": 0.3,
+      "loop": true,
+      "restore": false
+    },
+    {
+      "name": "wallnut_damaged1",
+      "frames": [
+        "Images/Plants/WallNut/wallnut_damaged1_01.png",
+        "Images/Plants/WallNut/wallnut_damaged1_02.png",
+        "Images/Plants/WallNut/wallnut_damaged1_03.png"
+      ],
+      "delay": 0.2,
+      "loop": false,
+      "restore": false
+    },
+    {
+      "name": "wallnut_damaged2",
+      "frames": [
+        "Images/Plants/WallNut/wallnut_damaged2_01.png",
+        "Images/Plants/WallNut/wallnut_damaged2_02.png",
+        "Images/Plants/WallNut/wallnut_damaged2_03.png"
+      ],
+      "delay": 0.2,
+      "loop": false,
+      "restore": false
+    },
+    {
+      "name": "cherry_bomb_idle",
+      "frames": [
+        "Images/Plants/CherryBomb/cherry_bomb_idle_01.png",
+        "Images/Plants/CherryBomb/cherry_bomb_idle_02.png",
+        "Images/Plants/CherryBomb/cherry_bomb_idle_03.png"
+      ],
+      "delay": 0.2,
+      "loop": true,
+      "restore": false
+    },
+    {
+      "name": "cherry_bomb_explode",
+      "frames": [
+        "Images/Plants/CherryBomb/cherry_bomb_explode_01.png",
+        "Images/Plants/CherryBomb/cherry_bomb_explode_02.png",
+        "Images/Plants/CherryBomb/cherry_bomb_explode_03.png",
+        "Images/Plants/CherryBomb/cherry_bomb_explode_04.png",
+        "Images/Plants/CherryBomb/cherry_bomb_explode_05.png"
+      ],
+      "delay": 0.1,
+      "loop": false,
+      "restore": false
+    },
+    {
+      "name": "zombie_walk",
+      "frames": [
+        "Images/Zombies/NormalZombie/zombie_walk_01.png",
+        "Images/Zombies/NormalZombie/zombie_walk_02.png",
+        "Images/Zombies/NormalZombie/zombie_walk_03.png",
+        "Images/Zombies/NormalZombie/zombie_walk_04.png",
+        "Images/Zombies/NormalZombie/zombie_walk_05.png",
+        "Images/Zombies/NormalZombie/zombie_walk_06.png"
+      ],
+      "delay": 0.15,
+      "loop": true,
+      "restore": false
+    },
+    {
+      "name": "zombie_attack",
+      "frames": [
+        "Images/Zombies/NormalZombie/zombie_attack_01.png",
+        "Images/Zombies/NormalZombie/zombie_attack_02.png",
+        "Images/Zombies/NormalZombie/zombie_attack_03.png",
+        "Images/Zombies/NormalZombie/zombie_attack_04.png"
+      ],
+      "delay": 0.12,
+      "loop": true,
+      "restore": false
+    },
+    {
+      "name": "zombie_damaged",
+      "frames": [
+        "Images/Zombies/NormalZombie/zombie_damaged_01.png",
+        "Images/Zombies/NormalZombie/zombie_damaged_02.png",
+        "Images/Zombies/NormalZombie/zombie_damaged_03.png"
+      ],
+      "delay": 0.1,
+      "loop": false,
+      "restore": true
+    },
+    {
+      "name": "zombie_die",
+      "frames": [
+        "Images/Zombies/NormalZombie/zombie_die_01.png",
+        "Images/Zombies/NormalZombie/zombie_die_02.png",
+        "Images/Zombies/NormalZombie/zombie_die_03.png",
+        "Images/Zombies/NormalZombie/zombie_die_04.png"
+      ],
+      "delay": 0.15,
+      "loop": false,
+      "restore": false
+    },
+    {
+      "name": "sun_floating",
+      "frames": [
+        "Images/UI/Sun/sun_01.png",
+        "Images/UI/Sun/sun_02.png",
+        "Images/UI/Sun/sun_03.png",
+        "Images/UI/Sun/sun_04.png"
+      ],
+      "delay": 0.2,
+      "loop": true,
+      "restore": false
+    },
+    {
+      "name": "sun_collect",
+      "frames": [
+        "Images/UI/Sun/sun_collect_01.png",
+        "Images/UI/Sun/sun_collect_02.png",
+        "Images/UI/Sun/sun_collect_03.png"
+      ],
+      "delay": 0.1,
+      "loop": false,
+      "restore": false
+    }
+  ]
+}

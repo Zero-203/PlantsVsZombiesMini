@@ -1,6 +1,4 @@
-﻿  PeaShooter.cpp
-AppDelegate.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/SAFESEH”规范)
-    正在创建库 C:\Users\29165\Desktop\FinalPrj\PlantsVsZombiesMini\proj.win32\Debug.win32\PlantsVsZombiesMini.lib 和对象 C:\Users\29165\Desktop\FinalPrj\PlantsVsZombiesMini\proj.win32\Debug.win32\PlantsVsZombiesMini.exp
+﻿  GameManager.cpp
   PlantsVsZombiesMini.vcxproj -> C:\Users\29165\Desktop\FinalPrj\PlantsVsZombiesMini\proj.win32\Debug.win32\PlantsVsZombiesMini.exe
   Performing Custom Build Step
   复制了 0 个文件

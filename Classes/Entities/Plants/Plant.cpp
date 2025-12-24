@@ -345,9 +345,6 @@ void Plant::setAnimationHelper(AnimationHelper* helper)
     _animationHelper = helper;
 }
 
-// 在Plant.cpp的playAnimation函数中修改
-#include "./Utils/AnimationHelper.h"  // 添加这行
-
 void Plant::playAnimation(const std::string& animationName, bool loop,
     const std::function<void()>& callback)
 {

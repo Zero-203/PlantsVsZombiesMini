@@ -115,7 +115,7 @@ void GameManager::restartGame()
     _sunCount = 500;
     _playerScore = 0;
     _currentState = GameState::PLAYING;
-
+    clearAllProjectiles();
     // 重新加载游戏场景
     goToGameScene();
 }
@@ -199,18 +199,14 @@ void GameManager::updateProjectiles(float delta)
             continue;
         }
 
-        // 检查子弹是否还"存活"
-        if (!projectile->isAlive() ||
-            projectile->getState() == ProjectileState::DEAD)
+        // 检查子弹是否已经被销毁或移除
+        if (!projectile->isAlive() || 
+            projectile->getState() == ProjectileState::DEAD ||
+            !projectile->getParent())  // 新增检查：子弹是否已经从场景中移除
         {
-            log("GameManager: Removing dead projectile");
-
-            // 如果子弹还在场景中，安全移除
-            if (projectile->getParent())
-            {
-                projectile->removeFromParent();
-            }
-
+            log("GameManager: Removing dead or detached projectile");
+            
+            // 安全地从列表中移除，不需要从父节点移除（因为可能已经被移除了）
             it = _projectiles.erase(it);
             continue;
         }

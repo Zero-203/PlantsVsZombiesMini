@@ -46,6 +46,8 @@ public:
 
     void clearAllProjectiles();
 
+    void removeProjectile(Projectile* projectile);
+
 private:
     GameManager();
     virtual ~GameManager();

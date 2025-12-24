@@ -121,7 +121,16 @@ void ResourceLoader::loadSimpleAnimationConfig()
         "Images/Plants/Peashooter/peashooter_idle_01.png",
         "Images/Plants/Peashooter/peashooter_idle_02.png",
         "Images/Plants/Peashooter/peashooter_idle_03.png",
-        "Images/Plants/Peashooter/peashooter_idle_04.png"
+        "Images/Plants/Peashooter/peashooter_idle_04.png",
+        "Images/Plants/Peashooter/peashooter_idle_05.png",
+        "Images/Plants/Peashooter/peashooter_idle_06.png",
+        "Images/Plants/Peashooter/peashooter_idle_07.png",
+        "Images/Plants/Peashooter/peashooter_idle_08.png",
+        "Images/Plants/Peashooter/peashooter_idle_09.png",
+        "Images/Plants/Peashooter/peashooter_idle_10.png",
+        "Images/Plants/Peashooter/peashooter_idle_11.png",
+        "Images/Plants/Peashooter/peashooter_idle_12.png",
+        "Images/Plants/Peashooter/peashooter_idle_13.png"
     };
     loadAnimationFrames("peashooter_idle", peashooterIdleFrames, 0.2f);
 
