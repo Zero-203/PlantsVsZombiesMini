@@ -541,6 +541,7 @@ void GameScene::showPlantPreview(PlantType plantType, const Vec2& position)
     // 设置预览属性
     _plantPreview->setPosition(position);
     _plantPreview->setOpacity(150); // 半透明
+    _plantPreview->unscheduleUpdate();
 
     // 添加到场景 - 使用 addChild，Cocos2d-x 会自动管理内存
     this->addChild(_plantPreview, 4);
