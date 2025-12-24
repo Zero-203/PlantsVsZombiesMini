@@ -3,6 +3,7 @@
 #include "GameScene.h"
 #include "./Resources/AudioManager.h"
 #include "./Resources/ResourceLoader.h"
+#include <Entities/Projectile/Projectile.h>
 
 USING_NS_CC;
 
@@ -68,7 +69,7 @@ bool GameManager::spendSun(int amount)
 void GameManager::startNewGame()
 {
     // 重置游戏数据
-    _sunCount = 50; // 初始阳光
+    _sunCount = 500; // 初始阳光
     _currentState = GameState::PLAYING;
     _playerScore = 0;
 
@@ -111,7 +112,7 @@ void GameManager::resumeGame()
 void GameManager::restartGame()
 {
     // 重置游戏数据
-    _sunCount = 50;
+    _sunCount = 500;
     _playerScore = 0;
     _currentState = GameState::PLAYING;
 
@@ -165,4 +166,71 @@ void GameManager::goToGameScene()
 
     // 播放游戏背景音乐（在GameScene中已经处理）
     // AudioManager::getInstance()->playBackgroundMusic("Sounds/BGM/game_bgm.mp3", true);
+}
+
+void GameManager::addProjectile(Projectile* projectile)
+{
+    if (!projectile)
+    {
+        return;
+    }
+
+    // 检查是否已经存在
+    auto it = std::find(_projectiles.begin(), _projectiles.end(), projectile);
+    if (it == _projectiles.end())
+    {
+        _projectiles.push_back(projectile);
+        log("GameManager: Projectile added, total: %d", (int)_projectiles.size());
+    }
+}
+
+void GameManager::updateProjectiles(float delta)
+{
+    // 使用迭代器安全地遍历和移除
+    for (auto it = _projectiles.begin(); it != _projectiles.end(); )
+    {
+        Projectile* projectile = *it;
+
+        // 检查指针是否有效
+        if (!projectile)
+        {
+            log("GameManager: Removing null projectile");
+            it = _projectiles.erase(it);
+            continue;
+        }
+
+        // 检查子弹是否还"存活"
+        if (!projectile->isAlive() ||
+            projectile->getState() == ProjectileState::DEAD)
+        {
+            log("GameManager: Removing dead projectile");
+
+            // 如果子弹还在场景中，安全移除
+            if (projectile->getParent())
+            {
+                projectile->removeFromParent();
+            }
+
+            it = _projectiles.erase(it);
+            continue;
+        }
+
+        // 更新存活的子弹
+        projectile->update(delta);
+        ++it;
+    }
+}
+
+void GameManager::clearAllProjectiles()
+{
+    log("GameManager: Clearing all projectiles (%d)", (int)_projectiles.size());
+
+    for (auto projectile : _projectiles)
+    {
+        if (projectile && projectile->getParent())
+        {
+            projectile->removeFromParent();
+        }
+    }
+    _projectiles.clear();
 }

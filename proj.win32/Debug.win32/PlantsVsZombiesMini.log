@@ -1,5 +1,4 @@
-﻿  GameManager.cpp
-  LINK : 没有找到 C:\Users\29165\Desktop\FinalPrj\PlantsVsZombiesMini\proj.win32\Debug.win32\PlantsVsZombiesMini.exe 或上一个增量链接没有生成它；正在执行完全链接
+﻿  PeaShooter.cpp
 AppDelegate.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/SAFESEH”规范)
     正在创建库 C:\Users\29165\Desktop\FinalPrj\PlantsVsZombiesMini\proj.win32\Debug.win32\PlantsVsZombiesMini.lib 和对象 C:\Users\29165\Desktop\FinalPrj\PlantsVsZombiesMini\proj.win32\Debug.win32\PlantsVsZombiesMini.exp
   PlantsVsZombiesMini.vcxproj -> C:\Users\29165\Desktop\FinalPrj\PlantsVsZombiesMini\proj.win32\Debug.win32\PlantsVsZombiesMini.exe

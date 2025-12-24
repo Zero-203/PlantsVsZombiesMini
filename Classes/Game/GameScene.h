@@ -16,6 +16,7 @@ public:
     virtual void update(float delta) override;
 
     CREATE_FUNC(GameScene);
+    ~GameScene();
 
 private:
     // UIÔªËØ
@@ -64,8 +65,8 @@ private:
     void pauseGame();
     void resumeGame();
     void showPauseMenu();
-    void hidePauseMenu();
     void restartGame();
+    void hidePauseMenu();
     void exitToMenu();
 };
 

@@ -72,6 +72,9 @@
     <ClCompile Include="..\Classes\Entities\Plants\WallNut.cpp">
       <Filter>src\Entities\Plants</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Entities\Projectile\Projectile.cpp">
+      <Filter>src\Entities\Projectile</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -98,21 +101,6 @@
     <ClInclude Include="Zombies.h">
       <Filter>src\Entities\Zombies</Filter>
     </ClInclude>
-    <ClInclude Include="GridSystem.h">
-      <Filter>src\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="PlantFactory.h">
-      <Filter>src\Entities\Plants</Filter>
-    </ClInclude>
-    <ClInclude Include="PeaShooter.h">
-      <Filter>src\Entities\Plants</Filter>
-    </ClInclude>
-    <ClInclude Include="SunFlower.h">
-      <Filter>src\Entities\Plants</Filter>
-    </ClInclude>
-    <ClInclude Include="WallNut.h">
-      <Filter>src\Entities\Plants</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\UI\PlantCard.h">
       <Filter>src\UI</Filter>
     </ClInclude>
@@ -124,6 +112,18 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Entities\Plants\Plant.h">
       <Filter>src\Entities\Plants</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\Plants\PeaShooter.h">
+      <Filter>src\Entities\Plants</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\Plants\PlantFactory.h">
+      <Filter>src\Entities\Plants</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\Plants\SunFlower.h">
+      <Filter>src\Entities\Plants</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\Projectile\Projectile.h">
+      <Filter>src\Entities\Projectile</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

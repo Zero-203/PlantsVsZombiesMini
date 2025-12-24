@@ -2,6 +2,7 @@
 #define GAME_MANAGER_H
 
 #include "cocos2d.h"
+class Projectile;
 
 class GameManager : public cocos2d::Ref
 {
@@ -39,6 +40,12 @@ public:
     void goToMenuScene();
     void goToGameScene();
 
+    //子弹管理
+    void addProjectile(Projectile* projectile);
+    void updateProjectiles(float delta);
+
+    void clearAllProjectiles();
+
 private:
     GameManager();
     virtual ~GameManager();
@@ -52,6 +59,7 @@ private:
 
 private:
     static GameManager* _instance;
+    std::vector<Projectile*> _projectiles;
 
     // 游戏状态
     GameState _currentState;

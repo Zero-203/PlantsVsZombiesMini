@@ -3,6 +3,7 @@
 #include "./Resources/AudioManager.h"
 #include "./Entities/Plants/PlantFactory.h"
 #include "./Resources/ResourceLoader.h"
+#include "./UI/PlantCard.h" 
 
 USING_NS_CC;
 
@@ -12,6 +13,22 @@ Scene* GameScene::createScene()
     auto layer = GameScene::create();
     scene->addChild(layer);
     return scene;
+}
+
+GameScene::~GameScene()
+{
+    log("GameScene: Destructor called");
+
+    // 注意：不要调用 release()，因为 Cocos2d-x 使用自动引用计数
+    // 植物节点在 removeAllChildrenWithCleanup(true) 时已经被释放
+
+    // 只需清空指针向量
+    _plants.clear();
+    _plantCards.clear();
+    _plantPreview = nullptr;
+    _pauseButton = nullptr;
+    _sunLabel = nullptr;
+    _levelLabel = nullptr;
 }
 
 bool GameScene::init()
@@ -41,6 +58,66 @@ bool GameScene::init()
     this->addChild(background, 0);
 
 
+    // 获取ResourceLoader并检查动画
+    ResourceLoader* resourceLoader = ResourceLoader::getInstance();
+    if (resourceLoader)
+    {
+        resourceLoader->printCachedAnimations();
+
+        // 检查特定动画
+        if (!resourceLoader->hasAnimation("pea_fly"))
+        {
+            log("ERROR: pea_fly animation not loaded!");
+
+            // 尝试重新加载
+            std::vector<std::string> peaFlyFrames = {
+                "Images/Projectiles/Pea/pea_01.png",
+                "Images/Projectiles/Pea/pea_02.png",
+                "Images/Projectiles/Pea/pea_03.png",
+                "Images/Projectiles/Pea/pea_04.png"
+            };
+            resourceLoader->loadAnimationFrames("pea_fly", peaFlyFrames, 0.1f);
+
+            // 再次检查
+            if (resourceLoader->hasAnimation("pea_fly"))
+            {
+                log("Successfully reloaded pea_fly animation");
+            }
+        }
+        else
+        {
+            log("pea_fly animation found in cache");
+        }
+    }
+
+    // 预加载游戏资源
+    resourceLoader = ResourceLoader::getInstance();
+    if (resourceLoader)
+    {
+        CCLOG("GameScene: Preloading game resources...");
+        resourceLoader->preloadResources(ResourceLoader::LoadingPhase::GAME_RESOURCES);
+        CCLOG("GameScene: Game resources preloaded");
+
+        // 检查关键动画是否加载成功
+        if (resourceLoader->getCachedAnimation("sunflower_idle")) {
+            CCLOG("GameScene: Sunflower idle animation loaded successfully");
+        }
+        else {
+            CCLOG("GameScene: WARNING: Sunflower idle animation NOT loaded");
+        }
+
+        if (resourceLoader->getCachedAnimation("peashooter_idle")) {
+            CCLOG("GameScene: Peashooter idle animation loaded successfully");
+        }
+        else {
+            CCLOG("GameScene: WARNING: Peashooter idle animation NOT loaded");
+        }
+    }
+    else
+    {
+        CCLOG("GameScene: ERROR: ResourceLoader is null!");
+    }
+
     // 初始化网格系统
     initGrid();
 
@@ -62,7 +139,7 @@ bool GameScene::init()
     auto gameManager = GameManager::getInstance();
     if (gameManager)
     {
-        gameManager->setSunCount(50); // 初始50阳光
+        gameManager->setSunCount(500); // 初始50阳光
         updateSunDisplay();
     }
 
@@ -92,13 +169,31 @@ void GameScene::update(float delta)
         updatePlantPreviewPosition(touchPos);
     }
 
-    // 更新植物行为
-    for (auto plant : _plants)
+    // 更新植物行为 - 使用安全的迭代器
+    auto it = _plants.begin();
+    while (it != _plants.end())
     {
-        if (plant && plant->isAlive())
+        Plant* plant = *it;
+        if (plant && plant->getParent())  // 检查植物是否仍然在场景中
         {
-            plant->update(delta);
+            if (plant->isAlive())
+            {
+                plant->update(delta);
+            }
+            ++it;
         }
+        else
+        {
+            // 植物已被移除，从列表中删除
+            it = _plants.erase(it);
+        }
+    }
+
+    // 更新游戏管理器中的子弹
+    auto gameManager = GameManager::getInstance();
+    if (gameManager)
+    {
+        gameManager->updateProjectiles(delta);
     }
 }
 
@@ -391,7 +486,7 @@ void GameScene::placePlant(PlantType plantType, int row, int col)
         return;
     }
 
-    // 创建植物
+    // 创建植物 - 确保使用自动释放
     Plant* plant = PlantFactory::createPlant(plantType);
     if (!plant)
     {
@@ -404,13 +499,13 @@ void GameScene::placePlant(PlantType plantType, int row, int col)
     plant->setPosition(plantPos);
     plant->setGridPosition(row, col);
 
-    // 添加到场景
-    this->addChild(plant, 3); // 在草坪之上
+    // 添加到场景 - 使用 addChild，Cocos2d-x 会自动管理内存
+    this->addChild(plant, 3);
 
     // 添加到网格系统
     gridSystem->plantAt(plant, row, col);
 
-    // 添加到植物列表
+    // 添加到植物列表 - 不要 retain，因为父节点已经持有引用
     _plants.push_back(plant);
 
     // 播放种植音效
@@ -447,7 +542,7 @@ void GameScene::showPlantPreview(PlantType plantType, const Vec2& position)
     _plantPreview->setPosition(position);
     _plantPreview->setOpacity(150); // 半透明
 
-    // 添加到场景
+    // 添加到场景 - 使用 addChild，Cocos2d-x 会自动管理内存
     this->addChild(_plantPreview, 4);
 
     log("GameScene: Plant preview shown");
@@ -536,20 +631,20 @@ void GameScene::showPauseMenu()
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-    // 创建半透明背景
+    // 创建半透明覆盖层
     auto overlay = LayerColor::create(Color4B(0, 0, 0, 150), visibleSize.width, visibleSize.height);
     overlay->setPosition(origin);
-    overlay->setTag(100); // 用于标识
+    overlay->setTag(100);
     this->addChild(overlay, 100);
 
-    // 创建暂停菜单面板
+    // 创建暂停菜单面板（保持原始代码）
     auto panel = ui::Button::create();
     panel->setContentSize(Size(300, 200));
     panel->setScale9Enabled(true);
     panel->setCapInsets(Rect(10, 10, 10, 10));
     panel->setColor(Color3B(50, 50, 100));
     panel->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
-    panel->setEnabled(false); // 仅作为背景
+    panel->setEnabled(true); // 作为背景，不接收事件
     overlay->addChild(panel);
 
     // 暂停标题
@@ -558,7 +653,7 @@ void GameScene::showPauseMenu()
     pauseLabel->setColor(Color3B::YELLOW);
     panel->addChild(pauseLabel);
 
-    // 继续按钮
+    // 继续按钮 - 确保事件可以传递
     auto resumeButton = ui::Button::create();
     resumeButton->setTitleText("Resume");
     resumeButton->setTitleFontName("fonts/Marker Felt.ttf");
@@ -569,16 +664,24 @@ void GameScene::showPauseMenu()
     resumeButton->setCapInsets(Rect(5, 5, 5, 5));
     resumeButton->setColor(Color3B(100, 200, 100));
     resumeButton->setPosition(Vec2(panel->getContentSize().width / 2, 100));
+
+    // 关键：确保按钮可以接收触摸事件
+    resumeButton->setTouchEnabled(true);
+    resumeButton->setEnabled(true);
+    resumeButton->setSwallowTouches(true); // 阻止事件传递到父节点
+
     resumeButton->addTouchEventListener([this](Ref* sender, ui::Widget::TouchEventType type) {
+        log("GameScene: Resume button event type: %d", (int)type);
         if (type == ui::Widget::TouchEventType::ENDED)
         {
+            log("GameScene: Resume button clicked");
             hidePauseMenu();
             resumeGame();
         }
         });
     panel->addChild(resumeButton);
 
-    // 重新开始按钮
+    // 重新开始按钮 - 确保事件可以传递
     auto restartButton = ui::Button::create();
     restartButton->setTitleText("Restart");
     restartButton->setTitleFontName("fonts/Marker Felt.ttf");
@@ -589,9 +692,18 @@ void GameScene::showPauseMenu()
     restartButton->setCapInsets(Rect(5, 5, 5, 5));
     restartButton->setColor(Color3B(200, 200, 100));
     restartButton->setPosition(Vec2(panel->getContentSize().width / 2, 50));
+
+    // 关键：确保按钮可以接收触摸事件
+    restartButton->setTouchEnabled(true);
+    restartButton->setEnabled(true);
+    restartButton->setSwallowTouches(true); // 阻止事件传递到父节点
+
     restartButton->addTouchEventListener([this](Ref* sender, ui::Widget::TouchEventType type) {
+        log("GameScene: Restart button event type: %d", (int)type);
         if (type == ui::Widget::TouchEventType::ENDED)
         {
+            log("GameScene: Restart button clicked");
+            hidePauseMenu();
             restartGame();
         }
         });
@@ -612,15 +724,6 @@ void GameScene::hidePauseMenu()
     log("GameScene: Pause menu hidden");
 }
 
-void GameScene::restartGame()
-{
-    log("GameScene: Restarting game");
-
-    // 重新开始场景
-    auto scene = GameScene::createScene();
-    Director::getInstance()->replaceScene(TransitionFade::create(0.5f, scene));
-}
-
 void GameScene::exitToMenu()
 {
     log("GameScene: Exiting to menu");
@@ -629,5 +732,69 @@ void GameScene::exitToMenu()
     if (gameManager)
     {
         gameManager->goToMenuScene();
+    }
+}
+
+void GameScene::restartGame()
+{
+    log("GameScene: Restarting game via GameManager");
+
+    // 恢复游戏状态（如果之前是暂停的）
+    resumeGame();
+
+    // 隐藏暂停菜单
+    hidePauseMenu();
+
+    // 停止所有调度器
+    this->unscheduleAllCallbacks();
+
+    // 停止所有动作
+    this->stopAllActions();
+
+    // 清理植物列表（不要调用 release，因为 Cocos2d-x 会自动管理）
+    for (auto plant : _plants)
+    {
+        if (plant)
+        {
+            plant->removeFromParent();
+        }
+    }
+    _plants.clear();
+
+    // 清理植物卡片列表
+    _plantCards.clear();
+
+    // 清理预览
+    if (_plantPreview)
+    {
+        _plantPreview->removeFromParent();
+        _plantPreview = nullptr;
+    }
+
+    // 重置变量
+    _selectedPlantType = PlantType::SUNFLOWER;
+    _hasSelectedPlant = false;
+    _pauseButton = nullptr;
+    _sunLabel = nullptr;
+    _levelLabel = nullptr;
+
+    // 重置网格系统
+    auto gridSystem = GridSystem::getInstance();
+    if (gridSystem)
+    {
+        gridSystem->clearAll();
+    }
+
+    // 使用 GameManager 重启游戏
+    auto gameManager = GameManager::getInstance();
+    if (gameManager)
+    {
+        gameManager->restartGame();
+    }
+    else
+    {
+        // 备用方案：直接替换场景
+        auto scene = GameScene::createScene();
+        Director::getInstance()->replaceScene(TransitionFade::create(0.5f, scene));
     }
 }

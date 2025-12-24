@@ -15,21 +15,8 @@ bool Peashooter::init()
     initPlant(PlantType::PEASHOOTER, 100, 7.5f, 100);
 
     // 设置豌豆射手特有属性
-    _attackSpeed = 1.5f; // 每秒发射1.5颗豌豆
-
-    // 设置颜色和大小
-    this->setColor(Color3B(0, 200, 0)); // 亮绿色
-    this->setContentSize(Size(50, 70));
-
-    // 添加动画（简化为颜色变化）
-    auto idleAction = RepeatForever::create(
-        Sequence::create(
-            TintTo::create(0.5f, Color3B(0, 200, 0)),
-            TintTo::create(0.5f, Color3B(0, 150, 0)),
-            nullptr
-        )
-    );
-    this->runAction(idleAction);
+    _attackSpeed = 1.5f;
+    _attackDamage = 20;
 
     return true;
 }
@@ -41,8 +28,6 @@ void Peashooter::attack(float delta)
 
 void Peashooter::shootPea()
 {
-    log("Peashooter: Shooting pea!");
-
     // 播放射击音效
     auto audioManager = AudioManager::getInstance();
     if (audioManager)
@@ -50,28 +35,34 @@ void Peashooter::shootPea()
         audioManager->playSoundEffect("Sounds/SFX/shoot.mp3");
     }
 
-    // 创建豌豆子弹（简化版：使用一个Sprite）
-    auto pea = Sprite::create();
-    pea->setTextureRect(Rect(0, 0, 10, 10));
-    pea->setColor(Color3B(0, 255, 0));
-    pea->setPosition(this->getPosition() + Vec2(30, 20)); // 从豌豆射手嘴部发射
+    // 创建豌豆子弹
+    auto pea = Projectile::create();
+    if (!pea)
+    {
+        return;
+    }
 
-    // 获取父节点并添加豌豆
+    // 初始化豌豆子弹属性
+    pea->initProjectile(ProjectileType::PEA, _attackDamage, 200.0f);
+
+    // 设置发射位置（从豌豆射手右侧发射）
+    Vec2 launchPosition = this->getPosition() + Vec2(30, 55);
+    Vec2 direction = Vec2(1.0f, 0.0f);
+
+    // 设置发射参数
+    pea->setLaunchParams(launchPosition, direction);
+
+    // 获取父节点并添加子弹
     auto parent = this->getParent();
     if (parent)
     {
-        parent->addChild(pea, 5); // 较高层级
+        parent->addChild(pea, 5);
 
-        // 豌豆移动动画
-        float screenWidth = Director::getInstance()->getVisibleSize().width;
-        float moveDistance = screenWidth - pea->getPositionX();
-        float moveDuration = moveDistance / 200.0f; // 速度200像素/秒
-
-        auto moveAction = MoveBy::create(moveDuration, Vec2(moveDistance, 0));
-        auto removeAction = RemoveSelf::create();
-
-        pea->runAction(Sequence::create(moveAction, removeAction, nullptr));
-
-        // 简化：这里应该添加碰撞检测，后续在碰撞管理器中实现
+        // 添加到游戏管理器
+        auto gameManager = GameManager::getInstance();
+        if (gameManager)
+        {
+            gameManager->addProjectile(pea);
+        }
     }
 }

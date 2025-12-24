@@ -116,7 +116,7 @@ Vec2 GridSystem::gridToWorldCenter(int row, int col) const
 
     // 返回格子中心点
     return Vec2(worldPos.x + _cellSize.width / 2,
-        worldPos.y + _cellSize.height / 2);
+        worldPos.y + _cellSize.height * 1 / 3);
 }
 
 bool GridSystem::isGridOccupied(int row, int col) const
@@ -185,6 +185,30 @@ void GridSystem::handleTouch(const Vec2& touchPos)
 
         log("GridSystem: Grid clicked at row %d, col %d", row, col);
     }
+}
+
+void GridSystem::reset()
+{
+    // 移除调试节点
+    if (_debugNode)
+    {
+        _debugNode->removeFromParent();
+        _debugNode = nullptr;
+    }
+
+    // 重置网格数据
+    for (int i = 0; i < _rows; i++)
+    {
+        for (int j = 0; j < _cols; j++)
+        {
+            removePlant(i, j);
+        }
+    }
+
+    // 重置点击回调
+    _clickCallback = nullptr;
+
+    log("GridSystem: Reset completed");
 }
 
 void GridSystem::drawDebugGrid(Node* parent)

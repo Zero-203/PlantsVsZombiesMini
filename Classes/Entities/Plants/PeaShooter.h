@@ -3,6 +3,7 @@
 #define __PEASHOOTER_H__
 
 #include "Plant.h"
+#include "./Entities/Projectile/Projectile.h"
 
 class Peashooter : public Plant {
 public:

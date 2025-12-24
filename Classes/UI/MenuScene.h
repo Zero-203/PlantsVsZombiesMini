@@ -23,6 +23,7 @@ private:
     // UIÔªËØ
     cocos2d::ui::Button* _startButton;
     cocos2d::ui::Button* _settingsButton;
+    cocos2d::ui::Button* _exitButton;
 
     cocos2d::Sprite* _background;
     cocos2d::Sprite* _logo;

@@ -1,3 +1,4 @@
+// ResourceLoader.h - 简化版本，移除JSON相关声明
 #ifndef RESOURCE_LOADER_H
 #define RESOURCE_LOADER_H
 
@@ -9,10 +10,16 @@
 class ResourceLoader : public cocos2d::Ref
 {
 public:
-    // 单例访问点
+    // 单例访问
     static ResourceLoader* getInstance();
 
-    // 资源类型枚举
+    // 调试：打印所有缓存的动画
+    void printCachedAnimations();
+
+    // 检查动画是否存在
+    bool hasAnimation(const std::string& name);
+
+    // 资源类型
     enum class ResourceType
     {
         IMAGE,
@@ -22,7 +29,7 @@ public:
         BACKGROUND_MUSIC
     };
 
-    // 加载阶段枚举
+    // 加载阶段
     enum class LoadingPhase
     {
         MENU_RESOURCES,
@@ -39,6 +46,9 @@ public:
     // 获取动画
     cocos2d::Animation* getAnimation(const std::string& name);
 
+    // 获取PNG序列帧动画
+    cocos2d::Animation* getPNGAnimation(const std::string& name);
+
     // 获取字体路径
     std::string getFontPath(const std::string& fontName);
 
@@ -51,8 +61,25 @@ public:
     // 获取纹理
     cocos2d::Texture2D* getTexture(const std::string& textureName);
 
-    // 清除缓存
+    // 清理未使用资源
     void clearUnusedResources();
+
+    // 加载PNG序列帧动画
+    void loadAnimationFrames(const std::string& animationName,
+        const std::vector<std::string>& framePaths,
+        float delayPerFrame = 0.1f);
+
+    // 加载PNG序列帧到纹理缓存
+    void loadPNGFramesToTextureCache(const std::vector<std::string>& framePaths);
+
+    // 获取缓存的动画
+    cocos2d::Animation* getCachedAnimation(const std::string& name);
+
+    // 缓存动画
+    void cacheAnimation(const std::string& name, cocos2d::Animation* animation);
+
+    // 加载动画资源
+    void loadAnimations(const std::vector<std::pair<std::string, std::string>>& animations);
 
 private:
     ResourceLoader();
@@ -65,13 +92,16 @@ private:
     // 初始化
     bool init();
 
-    // 加载配置
+    // 加载资源配置
     void loadResourceConfig();
+
+    // 加载简化的动画配置（硬编码）
+    void loadSimpleAnimationConfig();
 
     // 加载图片资源
     void loadImages(const std::vector<std::string>& imageFiles);
 
-    // 加载图集
+    // 加载精灵表
     void loadSpriteSheets(const std::vector<std::pair<std::string, std::string>>& spriteSheets);
 
     // 加载字体
@@ -82,6 +112,9 @@ private:
 
     // 加载背景音乐
     void loadBackgroundMusic(const std::vector<std::string>& musicFiles);
+
+    // 根据plist路径自动创建动画并缓存
+    void createAndCacheAnimations(const std::string& plistPath);
 
 private:
     static ResourceLoader* _instance;

@@ -98,17 +98,17 @@ void MenuScene::initUI()
     _settingsButton->setTitleColor(Color3B::WHITE);
     _settingsButton->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height * 0.35f + origin.y));
     _settingsButton->addTouchEventListener(CC_CALLBACK_2(MenuScene::onSettingsButtonClicked, this));
-    this->addChild(_settingsButton, 1);
+    this->addChild(_settingsButton, 2);
 
     // 4. 退出按钮
-    auto exitButton = Button::create();
-    exitButton->setTitleText("退出游戏");
-    exitButton->setTitleFontName(ResourceLoader::getInstance()->getFontPath("font_main"));
-    exitButton->setTitleFontSize(28);
-    exitButton->setTitleColor(Color3B::WHITE);
-    exitButton->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height * 0.28f + origin.y));
-    exitButton->addTouchEventListener(CC_CALLBACK_2(MenuScene::onExitButtonClicked, this));
-    this->addChild(exitButton, 1);
+    _exitButton = Button::create();
+    _exitButton->setTitleText("退出游戏");
+    _exitButton->setTitleFontName(ResourceLoader::getInstance()->getFontPath("font_main"));
+    _exitButton->setTitleFontSize(28);
+    _exitButton->setTitleColor(Color3B::WHITE);
+    _exitButton->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height * 0.28f + origin.y));
+    _exitButton->addTouchEventListener(CC_CALLBACK_2(MenuScene::onExitButtonClicked, this));
+    this->addChild(_exitButton, 2);
    
 }
 

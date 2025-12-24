@@ -63,6 +63,9 @@ public:
     // 清除所有格子
     void clearAll();
 
+    // 重置网格系统
+    void reset();
+
 private:
     GridSystem();
     ~GridSystem();
