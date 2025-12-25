@@ -39,7 +39,7 @@ bool GridSystem::init(int rows, int cols, const Size& cellSize, const Vec2& grid
     _cellSize = cellSize;
     _gridOrigin = gridOrigin;
 
-    // ³õÊ¼»¯¸ñ×Ó
+    // åˆå§‹åŒ–æ ¼å­
     _grid.resize(rows);
     for (int i = 0; i < rows; i++)
     {
@@ -51,7 +51,7 @@ bool GridSystem::init(int rows, int cols, const Size& cellSize, const Vec2& grid
             _grid[i][j].isOccupied = false;
             _grid[i][j].plant = nullptr;
 
-            // ¼ÆËã¸ñ×Ó¾ØĞÎÇøÓò
+            // è®¡ç®—æ ¼å­çŸ©å½¢åŒºåŸŸ
             float x = _gridOrigin.x + j * _cellSize.width;
             float y = _gridOrigin.y + i * _cellSize.height;
             _grid[i][j].rect = Rect(x, y, _cellSize.width, _cellSize.height);
@@ -69,22 +69,22 @@ bool GridSystem::isValidGrid(int row, int col) const
 
 bool GridSystem::worldToGrid(const Vec2& worldPos, int& outRow, int& outCol) const
 {
-    // ¼ÆËãÏà¶ÔÓÚÍø¸ñÔ­µãµÄÎ»ÖÃ
+    // è®¡ç®—ç›¸å¯¹äºç½‘æ ¼åŸç‚¹çš„ä½ç½®
     float relX = worldPos.x - _gridOrigin.x;
     float relY = worldPos.y - _gridOrigin.y;
 
-    // ¼ì²éÊÇ·ñÔÚÍø¸ñ·¶Î§ÄÚ
+    // æ£€æŸ¥æ˜¯å¦åœ¨ç½‘æ ¼èŒƒå›´å†…
     if (relX < 0 || relX >= _cols * _cellSize.width ||
         relY < 0 || relY >= _rows * _cellSize.height)
     {
         return false;
     }
 
-    // ¼ÆËãĞĞÁĞ
+    // è®¡ç®—è¡Œåˆ—
     outCol = static_cast<int>(relX / _cellSize.width);
     outRow = static_cast<int>(relY / _cellSize.height);
 
-    // È·±£ÔÚÓĞĞ§·¶Î§ÄÚ
+    // ç¡®ä¿åœ¨æœ‰æ•ˆèŒƒå›´å†…
     if (!isValidGrid(outRow, outCol))
     {
         return false;
@@ -114,7 +114,7 @@ Vec2 GridSystem::gridToWorldCenter(int row, int col) const
         return Vec2::ZERO;
     }
 
-    // ·µ»Ø¸ñ×ÓÖĞĞÄµã
+    // è¿”å›æ ¼å­ä¸­å¿ƒç‚¹
     return Vec2(worldPos.x + _cellSize.width / 2,
         worldPos.y + _cellSize.height * 1 / 3);
 }
@@ -123,7 +123,7 @@ bool GridSystem::isGridOccupied(int row, int col) const
 {
     if (!isValidGrid(row, col))
     {
-        return true; // ÎŞĞ§¸ñ×ÓÊÓÎªÒÑÕ¼ÓÃ
+        return true; // æ— æ•ˆæ ¼å­è§†ä¸ºå·²å ç”¨
     }
 
     return _grid[row][col].isOccupied;
@@ -165,7 +165,8 @@ void GridSystem::removePlant(int row, int col)
 Plant* GridSystem::getPlantAt(int row, int col) const
 {
     if (!isValidGrid(row, col))
-    {
+{
+    if (row < 0 || row >= ROW_COUNT || col < 0 || col >= COL_COUNT)
         return nullptr;
     }
 
@@ -177,7 +178,7 @@ void GridSystem::handleTouch(const Vec2& touchPos)
     int row, col;
     if (worldToGrid(touchPos, row, col))
     {
-        // µ÷ÓÃ»Øµ÷º¯Êı
+        // è°ƒç”¨å›è°ƒå‡½æ•°
         if (_clickCallback)
         {
             _clickCallback(row, col, gridToWorldCenter(row, col));
@@ -189,14 +190,14 @@ void GridSystem::handleTouch(const Vec2& touchPos)
 
 void GridSystem::reset()
 {
-    // ÒÆ³ıµ÷ÊÔ½Úµã
+    // ç§»é™¤è°ƒè¯•èŠ‚ç‚¹
     if (_debugNode)
     {
         _debugNode->removeFromParent();
         _debugNode = nullptr;
     }
 
-    // ÖØÖÃÍø¸ñÊı¾İ
+    // é‡ç½®ç½‘æ ¼æ•°æ®
     for (int i = 0; i < _rows; i++)
     {
         for (int j = 0; j < _cols; j++)
@@ -205,7 +206,7 @@ void GridSystem::reset()
         }
     }
 
-    // ÖØÖÃµã»÷»Øµ÷
+    // é‡ç½®ç‚¹å‡»å›è°ƒ
     _clickCallback = nullptr;
 
     log("GridSystem: Reset completed");
@@ -214,32 +215,33 @@ void GridSystem::reset()
 void GridSystem::drawDebugGrid(Node* parent)
 {
     if (!parent)
-    {
+{
+    if (row < 0 || row >= ROW_COUNT || col < 0 || col >= COL_COUNT)
         return;
     }
 
     
     /*
-    // ÒÆ³ı¾ÉµÄµ÷ÊÔ½Úµã
+    // ç§»é™¤æ—§çš„è°ƒè¯•èŠ‚ç‚¹
     if (_debugNode && _debugNode->getParent())
     {
         _debugNode->removeFromParent();
     }
     */
     _debugNode = DrawNode::create();
-    parent->addChild(_debugNode, 9999); // ×î¸ß²ã¼¶ÏÔÊ¾
+    parent->addChild(_debugNode, 9999); // æœ€é«˜å±‚çº§æ˜¾ç¤º
 
-    // ÉèÖÃÍø¸ñÑÕÉ«
-    Color4F gridColor(1.0f, 1.0f, 0.0f, 0.5f); // »ÆÉ«°ëÍ¸Ã÷
+    // è®¾ç½®ç½‘æ ¼é¢œè‰²
+    Color4F gridColor(1.0f, 1.0f, 0.0f, 0.5f); // é»„è‰²åŠé€æ˜
 
-    // »æÖÆËùÓĞ¸ñ×Ó
+    // ç»˜åˆ¶æ‰€æœ‰æ ¼å­
     for (int i = 0; i < _rows; i++)
     {
         for (int j = 0; j < _cols; j++)
 {
             const Rect& rect = _grid[i][j].rect;
 
-            // »æÖÆ¸ñ×Ó±ß¿ò
+            // ç»˜åˆ¶æ ¼å­è¾¹æ¡†
             Vec2 vertices[] = {
                 Vec2(rect.origin.x, rect.origin.y),
                 Vec2(rect.origin.x + rect.size.width, rect.origin.y),
@@ -249,16 +251,16 @@ void GridSystem::drawDebugGrid(Node* parent)
 
             _debugNode->drawPoly(vertices, 4, true, gridColor);
 
-            // Èç¹û¸ñ×Ó±»Õ¼ÓÃ£¬»æÖÆÌî³ä
+            // å¦‚æœæ ¼å­è¢«å ç”¨ï¼Œç»˜åˆ¶å¡«å……
             if (_grid[i][j].isOccupied)
     {
-                Color4F occupiedColor(1.0f, 0.0f, 0.0f, 0.2f); // ºìÉ«°ëÍ¸Ã÷
+                Color4F occupiedColor(1.0f, 0.0f, 0.0f, 0.2f); // çº¢è‰²åŠé€æ˜
                 _debugNode->drawSolidRect(rect.origin,
                     Vec2(rect.origin.x + rect.size.width, rect.origin.y + rect.size.height),
                     occupiedColor);
             }
 
-            // ÏÔÊ¾ĞĞÁĞ±àºÅ
+            // æ˜¾ç¤ºè¡Œåˆ—ç¼–å·
             std::string gridText = StringUtils::format("%d,%d", i, j);
             auto label = Label::createWithTTF(gridText, "fonts/Marker Felt.ttf", 12);
             label->setPosition(rect.origin.x + rect.size.width / 2,

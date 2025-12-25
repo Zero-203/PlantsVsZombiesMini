@@ -1,6 +1,7 @@
 #include "NormalZombie.h"
 #include "./Entities/Plants/Plant.h"
 #include "./Game/GridSystem.h"
+#include "Plant.h"
 
 NormalZombie* NormalZombie::create() {
     auto ret = new NormalZombie();
