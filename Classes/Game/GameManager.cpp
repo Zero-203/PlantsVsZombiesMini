@@ -72,7 +72,8 @@ void GameManager::startNewGame()
     _sunCount = 500; // 初始阳光
     _currentState = GameState::PLAYING;
     _playerScore = 0;
-
+    _projectiles.clear();
+    clearAllProjectiles();
     // 切换到游戏场景
     goToGameScene();
 }
