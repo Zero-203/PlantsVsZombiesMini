@@ -15,9 +15,11 @@ bool WallNut::init()
     // 设置坚果墙特有属性
     _crackLevel = 0;
 
+    /*
     // 设置颜色和大小（棕色）
     this->setColor(Color3B(139, 69, 19));
     this->setContentSize(Size(60, 70));
+    */
 
     // 添加轻微晃动动画（表现坚固）
     auto shakeAction = RepeatForever::create(

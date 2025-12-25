@@ -156,6 +156,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Entities\Plants\SunFlower.cpp" />
     <ClCompile Include="..\Classes\Entities\Plants\WallNut.cpp" />
     <ClCompile Include="..\Classes\Entities\Projectile\Projectile.cpp" />
+    <ClCompile Include="..\Classes\Entities\Zombie\NormalZombie.cpp" />
+    <ClCompile Include="..\Classes\Entities\Zombie\Zombie.cpp" />
     <ClCompile Include="..\Classes\Game\GameManager.cpp" />
     <ClCompile Include="..\Classes\Game\GameScene.cpp" />
     <ClCompile Include="..\Classes\Game\GridSystem.cpp" />
@@ -172,6 +174,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Entities\Plants\PlantFactory.h" />
     <ClInclude Include="..\Classes\Entities\Plants\SunFlower.h" />
     <ClInclude Include="..\Classes\Entities\Projectile\Projectile.h" />
+    <ClInclude Include="..\Classes\Entities\Zombie\NormalZombie.h" />
+    <ClInclude Include="..\Classes\Entities\Zombie\Zombie.h" />
     <ClInclude Include="..\Classes\Game\GameManager.h" />
     <ClInclude Include="..\Classes\Game\GameScene.h" />
     <ClInclude Include="..\Classes\Game\GridSystem.h" />
@@ -180,8 +184,6 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClInclude Include="..\Classes\UI\MenuScene.h" />
     <ClInclude Include="..\Classes\UI\PlantCard.h" />
     <ClInclude Include="main.h" />
-    <ClInclude Include="Entities.h" />
-    <ClInclude Include="Zombies.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\cocos2d\cocos\2d\libcocos2d.vcxproj">

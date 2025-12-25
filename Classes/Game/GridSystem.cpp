@@ -165,8 +165,7 @@ void GridSystem::removePlant(int row, int col)
 Plant* GridSystem::getPlantAt(int row, int col) const
 {
     if (!isValidGrid(row, col))
-{
-    if (row < 0 || row >= ROW_COUNT || col < 0 || col >= COL_COUNT)
+    {
         return nullptr;
     }
 
@@ -215,19 +214,18 @@ void GridSystem::reset()
 void GridSystem::drawDebugGrid(Node* parent)
 {
     if (!parent)
-{
-    if (row < 0 || row >= ROW_COUNT || col < 0 || col >= COL_COUNT)
+    {
         return;
     }
 
+    
     /*
     // 移除旧的调试节点
     if (_debugNode && _debugNode->getParent())
     {
         _debugNode->removeFromParent();
-}
+    }
     */
-
     _debugNode = DrawNode::create();
     parent->addChild(_debugNode, 9999); // 最高层级显示
 

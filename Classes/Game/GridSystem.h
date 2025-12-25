@@ -66,6 +66,9 @@ public:
     // 重置网格系统
     void reset();
 
+    const static int GRID_WIDTH = 90;
+    const static int GRID_HEIGHT = 90;
+
 private:
     GridSystem();
     ~GridSystem();

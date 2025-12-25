@@ -167,7 +167,20 @@ void ResourceLoader::loadSimpleAnimationConfig()
     std::vector<std::string> wallnutIdleFrames = {
         "Images/Plants/WallNut/wallnut_idle_01.png",
         "Images/Plants/WallNut/wallnut_idle_02.png",
-        "Images/Plants/WallNut/wallnut_idle_03.png"
+        "Images/Plants/WallNut/wallnut_idle_03.png",
+        "Images/Plants/WallNut/wallnut_idle_04.png",
+        "Images/Plants/WallNut/wallnut_idle_05.png",
+        "Images/Plants/WallNut/wallnut_idle_06.png",
+        "Images/Plants/WallNut/wallnut_idle_07.png",
+        "Images/Plants/WallNut/wallnut_idle_08.png",
+        "Images/Plants/WallNut/wallnut_idle_09.png",
+        "Images/Plants/WallNut/wallnut_idle_10.png",
+        "Images/Plants/WallNut/wallnut_idle_11.png",
+        "Images/Plants/WallNut/wallnut_idle_12.png",
+        "Images/Plants/WallNut/wallnut_idle_13.png",
+        "Images/Plants/WallNut/wallnut_idle_14.png",
+        "Images/Plants/WallNut/wallnut_idle_15.png",
+        "Images/Plants/WallNut/wallnut_idle_16.png",
     };
     loadAnimationFrames("wallnut_idle", wallnutIdleFrames, 0.3f);
 
@@ -192,7 +205,32 @@ void ResourceLoader::loadSimpleAnimationConfig()
         "Images/UI/Sun/sun_01.png",
         "Images/UI/Sun/sun_02.png",
         "Images/UI/Sun/sun_03.png",
-        "Images/UI/Sun/sun_04.png"
+        "Images/UI/Sun/sun_04.png",
+        "Images/UI/Sun/sun_05.png",
+        "Images/UI/Sun/sun_06.png",
+        "Images/UI/Sun/sun_07.png",
+        "Images/UI/Sun/sun_08.png",
+        "Images/UI/Sun/sun_09.png",
+        "Images/UI/Sun/sun_10.png",
+        "Images/UI/Sun/sun_11.png",
+        "Images/UI/Sun/sun_12.png",
+        "Images/UI/Sun/sun_13.png",
+        "Images/UI/Sun/sun_14.png",
+        "Images/UI/Sun/sun_15.png",
+        "Images/UI/Sun/sun_16.png",
+        "Images/UI/Sun/sun_17.png",
+        "Images/UI/Sun/sun_18.png",
+        "Images/UI/Sun/sun_19.png",
+        "Images/UI/Sun/sun_20.png",
+        "Images/UI/Sun/sun_21.png",
+        "Images/UI/Sun/sun_22.png",
+        "Images/UI/Sun/sun_23.png",
+        "Images/UI/Sun/sun_24.png",
+        "Images/UI/Sun/sun_25.png",
+        "Images/UI/Sun/sun_26.png",
+        "Images/UI/Sun/sun_27.png",
+        "Images/UI/Sun/sun_28.png",
+        "Images/UI/Sun/sun_29.png"
     };
     loadAnimationFrames("sun_floating", sunFloatingFrames, 0.2f);
 
@@ -567,7 +605,7 @@ void ResourceLoader::createAndCacheAnimations(const std::string& plistPath)
         cocos2d::Vector<SpriteFrame*> frames;
 
         // 尝试加载帧序列
-        for (int i = 1; i <= 20; i++) // 假设最多20帧
+        for (int i = 1; i <= 30; i++) // 假设最多30帧
         {
             char frameName[256];
             sprintf(frameName, "%s_%s_%02d.png", baseName.c_str(), animName.c_str(), i);
