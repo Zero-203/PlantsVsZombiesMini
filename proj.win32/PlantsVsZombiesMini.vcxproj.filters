@@ -25,11 +25,11 @@
     <Filter Include="src\Entities\Plants">
       <UniqueIdentifier>{c2bd2aa4-ecbf-4b34-b827-f54a4b75906a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Entities\Zombies">
-      <UniqueIdentifier>{b3b83b42-71a1-4838-af52-3d9aab6d3552}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Entities\Projectile">
       <UniqueIdentifier>{10b97148-6334-48b9-a5e0-c6d52d49a375}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Entities\Zombie">
+      <UniqueIdentifier>{b3b83b42-71a1-4838-af52-3d9aab6d3552}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +75,12 @@
     <ClCompile Include="..\Classes\Entities\Projectile\Projectile.cpp">
       <Filter>src\Entities\Projectile</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Entities\Zombie\Zombie.cpp">
+      <Filter>src\Entities\Zombie</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\Zombie\NormalZombie.cpp">
+      <Filter>src\Entities\Zombie</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -94,12 +100,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Resources\ResourceLoader.h">
       <Filter>src\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="Entities.h">
-      <Filter>src\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="Zombies.h">
-      <Filter>src\Entities\Zombies</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\UI\PlantCard.h">
       <Filter>src\UI</Filter>
@@ -124,6 +124,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Entities\Projectile\Projectile.h">
       <Filter>src\Entities\Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\Zombie\Zombie.h">
+      <Filter>src\Entities\Zombie</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\Zombie\NormalZombie.h">
+      <Filter>src\Entities\Zombie</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

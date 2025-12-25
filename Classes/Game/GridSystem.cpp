@@ -219,12 +219,13 @@ void GridSystem::drawDebugGrid(Node* parent)
     }
 
     
+    /*
     // 移除旧的调试节点
     if (_debugNode && _debugNode->getParent())
     {
         _debugNode->removeFromParent();
     }
-
+    */
     _debugNode = DrawNode::create();
     parent->addChild(_debugNode, 9999); // 最高层级显示
 

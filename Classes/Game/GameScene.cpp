@@ -162,6 +162,9 @@ void GameScene::update(float delta)
     // 更新植物卡牌状态
     updatePlantCards();
 
+    //更新阳光数量
+    updateSunDisplay();
+
     // 更新植物预览位置（如果正在选择植物）
     if (_hasSelectedPlant && _plantPreview)
     {
@@ -518,11 +521,12 @@ void GameScene::placePlant(PlantType plantType, int row, int col)
     // 更新阳光显示
     updateSunDisplay();
 
-    // 种植动画
+    // 种植动画 Tofix
+    /*
     plant->setScale(0.1f);
     auto scaleAction = ScaleTo::create(0.3f, 1.0f);
     plant->runAction(scaleAction);
-
+    */
     log("GameScene: Plant placed at row %d, col %d", row, col);
 }
 

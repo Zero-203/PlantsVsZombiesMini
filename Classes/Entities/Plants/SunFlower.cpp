@@ -1,6 +1,7 @@
 #include "Sunflower.h"
 #include "./Game/GameManager.h"
 #include "./Resources/AudioManager.h"
+#include "./Resources/ResourceLoader.h" 
 
 USING_NS_CC;
 
@@ -60,10 +61,43 @@ void Sunflower::createSun()
         audioManager->playSoundEffect("Sounds/SFX/sun_produced.mp3");
     }
 
-    // 创建阳光
-    auto sun = Sprite::create();
-    sun->setTextureRect(Rect(0, 0, 30, 30));
-    sun->setColor(Color3B(255, 255, 0));
+    // 获取ResourceLoader实例
+    auto resourceLoader = ResourceLoader::getInstance();
+
+    // 创建太阳精灵
+    Sprite* sun = nullptr;
+
+    if (resourceLoader && resourceLoader->hasAnimation("sun_floating"))
+    {
+        // 使用动画创建太阳
+        log("Sunflower: Creating sun with sun_floating animation");
+
+        // 获取动画
+        auto animation = resourceLoader->getCachedAnimation("sun_floating");
+        if (animation)
+        {
+            // 创建一个精灵来播放动画
+            sun = Sprite::create();
+
+            // 创建一个Animate动作
+            auto animate = Animate::create(animation);
+            if (animate)
+            {
+                // 循环播放动画
+                auto repeatAnimation = RepeatForever::create(animate);
+                sun->runAction(repeatAnimation);
+            }
+        }
+    }
+
+    // 如果动画创建失败，使用简单的图形作为后备
+    if (!sun)
+    {
+        log("Sunflower: Using fallback sun graphic");
+        sun = Sprite::create();
+        sun->setTextureRect(Rect(0, 0, 30, 30));
+        sun->setColor(Color3B(255, 255, 0));
+    }
 
     // 设置阳光位置（在向日葵上方）
     auto sunflowerPos = this->getPosition();
