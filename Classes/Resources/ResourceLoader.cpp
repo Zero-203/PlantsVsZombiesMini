@@ -54,11 +54,13 @@ void ResourceLoader::loadResourceConfig()
     _resourcePaths["menu_background"] = "Images/Backgrounds/menu_bg.png";
     _resourcePaths["start_button_normal"] = "Images/UI/start_btn_normal.png";
     _resourcePaths["start_button_pressed"] = "Images/UI/start_btn_pressed.png";
+
     _resourcePaths["menu_logo"] = "Images/UI/menu_logo.png";
 
     // 游戏资源
     _resourcePaths["game_background"] = "Images/Backgrounds/game_bg_1.png";
     //_resourcePaths["grid_cell"] = "Images/UI/grid_cell.png";
+    _resourcePaths["card_bar_bg"] = "Images/UI/card_bar_bg.png";
 
     // 字体
     _resourcePaths["font_main"] = "Fonts/Marker Felt.ttf";
@@ -67,10 +69,10 @@ void ResourceLoader::loadResourceConfig()
     // 音效
     _resourcePaths["sound_button_click"] = "Sounds/SFX/button_click.mp3";
     _resourcePaths["sound_menu_bgm"] = "Sounds/BGM/menu_bgm.mp3";
-    _resourcePaths["sound_shoot"] = "Sounds/SFX/shoot.mp3";
+    _resourcePaths["sound_shoot"] = "Sounds/SFX/shoot.ogg";
     _resourcePaths["sound_sun_produced"] = "Sounds/SFX/sun_produced.mp3";
     _resourcePaths["sound_sun_collected"] = "Sounds/SFX/sun_collected.mp3";
-    _resourcePaths["sound_plant_planted"] = "Sounds/SFX/plant_planted.mp3";
+    _resourcePaths["sound_plant_planted"] = "Sounds/SFX/plant_planted.ogg";
 
     // 创建必要的目录
     auto fileUtils = FileUtils::getInstance();

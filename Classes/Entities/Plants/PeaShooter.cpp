@@ -32,7 +32,7 @@ void Peashooter::shootPea()
     auto audioManager = AudioManager::getInstance();
     if (audioManager)
     {
-        audioManager->playSoundEffect("Sounds/SFX/shoot.mp3");
+        audioManager->playSoundEffect("Sounds/SFX/shoot.ogg");
     }
 
     // ´´½¨Íã¶¹×Óµ¯

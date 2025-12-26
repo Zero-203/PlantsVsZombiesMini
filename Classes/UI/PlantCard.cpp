@@ -1,6 +1,7 @@
 #include "PlantCard.h"
 #include "./Entities/Plants/PlantFactory.h"
 #include <Resources/AudioManager.h>
+#include "Resources/ResourceLoader.h"
 
 USING_NS_CC;
 
@@ -31,7 +32,7 @@ bool PlantCard::init(PlantType plantType)
     _isCoolingDown = false;
 
     // 设置卡牌大小
-    this->setContentSize(Size(80, 100));
+    this->setContentSize(Size(80, 80));
     this->setScale9Enabled(true);
     this->setCapInsets(Rect(10, 10, 60, 80));
 
@@ -59,10 +60,11 @@ bool PlantCard::init(PlantType plantType)
     std::string plantName = PlantFactory::getPlantName(plantType);
     auto nameLabel = Label::createWithTTF(plantName, "fonts/Marker Felt.ttf", 12);
     nameLabel->setPosition(Vec2(this->getContentSize().width / 2, 85));
-    nameLabel->setColor(Color3B::BLACK);
+    nameLabel->setColor(Color3B::YELLOW);
     nameLabel->setAlignment(TextHAlignment::CENTER);
     this->addChild(nameLabel);
 
+    /*
     // 添加阳光消耗标签
     _sunCostLabel = Label::createWithTTF(StringUtils::toString(_sunCost),
         "fonts/Marker Felt.ttf", 18);
@@ -70,7 +72,43 @@ bool PlantCard::init(PlantType plantType)
     _sunCostLabel->setColor(Color3B::BLACK);
     _sunCostLabel->enableOutline(Color4B::YELLOW, 2);
     this->addChild(_sunCostLabel);
+    */
 
+    // 使用资源加载器加载植物第一张图片作为卡牌背景
+    auto resourceLoader = ResourceLoader::getInstance();
+
+    // 根据植物类型获取对应的第一张图片
+    std::string imagePath;
+
+    switch (this->getPlantType()) {
+    case PlantType::SUNFLOWER:
+        imagePath = "Images/Plants/Sunflower/sunflower_idle_01.png";
+        break;
+    case PlantType::PEASHOOTER:
+        imagePath = "Images/Plants/Peashooter/peashooter_idle_01.png";
+        break;
+    case PlantType::WALLNUT:
+        imagePath = "Images/Plants/WallNut/wallnut_idle_01.png";
+        break;
+    default:
+        imagePath = "Images/UI/card_default.png";
+    }
+
+    // 预加载图片
+    resourceLoader->loadPNGFramesToTextureCache({ imagePath });
+
+    // 创建植物图片精灵作为卡牌背景
+    auto plantSprite = Sprite::create(imagePath);
+    if (plantSprite) {
+        // 调整大小以适应卡牌
+        plantSprite->setScale(0.8f);
+        plantSprite->setPosition(this->getContentSize().width / 2,
+            this->getContentSize().height / 2);
+        plantSprite->setOpacity(200); // 半透明
+        this->addChild(plantSprite, -1); // 放在最底层作为背景
+    }
+
+    /*
     // 添加阳光图标
     auto sunIcon = Sprite::create();
     sunIcon->setTextureRect(Rect(0, 0, 20, 20));
@@ -81,6 +119,7 @@ bool PlantCard::init(PlantType plantType)
     // 添加阳光图标动画
     auto rotateAction = RepeatForever::create(RotateBy::create(2.0f, 360));
     sunIcon->runAction(rotateAction);
+    */
 
     // 初始化冷却遮罩
     _cooldownOverlay = DrawNode::create();
@@ -91,17 +130,6 @@ bool PlantCard::init(PlantType plantType)
     );
     _cooldownOverlay->setVisible(false);
     this->addChild(_cooldownOverlay, 1);
-
-    // 初始化冷却进度条
-    _cooldownProgress = ProgressTimer::create(Sprite::create());
-    _cooldownProgress->setType(ProgressTimer::Type::RADIAL);
-    _cooldownProgress->setPercentage(0);
-    _cooldownProgress->setMidpoint(Vec2(0.5f, 0.5f));
-    _cooldownProgress->setBarChangeRate(Vec2(1, 0));
-    _cooldownProgress->setPosition(Vec2(this->getContentSize().width / 2,
-        this->getContentSize().height / 2));
-    _cooldownProgress->setVisible(false);
-    this->addChild(_cooldownProgress, 2);
 
     // 设置初始状态
     updateCardState(0);
@@ -120,9 +148,6 @@ bool PlantCard::init(PlantType plantType)
                 }
 
                 log("PlantCard: Selected %s", PlantFactory::getPlantName(_plantType).c_str());
-
-                // 开始冷却
-                startCooldown();
             }
             else
             {
@@ -149,13 +174,13 @@ void PlantCard::updateCardState(int currentSun)
     {
         _isAvailable = true;
         this->setOpacity(255); // 完全显示
-        _sunCostLabel->setColor(Color3B::BLACK);
+        //_sunCostLabel->setColor(Color3B::BLACK);
     }
     else
     {
         _isAvailable = false;
         this->setOpacity(150); // 半透明
-        _sunCostLabel->setColor(Color3B::GRAY);
+        //_sunCostLabel->setColor(Color3B::GRAY);
     }
 }
 
@@ -172,11 +197,9 @@ void PlantCard::startCooldown()
 
     // 显示冷却效果
     _cooldownOverlay->setVisible(true);
-    _cooldownProgress->setVisible(true);
-    _cooldownProgress->setPercentage(100);
 
     this->setOpacity(150);
-    _sunCostLabel->setColor(Color3B::GRAY);
+    //_sunCostLabel->setColor(Color3B::GRAY);
 
     // 开始冷却计时
     this->schedule(CC_SCHEDULE_SELECTOR(PlantCard::updateCoolingDown), 0.1f);
@@ -192,7 +215,6 @@ void PlantCard::resetCooldown()
 
     // 隐藏冷却效果
     _cooldownOverlay->setVisible(false);
-    _cooldownProgress->setVisible(false);
 
     // 停止计时
     this->unschedule(CC_SCHEDULE_SELECTOR(PlantCard::updateCoolingDown));
@@ -209,17 +231,12 @@ void PlantCard::updateCoolingDown(float delta)
 
     _cooldownTimer -= delta;
 
-    // 更新进度条
-    float percent = (_cooldownTimer / _cooldown) * 100.0f;
-    _cooldownProgress->setPercentage(percent);
-
     // 显示剩余时间
     if (_cooldownTimer <= 0.0f)
     {
         // 冷却完成
         _isCoolingDown = false;
         _cooldownOverlay->setVisible(false);
-        _cooldownProgress->setVisible(false);
 
         // 播放冷却完成音效
         auto audioManager = AudioManager::getInstance();

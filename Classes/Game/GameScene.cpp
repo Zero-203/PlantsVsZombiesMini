@@ -213,13 +213,35 @@ void GameScene::initUI()
     this->addChild(titleLabel, 10);
     _levelLabel = titleLabel;
 
+    // 创建卡牌栏背景
+    _cardBarBackground = Sprite::create(
+        ResourceLoader::getInstance()->getTexture("card_bar_bg") ?
+        ResourceLoader::getInstance()->getTexture("card_bar_bg")->getPath() :
+        "Images/UI/card_bar_bg.png"
+    );
+
+    if (_cardBarBackground) {
+        // 将背景放在屏幕左上角
+        _cardBarBackground->setAnchorPoint(Vec2(0, 1));
+        _cardBarBackground->setPosition(Vec2(origin.x, origin.y + visibleSize.height));
+        //this->addChild(_cardBarBackground, 0);
+
+        
+        // 调整大小以容纳阳光数量和卡牌
+        _cardBarBackground->setScaleX(1.2f);
+        _cardBarBackground->setScaleY(1.2f);
+        this->addChild(_cardBarBackground, 0);
+        
+    }
+
     // 阳光显示
-    _sunLabel = Label::createWithTTF("50", "fonts/Marker Felt.ttf", 32);
-    _sunLabel->setPosition(Vec2(70 + origin.x, visibleSize.height - 40 + origin.y));
+    _sunLabel = Label::createWithTTF("50", "fonts/Marker Felt.ttf", 24);
+    _sunLabel->setPosition(Vec2(115 + origin.x, visibleSize.height - 85 + origin.y));
     _sunLabel->setColor(Color3B::YELLOW);
     _sunLabel->enableOutline(Color4B::BLACK, 3);
     this->addChild(_sunLabel, 10);
 
+    /*
     // 阳光图标
     auto sunIcon = Sprite::create();
     sunIcon->setTextureRect(Rect(0, 0, 30, 30));
@@ -230,6 +252,7 @@ void GameScene::initUI()
     // 阳光图标动画
     auto rotateAction = RepeatForever::create(RotateBy::create(2.0f, 360));
     sunIcon->runAction(rotateAction);
+    */
 
     // 暂停按钮
     _pauseButton = ui::Button::create();
@@ -310,16 +333,17 @@ void GameScene::initPlantCards()
     };
 
     // 创建植物卡牌
-    float startX = 50 + origin.x;
-    float yPos = 50 + origin.y;
-    float spacing = 90;
+     // 计算起始位置：阳光数量标签的右侧
+    float startX = _sunLabel->getPosition().x + _sunLabel->getContentSize().width + 60;
+    float cardY = _sunLabel->getPosition().y + 30;
+    float cardSpacing = 80; // 卡牌间距
 
     for (size_t i = 0; i < plantTypes.size(); i++)
     {
         PlantCard* card = PlantCard::create(plantTypes[i]);
         if (card)
         {
-            card->setPosition(Vec2(startX + i * spacing, yPos));
+            card->setPosition(Vec2(startX + i * cardSpacing, cardY));
             this->addChild(card, 5);
             _plantCards.push_back(card);
 
@@ -332,6 +356,8 @@ void GameScene::initPlantCards()
             });
         }
     }
+
+    updatePlantCards();
 }
 
 void GameScene::initTouchHandlers()
@@ -481,6 +507,16 @@ void GameScene::placePlant(PlantType plantType, int row, int col)
         return;
     }
 
+    // 检查植物冷却
+    for (auto plantcard : _plantCards) {
+        if (_selectedPlantType == plantcard->getPlantType()) {
+            if (plantcard->isCoolingDown()) {
+                log("GameScene: Plant is cooling");
+                return;
+            }
+        }
+    }
+
     // 检查阳光是否足够
     int sunCost = PlantFactory::getSunCost(plantType);
     if (!gameManager->spendSun(sunCost))
@@ -515,11 +551,17 @@ void GameScene::placePlant(PlantType plantType, int row, int col)
     auto audioManager = AudioManager::getInstance();
     if (audioManager)
     {
-        audioManager->playSoundEffect("Sounds/SFX/plant_plant.mp3");
+        audioManager->playSoundEffect("Sounds/SFX/plant_planted.ogg");
     }
 
     // 更新阳光显示
     updateSunDisplay();
+
+    // 开始冷却
+    for (auto plantcard : _plantCards) {
+        if (_selectedPlantType == plantcard->getPlantType())
+            plantcard->startCooldown();
+    }
 
     // 种植动画 Tofix
     /*
