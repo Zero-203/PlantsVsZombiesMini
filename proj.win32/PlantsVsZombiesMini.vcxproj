@@ -161,6 +161,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Game\GameManager.cpp" />
     <ClCompile Include="..\Classes\Game\GameScene.cpp" />
     <ClCompile Include="..\Classes\Game\GridSystem.cpp" />
+    <ClCompile Include="..\Classes\Game\WaveManager.cpp" />
     <ClCompile Include="..\Classes\Resources\AudioManager.cpp" />
     <ClCompile Include="..\Classes\Resources\ResourceLoader.cpp" />
     <ClCompile Include="..\Classes\UI\MenuScene.cpp" />
@@ -179,6 +180,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Game\GameManager.h" />
     <ClInclude Include="..\Classes\Game\GameScene.h" />
     <ClInclude Include="..\Classes\Game\GridSystem.h" />
+    <ClInclude Include="..\Classes\Game\WaveManager.h" />
     <ClInclude Include="..\Classes\Resources\AudioManager.h" />
     <ClInclude Include="..\Classes\Resources\ResourceLoader.h" />
     <ClInclude Include="..\Classes\UI\MenuScene.h" />
