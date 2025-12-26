@@ -1,5 +1,6 @@
 #include "WaveManager.h"
-#include "NormalZombie.h" // Example
+#include "./Entities/Zombie/NormalZombie.h" // Example
+#include <Game/GridSystem.h>
 
 WaveManager* WaveManager::create() {
     auto ret = new WaveManager();

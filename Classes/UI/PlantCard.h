@@ -48,7 +48,6 @@ private:
     // UIÔªËØ
     cocos2d::Label* _sunCostLabel;
     cocos2d::DrawNode* _cooldownOverlay;
-    cocos2d::ProgressTimer* _cooldownProgress;
 
     // ¸üĞÂÀäÈ´
     void updateCoolingDown(float delta);

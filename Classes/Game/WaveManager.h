@@ -2,7 +2,7 @@
 #define __WAVEMANAGER_H__
 
 #include "cocos2d.h"
-#include "Zombie.h"
+#include "./Entities/Zombie/Zombie.h"
 USING_NS_CC;
 
 class WaveManager : public Node {
