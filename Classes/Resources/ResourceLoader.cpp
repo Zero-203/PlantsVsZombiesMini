@@ -54,6 +54,7 @@ void ResourceLoader::loadResourceConfig()
     _resourcePaths["menu_background"] = "Images/Backgrounds/menu_bg.png";
     _resourcePaths["start_button_normal"] = "Images/UI/start_btn_normal.png";
     _resourcePaths["start_button_pressed"] = "Images/UI/start_btn_pressed.png";
+    _resourcePaths["normal_button"] = "Images/UI/btn_test.png";
 
     _resourcePaths["menu_logo"] = "Images/UI/menu_logo.png";
 

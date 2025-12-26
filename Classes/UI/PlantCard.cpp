@@ -32,7 +32,7 @@ bool PlantCard::init(PlantType plantType)
     _isCoolingDown = false;
 
     // 设置卡牌大小
-    this->setContentSize(Size(80, 80));
+    this->setContentSize(Size(80, 90));
     this->setScale9Enabled(true);
     this->setCapInsets(Rect(10, 10, 60, 80));
 
@@ -57,9 +57,9 @@ bool PlantCard::init(PlantType plantType)
     this->setOpacity(200);
 
     // 添加植物名称标签
-    std::string plantName = PlantFactory::getPlantName(plantType);
-    auto nameLabel = Label::createWithTTF(plantName, "fonts/Marker Felt.ttf", 12);
-    nameLabel->setPosition(Vec2(this->getContentSize().width / 2, 85));
+    int plantPrice = PlantFactory::getSunCost(plantType);
+    auto nameLabel = Label::createWithTTF(StringUtils::toString(plantPrice), "fonts/Marker Felt.ttf", 20);
+    nameLabel->setPosition(Vec2(this->getContentSize().width / 2, 15));
     nameLabel->setColor(Color3B::YELLOW);
     nameLabel->setAlignment(TextHAlignment::CENTER);
     this->addChild(nameLabel);
@@ -103,7 +103,7 @@ bool PlantCard::init(PlantType plantType)
         // 调整大小以适应卡牌
         plantSprite->setScale(0.8f);
         plantSprite->setPosition(this->getContentSize().width / 2,
-            this->getContentSize().height / 2);
+            this->getContentSize().height / 2 + 10);
         plantSprite->setOpacity(200); // 半透明
         this->addChild(plantSprite, -1); // 放在最底层作为背景
     }
@@ -230,6 +230,7 @@ void PlantCard::updateCoolingDown(float delta)
     }
 
     _cooldownTimer -= delta;
+    _cooldownOverlay->setScaleY(_cooldownTimer / _cooldown);
 
     // 显示剩余时间
     if (_cooldownTimer <= 0.0f)
