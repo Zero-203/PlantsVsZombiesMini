@@ -8,6 +8,8 @@
 *.suo
 *.db
 *.obj
+*.log
+*.tlog
  .vs/ 
 /proj.win32/Debug.win32
  
