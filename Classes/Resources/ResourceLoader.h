@@ -7,9 +7,21 @@
 #include <map>
 #include <vector>
 
+// 前向聲明 ZombieType（避免包含完整頭文件）
+enum class ZombieType;  // 添加這行
+
 class ResourceLoader : public cocos2d::Ref
 {
 public:
+
+    // 預加載殭屍資源
+    void preloadZombieResources();
+
+    // 殭屍動畫名稱（可選）
+    std::string getZombieWalkAnimationName(ZombieType type) const;
+    std::string getZombieAttackAnimationName(ZombieType type) const;
+    std::string getZombieDeathAnimationName(ZombieType type) const;
+
     // 单例访问
     static ResourceLoader* getInstance();
 

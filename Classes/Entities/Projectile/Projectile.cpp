@@ -1,5 +1,7 @@
 #include "Projectile.h"
 #include "./Resources/ResourceLoader.h"
+#include "./Entities/Zombie/Zombie.h"
+
 //#include "./Utils/AnimationHelper.h"
 
 USING_NS_CC;

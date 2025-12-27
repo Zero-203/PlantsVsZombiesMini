@@ -10,7 +10,7 @@ bool WallNut::init()
     }
 
     // 初始化坚果墙属性
-    initPlant(PlantType::WALLNUT, 50, 30.0f, 400); // 高生命值，长冷却
+    initPlant(PlantType::WALLNUT, 50, 30.0f, 200); // 高生命值，长冷却
 
     // 设置坚果墙特有属性
     _crackLevel = 0;

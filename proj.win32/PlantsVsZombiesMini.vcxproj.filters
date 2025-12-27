@@ -78,11 +78,14 @@
     <ClCompile Include="..\Classes\Entities\Zombie\Zombie.cpp">
       <Filter>src\Entities\Zombie</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Entities\Zombie\NormalZombie.cpp">
+    <ClCompile Include="..\Classes\Entities\Zombie\ZombieNormal.cpp">
       <Filter>src\Entities\Zombie</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Game\WaveManager.cpp">
       <Filter>src\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\Plants\CherryBomb.cpp">
+      <Filter>src\Entities\Plants</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -131,11 +134,14 @@
     <ClInclude Include="..\Classes\Entities\Zombie\Zombie.h">
       <Filter>src\Entities\Zombie</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Entities\Zombie\NormalZombie.h">
+    <ClInclude Include="..\Classes\Entities\Zombie\ZombieNormal.h">
       <Filter>src\Entities\Zombie</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Game\WaveManager.h">
       <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\Plants\CherryBomb.h">
+      <Filter>src\Entities\Plants</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

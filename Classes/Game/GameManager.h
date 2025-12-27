@@ -2,7 +2,8 @@
 #define GAME_MANAGER_H
 
 #include "cocos2d.h"
-class Projectile;
+#include <vector>
+#include "Entities/Projectile/Projectile.h"  // 改为完整包含
 
 class GameManager : public cocos2d::Ref
 {

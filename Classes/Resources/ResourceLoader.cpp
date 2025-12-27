@@ -54,6 +54,7 @@ void ResourceLoader::loadResourceConfig()
     _resourcePaths["menu_background"] = "Images/Backgrounds/menu_bg.png";
     _resourcePaths["start_button_normal"] = "Images/UI/start_btn_normal.png";
     _resourcePaths["start_button_pressed"] = "Images/UI/start_btn_pressed.png";
+    _resourcePaths["normal_button"] = "Images/UI/btn_test.png";
 
     _resourcePaths["menu_logo"] = "Images/UI/menu_logo.png";
 
@@ -66,13 +67,19 @@ void ResourceLoader::loadResourceConfig()
     _resourcePaths["font_main"] = "Fonts/Marker Felt.ttf";
     _resourcePaths["font_score"] = "Fonts/arial.ttf";
 
+    //BGM
+    _resourcePaths["sound_menu_bgm"] = "Sounds/BGM/menu_bgm.mp3";
+    _resourcePaths["sound_game_bgm"] = "Sounds/BGM/game_bgm.mp3";
+
     // 音效
     _resourcePaths["sound_button_click"] = "Sounds/SFX/button_click.mp3";
-    _resourcePaths["sound_menu_bgm"] = "Sounds/BGM/menu_bgm.mp3";
-    _resourcePaths["sound_shoot"] = "Sounds/SFX/shoot.ogg";
+    _resourcePaths["sound_shoot"] = "Sounds/SFX/shoot.mp3";
+    _resourcePaths["sound_explosion"] = "Sounds/SFX/explosion.mp3";
     _resourcePaths["sound_sun_produced"] = "Sounds/SFX/sun_produced.mp3";
     _resourcePaths["sound_sun_collected"] = "Sounds/SFX/sun_collected.mp3";
-    _resourcePaths["sound_plant_planted"] = "Sounds/SFX/plant_planted.ogg";
+    _resourcePaths["sound_plant_planted"] = "Sounds/SFX/plant_planted.mp3";
+    _resourcePaths["sound_cherrybomb"] = "Sounds/SFX/cherrybomb.mp3";
+    
 
     // 创建必要的目录
     auto fileUtils = FileUtils::getInstance();
@@ -244,6 +251,30 @@ void ResourceLoader::loadSimpleAnimationConfig()
     };
     loadAnimationFrames("sun_collect", sunCollectFrames, 0.1f);
 
+    // 樱桃炸弹空闲动画
+    std::vector<std::string> cherryBombIdleFrames = {
+        "Images/Plants/CherryBomb/cherrybomb_idle_01.png",
+        "Images/Plants/CherryBomb/cherrybomb_idle_02.png",
+        "Images/Plants/CherryBomb/cherrybomb_idle_03.png",
+        "Images/Plants/CherryBomb/cherrybomb_idle_04.png",
+        "Images/Plants/CherryBomb/cherrybomb_idle_05.png",
+        "Images/Plants/CherryBomb/cherrybomb_idle_06.png"
+    };
+    loadAnimationFrames("cherrybomb_idle", cherryBombIdleFrames, 0.15f);
+
+    // 樱桃炸弹爆炸动画
+    std::vector<std::string> cherryBombExplodeFrames = {
+        "Images/Plants/CherryBomb/cherrybomb_explode_01.png",
+        "Images/Plants/CherryBomb/cherrybomb_explode_02.png",
+        "Images/Plants/CherryBomb/cherrybomb_explode_03.png",
+        "Images/Plants/CherryBomb/cherrybomb_explode_04.png",
+        "Images/Plants/CherryBomb/cherrybomb_explode_05.png",
+        "Images/Plants/CherryBomb/cherrybomb_explode_06.png",
+        "Images/Plants/CherryBomb/cherrybomb_explode_07.png",
+        "Images/Plants/CherryBomb/cherrybomb_explode_08.png"
+    };
+    loadAnimationFrames("cherrybomb_explode", cherryBombExplodeFrames, 0.07f);
+
     log("Simple animation config loaded with %d animations", (int)_animations.size());
 }
 
@@ -273,9 +304,14 @@ void ResourceLoader::preloadResources(LoadingPhase phase)
             // 加载音效
             std::vector<std::string> sounds = {
                 "sound_button_click",
-                "sound_menu_bgm"
             };
             loadSoundEffects(sounds);
+
+            // 加载背景音乐
+            std::vector<std::string> bgm = {
+                "sound_menu_bgm"
+            };
+            loadBackgroundMusic(bgm);
 
             _isMenuResourcesLoaded = true;
         }
@@ -287,18 +323,25 @@ void ResourceLoader::preloadResources(LoadingPhase phase)
             // 加载游戏图片
             std::vector<std::string> gameImages = {
                 "game_background",
-                "grid_cell"
+                "card_bar_bg"
             };
             loadImages(gameImages);
 
             // 加载游戏音效
             std::vector<std::string> gameSounds = {
                 "sound_shoot",
+                "sound_explosion",
                 "sound_sun_produced",
                 "sound_sun_collected",
                 "sound_plant_planted"
             };
             loadSoundEffects(gameSounds);
+
+            // 加载游戏BGM       
+            std::vector<std::string> gameBgm = {
+                "sound_game_bgm"
+            };
+            loadBackgroundMusic(gameBgm);
 
             _isGameResourcesLoaded = true;
         }
@@ -495,12 +538,19 @@ void ResourceLoader::loadAnimationFrames(const std::string& animationName,
         return;
     }
 
+    log("Loading animation: %s", animationName.c_str());
+
     // 如果没有AnimationHelper，直接创建
     cocos2d::Vector<cocos2d::SpriteFrame*> spriteFrames;
     auto textureCache = Director::getInstance()->getTextureCache();
 
     for (const auto& framePath : framePaths)
     {
+        // 檢查文件是否存在
+        if (!FileUtils::getInstance()->isFileExist(framePath)) {
+            log("ERROR: File not found: %s", framePath.c_str());
+        }
+
         // 同步加载纹理
         auto texture = textureCache->addImage(framePath);
         if (texture)
@@ -658,4 +708,30 @@ void ResourceLoader::printCachedAnimations()
 bool ResourceLoader::hasAnimation(const std::string& name)
 {
     return _animations.find(name) != _animations.end();
+}
+
+void ResourceLoader::preloadZombieResources()
+{
+    // 预加载普通僵尸动画
+    std::vector<std::string> zombieWalkFrames = {
+        "Images/Zombies/Normal/walk_01.png",
+        "Images/Zombies/Normal/walk_02.png",
+        "Images/Zombies/Normal/walk_03.png",
+        "Images/Zombies/Normal/walk_04.png"
+    };
+    loadAnimationFrames("zombie_normal_walk", zombieWalkFrames, 0.2f);
+
+    // 预加载普通僵尸攻击动画
+    std::vector<std::string> zombieAttackFrames = {
+        "Images/Zombies/Normal/attack_01.png",
+        "Images/Zombies/Normal/attack_02.png"
+    };
+    loadAnimationFrames("zombie_normal_attack", zombieAttackFrames, 0.3f);
+
+    // 预加载普通僵尸死亡动画
+    std::vector<std::string> zombieDeathFrames = {
+        "Images/Zombies/Normal/death_01.png",
+        "Images/Zombies/Normal/death_02.png"
+    };
+    loadAnimationFrames("zombie_normal_death", zombieDeathFrames, 0.5f);
 }
