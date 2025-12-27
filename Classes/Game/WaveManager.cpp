@@ -1,6 +1,8 @@
 #include "WaveManager.h"
 #include "./Entities/Zombie/Zombie.h"
 #include "./Entities/Zombie/ZombieNormal.h"
+#include "./Entities/Zombie/ZombieConeHead.h"    // 添加这行
+#include "./Entities/Zombie/ZombieBucketHead.h"  // 添加这行
 #include "./Game/GameManager.h"
 #include <cocos2d.h>
 
@@ -181,15 +183,42 @@ Zombie* WaveManager::spawnRandomZombie()
         return nullptr;
     }
 
-    // 2. 創建殭屍
-    ZombieNormal* zombie = ZombieNormal::create();
-    if (!zombie)
-    {
-        log("ERROR: Failed to create ZombieNormal!");
-        return nullptr;
-    }
 
     log("WaveManager::spawnRandomZombie: Zombie created successfully");
+
+    // 根据波次决定僵尸类型
+    Zombie* zombie = nullptr;
+    int zombieType = rand() % 100;
+
+    // 随着波次增加，出现更强僵尸的概率增加
+    int strongZombieChance = std::min(30, _currentWave * 5); // 最多30%概率
+
+    if (zombieType < 70 - strongZombieChance) {
+        // 普通僵尸 (70% - strongZombieChance)
+        zombie = ZombieNormal::create();
+    }
+    else if (zombieType < 90) {
+        // 路障僵尸 (20%)
+        zombie = ZombieConeHead::create();
+    }
+    else {
+        // 铁桶僵尸 (10%)
+        zombie = ZombieBucketHead::create();
+    }
+
+    if (!zombie)
+    {
+        log("ERROR: Failed to create zombie!");
+        // 如果创建失败，创建普通僵尸作为后备
+        zombie = ZombieNormal::create();
+        if (!zombie) {
+            log("CRITICAL ERROR: Failed to create even normal zombie!");
+            return nullptr;
+        }
+    }
+
+    log("WaveManager::spawnRandomZombie: Zombie created successfully (Type: %d)", (int)zombie->getType());
+
 
     // 3. 設置位置
     auto visibleSize = director->getVisibleSize();
