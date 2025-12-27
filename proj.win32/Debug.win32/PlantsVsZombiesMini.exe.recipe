@@ -2,10 +2,10 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\29165\Desktop\FinalPrj\PlantsVsZombiesMini\proj.win32\Debug.win32\libcocos2d.dll</FullPath>
+      <FullPath>E:\PlantsVsZombiesMini\proj.win32\Debug.win32\libcocos2d.dll</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>C:\Users\29165\Desktop\FinalPrj\PlantsVsZombiesMini\proj.win32\Debug.win32\PlantsVsZombiesMini.exe</FullPath>
+      <FullPath>E:\PlantsVsZombiesMini\proj.win32\Debug.win32\PlantsVsZombiesMini.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

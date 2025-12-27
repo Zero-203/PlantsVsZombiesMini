@@ -1,3 +1,3 @@
-﻿AppDelegate.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/SAFESEH”规范)
-    正在创建库 E:\PlantsVsZombiesMini\proj.win32\Debug.win32\PlantsVsZombiesMini.lib 和对象 E:\PlantsVsZombiesMini\proj.win32\Debug.win32\PlantsVsZombiesMini.exp
-LINK : fatal error LNK1201: 写入程序数据库“E:\PlantsVsZombiesMini\proj.win32\Debug.win32\PlantsVsZombiesMini.pdb”时出错；请检查是否是磁盘空间不足、路径无效或权限不够
+﻿  PlantsVsZombiesMini.vcxproj -> E:\PlantsVsZombiesMini\proj.win32\Debug.win32\PlantsVsZombiesMini.exe
+  正在执行自定义生成步骤
+  复制了 0 个文件

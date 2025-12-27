@@ -1,0 +1,478 @@
+=== APPLICATION STARTED ===
+Ready for GLSL
+Ready for OpenGL 2.0
+
+{
+	gl.version: 4.6.0 NVIDIA 581.80
+	gl.supports_NPOT: true
+	cocos2d.x.version: cocos2d-x-3.17.2
+	cocos2d.x.compiled_with_profiler: false
+	cocos2d.x.build_type: DEBUG
+	cocos2d.x.compiled_with_gl_state_cache: true
+	gl.max_texture_size: 32768
+	gl.supports_OES_packed_depth_stencil: false
+	gl.vendor: NVIDIA Corporation
+	gl.renderer: NVIDIA GeForce RTX 4080 Laptop GPU/PCIe/SSE2
+	gl.max_texture_units: 192
+	gl.supports_ETC1: false
+	gl.supports_S3TC: true
+	gl.supports_ATITC: false
+	gl.supports_PVRTC: false
+	gl.supports_BGRA8888: false
+	gl.supports_discard_framebuffer: false
+	gl.supports_vertex_array_object: true
+	gl.supports_OES_map_buffer: false
+	gl.supports_OES_depth24: false
+}
+
+
+ResourceLoader::loadSimpleAnimationConfig: Starting animation loading
+Loading animation: sunflower_idle
+PNG sequence animation created: sunflower_idle with 18 frames
+Loading animation: sunflower_produce
+cocos2d: fullPathForFilename: No file found at Images/Plants/Sunflower/sunflower_produce_01.png. Possible missing file.
+ERROR: File not found: Images/Plants/Sunflower/sunflower_produce_01.png
+cocos2d: fullPathForFilename: No file found at Images/Plants/Sunflower/sunflower_produce_01.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/Sunflower/sunflower_produce_02.png. Possible missing file.
+ERROR: File not found: Images/Plants/Sunflower/sunflower_produce_02.png
+cocos2d: fullPathForFilename: No file found at Images/Plants/Sunflower/sunflower_produce_02.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/Sunflower/sunflower_produce_03.png. Possible missing file.
+ERROR: File not found: Images/Plants/Sunflower/sunflower_produce_03.png
+cocos2d: fullPathForFilename: No file found at Images/Plants/Sunflower/sunflower_produce_03.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/Sunflower/sunflower_produce_04.png. Possible missing file.
+ERROR: File not found: Images/Plants/Sunflower/sunflower_produce_04.png
+cocos2d: fullPathForFilename: No file found at Images/Plants/Sunflower/sunflower_produce_04.png. Possible missing file.
+Loading animation: peashooter_idle
+PNG sequence animation created: peashooter_idle with 13 frames
+Loading animation: peashooter_attack
+cocos2d: fullPathForFilename: No file found at Images/Plants/Peashooter/peashooter_attack_01.png. Possible missing file.
+ERROR: File not found: Images/Plants/Peashooter/peashooter_attack_01.png
+cocos2d: fullPathForFilename: No file found at Images/Plants/Peashooter/peashooter_attack_01.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/Peashooter/peashooter_attack_02.png. Possible missing file.
+ERROR: File not found: Images/Plants/Peashooter/peashooter_attack_02.png
+cocos2d: fullPathForFilename: No file found at Images/Plants/Peashooter/peashooter_attack_02.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/Peashooter/peashooter_attack_03.png. Possible missing file.
+ERROR: File not found: Images/Plants/Peashooter/peashooter_attack_03.png
+cocos2d: fullPathForFilename: No file found at Images/Plants/Peashooter/peashooter_attack_03.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/Peashooter/peashooter_attack_04.png. Possible missing file.
+ERROR: File not found: Images/Plants/Peashooter/peashooter_attack_04.png
+cocos2d: fullPathForFilename: No file found at Images/Plants/Peashooter/peashooter_attack_04.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/Peashooter/peashooter_attack_05.png. Possible missing file.
+ERROR: File not found: Images/Plants/Peashooter/peashooter_attack_05.png
+cocos2d: fullPathForFilename: No file found at Images/Plants/Peashooter/peashooter_attack_05.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/Peashooter/peashooter_attack_06.png. Possible missing file.
+ERROR: File not found: Images/Plants/Peashooter/peashooter_attack_06.png
+cocos2d: fullPathForFilename: No file found at Images/Plants/Peashooter/peashooter_attack_06.png. Possible missing file.
+Loading animation: pea_fly
+PNG sequence animation created: pea_fly with 4 frames
+Loading animation: pea_hit
+cocos2d: fullPathForFilename: No file found at Images/Projectiles/Pea/pea_hit_01.png. Possible missing file.
+ERROR: File not found: Images/Projectiles/Pea/pea_hit_01.png
+cocos2d: fullPathForFilename: No file found at Images/Projectiles/Pea/pea_hit_01.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Projectiles/Pea/pea_hit_02.png. Possible missing file.
+ERROR: File not found: Images/Projectiles/Pea/pea_hit_02.png
+cocos2d: fullPathForFilename: No file found at Images/Projectiles/Pea/pea_hit_02.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Projectiles/Pea/pea_hit_03.png. Possible missing file.
+ERROR: File not found: Images/Projectiles/Pea/pea_hit_03.png
+cocos2d: fullPathForFilename: No file found at Images/Projectiles/Pea/pea_hit_03.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Projectiles/Pea/pea_hit_04.png. Possible missing file.
+ERROR: File not found: Images/Projectiles/Pea/pea_hit_04.png
+cocos2d: fullPathForFilename: No file found at Images/Projectiles/Pea/pea_hit_04.png. Possible missing file.
+Loading animation: wallnut_idle
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_idle_01.png. Possible missing file.
+ERROR: File not found: Images/Plants/WallNut/wallnut_idle_01.png
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_idle_01.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_idle_02.png. Possible missing file.
+ERROR: File not found: Images/Plants/WallNut/wallnut_idle_02.png
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_idle_02.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_idle_03.png. Possible missing file.
+ERROR: File not found: Images/Plants/WallNut/wallnut_idle_03.png
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_idle_03.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_idle_04.png. Possible missing file.
+ERROR: File not found: Images/Plants/WallNut/wallnut_idle_04.png
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_idle_04.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_idle_05.png. Possible missing file.
+ERROR: File not found: Images/Plants/WallNut/wallnut_idle_05.png
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_idle_05.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_idle_06.png. Possible missing file.
+ERROR: File not found: Images/Plants/WallNut/wallnut_idle_06.png
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_idle_06.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_idle_07.png. Possible missing file.
+ERROR: File not found: Images/Plants/WallNut/wallnut_idle_07.png
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_idle_07.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_idle_08.png. Possible missing file.
+ERROR: File not found: Images/Plants/WallNut/wallnut_idle_08.png
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_idle_08.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_idle_09.png. Possible missing file.
+ERROR: File not found: Images/Plants/WallNut/wallnut_idle_09.png
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_idle_09.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_idle_10.png. Possible missing file.
+ERROR: File not found: Images/Plants/WallNut/wallnut_idle_10.png
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_idle_10.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_idle_11.png. Possible missing file.
+ERROR: File not found: Images/Plants/WallNut/wallnut_idle_11.png
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_idle_11.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_idle_12.png. Possible missing file.
+ERROR: File not found: Images/Plants/WallNut/wallnut_idle_12.png
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_idle_12.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_idle_13.png. Possible missing file.
+ERROR: File not found: Images/Plants/WallNut/wallnut_idle_13.png
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_idle_13.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_idle_14.png. Possible missing file.
+ERROR: File not found: Images/Plants/WallNut/wallnut_idle_14.png
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_idle_14.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_idle_15.png. Possible missing file.
+ERROR: File not found: Images/Plants/WallNut/wallnut_idle_15.png
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_idle_15.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_idle_16.png. Possible missing file.
+ERROR: File not found: Images/Plants/WallNut/wallnut_idle_16.png
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_idle_16.png. Possible missing file.
+Loading animation: wallnut_damaged1
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_damaged1_01.png. Possible missing file.
+ERROR: File not found: Images/Plants/WallNut/wallnut_damaged1_01.png
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_damaged1_01.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_damaged1_02.png. Possible missing file.
+ERROR: File not found: Images/Plants/WallNut/wallnut_damaged1_02.png
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_damaged1_02.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_damaged1_03.png. Possible missing file.
+ERROR: File not found: Images/Plants/WallNut/wallnut_damaged1_03.png
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_damaged1_03.png. Possible missing file.
+Loading animation: wallnut_damaged2
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_damaged2_01.png. Possible missing file.
+ERROR: File not found: Images/Plants/WallNut/wallnut_damaged2_01.png
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_damaged2_01.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_damaged2_02.png. Possible missing file.
+ERROR: File not found: Images/Plants/WallNut/wallnut_damaged2_02.png
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_damaged2_02.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_damaged2_03.png. Possible missing file.
+ERROR: File not found: Images/Plants/WallNut/wallnut_damaged2_03.png
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_damaged2_03.png. Possible missing file.
+Loading animation: sun_floating
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_01.png. Possible missing file.
+ERROR: File not found: Images/UI/Sun/sun_01.png
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_01.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_02.png. Possible missing file.
+ERROR: File not found: Images/UI/Sun/sun_02.png
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_02.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_03.png. Possible missing file.
+ERROR: File not found: Images/UI/Sun/sun_03.png
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_03.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_04.png. Possible missing file.
+ERROR: File not found: Images/UI/Sun/sun_04.png
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_04.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_05.png. Possible missing file.
+ERROR: File not found: Images/UI/Sun/sun_05.png
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_05.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_06.png. Possible missing file.
+ERROR: File not found: Images/UI/Sun/sun_06.png
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_06.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_07.png. Possible missing file.
+ERROR: File not found: Images/UI/Sun/sun_07.png
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_07.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_08.png. Possible missing file.
+ERROR: File not found: Images/UI/Sun/sun_08.png
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_08.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_09.png. Possible missing file.
+ERROR: File not found: Images/UI/Sun/sun_09.png
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_09.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_10.png. Possible missing file.
+ERROR: File not found: Images/UI/Sun/sun_10.png
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_10.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_11.png. Possible missing file.
+ERROR: File not found: Images/UI/Sun/sun_11.png
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_11.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_12.png. Possible missing file.
+ERROR: File not found: Images/UI/Sun/sun_12.png
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_12.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_13.png. Possible missing file.
+ERROR: File not found: Images/UI/Sun/sun_13.png
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_13.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_14.png. Possible missing file.
+ERROR: File not found: Images/UI/Sun/sun_14.png
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_14.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_15.png. Possible missing file.
+ERROR: File not found: Images/UI/Sun/sun_15.png
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_15.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_16.png. Possible missing file.
+ERROR: File not found: Images/UI/Sun/sun_16.png
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_16.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_17.png. Possible missing file.
+ERROR: File not found: Images/UI/Sun/sun_17.png
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_17.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_18.png. Possible missing file.
+ERROR: File not found: Images/UI/Sun/sun_18.png
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_18.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_19.png. Possible missing file.
+ERROR: File not found: Images/UI/Sun/sun_19.png
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_19.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_20.png. Possible missing file.
+ERROR: File not found: Images/UI/Sun/sun_20.png
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_20.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_21.png. Possible missing file.
+ERROR: File not found: Images/UI/Sun/sun_21.png
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_21.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_22.png. Possible missing file.
+ERROR: File not found: Images/UI/Sun/sun_22.png
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_22.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_23.png. Possible missing file.
+ERROR: File not found: Images/UI/Sun/sun_23.png
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_23.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_24.png. Possible missing file.
+ERROR: File not found: Images/UI/Sun/sun_24.png
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_24.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_25.png. Possible missing file.
+ERROR: File not found: Images/UI/Sun/sun_25.png
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_25.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_26.png. Possible missing file.
+ERROR: File not found: Images/UI/Sun/sun_26.png
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_26.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_27.png. Possible missing file.
+ERROR: File not found: Images/UI/Sun/sun_27.png
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_27.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_28.png. Possible missing file.
+ERROR: File not found: Images/UI/Sun/sun_28.png
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_28.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_29.png. Possible missing file.
+ERROR: File not found: Images/UI/Sun/sun_29.png
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_29.png. Possible missing file.
+Loading animation: sun_collect
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_collect_01.png. Possible missing file.
+ERROR: File not found: Images/UI/Sun/sun_collect_01.png
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_collect_01.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_collect_02.png. Possible missing file.
+ERROR: File not found: Images/UI/Sun/sun_collect_02.png
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_collect_02.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_collect_03.png. Possible missing file.
+ERROR: File not found: Images/UI/Sun/sun_collect_03.png
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_collect_03.png. Possible missing file.
+Simple animation config loaded with 3 animations
+Font found: Fonts/Marker Felt.ttf
+Font found: Fonts/arial.ttf
+Sound effect preloaded: Sounds/SFX/button_click.mp3
+Sound effect preloaded: Sounds/BGM/menu_bgm.mp3
+cocos2d: fullPathForFilename: No file found at /cc_2x2_white_image. Possible missing file.
+cocos2d: QuadCommand: resizing index size from [-1] to [2560]
+Texture loaded: E:/PlantsVsZombiesMini/proj.win32/Debug.win32/Resources/Images/Backgrounds/menu_bg.png
+Texture loaded: E:/PlantsVsZombiesMini/proj.win32/Debug.win32/Resources/Images/UI/start_btn_normal.png
+Texture loaded: E:/PlantsVsZombiesMini/proj.win32/Debug.win32/Resources/Images/UI/start_btn_pressed.png
+Texture loaded: E:/PlantsVsZombiesMini/proj.win32/Debug.win32/Resources/Images/UI/menu_logo.png
+GameManager: Starting new game
+GameManager: Clearing all projectiles (0)
+WaveManager: Initialized with 10 waves, preparation time: 2.0 seconds
+=== Cached Animations ===
+Total animations: 3
+  Animation: pea_fly
+  Animation: peashooter_idle
+  Animation: sunflower_idle
+=========================
+pea_fly animation found in cache
+GameScene: Preloading game resources...
+Texture loaded: E:/PlantsVsZombiesMini/proj.win32/Debug.win32/Resources/Images/Backgrounds/game_bg_1.png
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+Sound effect preloaded: Sounds/SFX/shoot.mp3
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/sun_produced.mp3. Possible missing file.
+Sound effect preloaded: Sounds/SFX/sun_produced.mp3
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/sun_collected.mp3. Possible missing file.
+Sound effect preloaded: Sounds/SFX/sun_collected.mp3
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/plant_planted.mp3. Possible missing file.
+Sound effect preloaded: Sounds/SFX/plant_planted.mp3
+GameScene: Game resources preloaded
+GameScene: Sunflower idle animation loaded successfully
+GameScene: Peashooter idle animation loaded successfully
+GridSystem: Initialized 5 rows x 9 cols
+GridSystem: Debug grid drawn
+cocos2d: fullPathForFilename: No file found at Sounds/BGM/game_bgm.mp3. Possible missing file.
+GameScene: Initializing zombie system...
+Preloading zombie resources...
+Loading animation: zombie_normal_walk
+PNG sequence animation created: zombie_normal_walk with 4 frames
+Loading animation: zombie_normal_attack
+PNG sequence animation created: zombie_normal_attack with 2 frames
+Loading animation: zombie_normal_death
+PNG sequence animation created: zombie_normal_death with 2 frames
+? zombie_normal_walk animation loaded
+WaveManager: Initialized with 10 waves, preparation time: 2.0 seconds
+GameScene: Zombie system initialized successfully
+GameScene: Initialized
+=== GAME SCENE INITIALIZATION COMPLETE ===
+WaveManager instance: 08479AD8
+=== GAME SCENE INITIALIZATION REPORT ===
+1. ResourceLoader: OK
+2. GameManager: OK
+3. WaveManager: OK
+4. AudioManager: OK
+======================================
+=== DEBUG: Manual zombie spawn test ===
+WaveManager::spawnRandomZombie: Creating zombie...
+Zombie: Started moving
+Zombie: Initialized type 0 at row 0
+Zombie: Started moving
+ZombieNormal: Initialized successfully at row 0
+WaveManager::spawnRandomZombie: Zombie created successfully
+WaveManager::spawnRandomZombie: Zombie position set to (1124.0, 280.0), row: 1
+warning: don't update it again
+WaveManager::spawnRandomZombie: Zombie added successfully
+ DEBUG: Test zombie spawned successfully!
+Plant::initPlant: Attempting to play idle animation: wallnut_idle
+Plant::initPlant: Animation not found in cache: wallnut_idle
+Plant: Initialized plant type 2, health: 400
+Plant::initPlant: Attempting to play idle animation: wallnut_idle
+Plant::initPlant: Animation not found in cache: wallnut_idle
+Plant: Initialized plant type 2, health: 400
+GameScene: Plant preview shown
+GameScene: Selected plant type 2
+Plant::initPlant: Attempting to play idle animation: sunflower_idle
+Plant::initPlant: Found animation in ResourceLoader cache
+Plant: Initialized plant type 0, health: 100
+Plant::initPlant: Attempting to play idle animation: sunflower_idle
+Plant::initPlant: Found animation in ResourceLoader cache
+Plant: Initialized plant type 0, health: 100
+GameScene: Plant preview shown
+GameScene: Selected plant type 0
+GameScene: Grid clicked at row 1, col 0
+Plant::initPlant: Attempting to play idle animation: sunflower_idle
+Plant::initPlant: Found animation in ResourceLoader cache
+Plant: Initialized plant type 0, health: 100
+Plant::initPlant: Attempting to play idle animation: sunflower_idle
+Plant::initPlant: Found animation in ResourceLoader cache
+Plant: Initialized plant type 0, health: 100
+GridSystem: Plant placed at row 1, col 0
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/plant_plant.mp3. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/plant_plant.mp3. Possible missing file.
+GameScene: Plant placed at row 1, col 0
+GridSystem: Grid clicked at row 1, col 0
+Plant::initPlant: Attempting to play idle animation: peashooter_idle
+Plant::initPlant: Found animation in ResourceLoader cache
+Plant: Initialized plant type 1, health: 100
+Plant::initPlant: Attempting to play idle animation: peashooter_idle
+Plant::initPlant: Found animation in ResourceLoader cache
+Plant: Initialized plant type 1, health: 100
+GameScene: Plant preview shown
+GameScene: Selected plant type 1
+GameScene: Grid clicked at row 1, col 1
+Plant::initPlant: Attempting to play idle animation: peashooter_idle
+Plant::initPlant: Found animation in ResourceLoader cache
+Plant: Initialized plant type 1, health: 100
+Plant::initPlant: Attempting to play idle animation: peashooter_idle
+Plant::initPlant: Found animation in ResourceLoader cache
+Plant: Initialized plant type 1, health: 100
+GridSystem: Plant placed at row 1, col 1
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/plant_plant.mp3. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/plant_plant.mp3. Possible missing file.
+GameScene: Plant placed at row 1, col 1
+GridSystem: Grid clicked at row 1, col 1
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 1
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 2
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 3
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 4
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 5
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 6
+GameManager: Removing dead or detached projectile
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 6
+GameManager: Removing dead or detached projectile
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 6
+GameManager: Removing dead or detached projectile
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 6
+GameManager: Removing dead or detached projectile
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 6
+GameManager: Removing dead or detached projectile
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 6
+GameManager: Removing dead or detached projectile
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 6
+GameManager: Removing dead or detached projectile
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 6
+GameManager: Removing dead or detached projectile
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 6
+GameManager: Removing dead or detached projectile
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 6
+GameManager: Removing dead or detached projectile
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 6
+GameManager: Removing dead or detached projectile
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 6
+GameManager: Removing dead or detached projectile
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 6
+GameManager: Removing dead or detached projectile
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 6
+GameManager: Removing dead or detached projectile
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 6
+GameManager: Removing dead or detached projectile
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 6
+GameManager: Removing dead or detached projectile
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 6
+GameManager: Removing dead or detached projectile
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 6
+GameManager: Removing dead or detached projectile
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/shoot.mp3. Possible missing file.
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 6
+GameScene: Destructor called

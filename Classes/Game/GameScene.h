@@ -7,6 +7,7 @@
 #include "GridSystem.h"
 #include <UI/PlantCard.h>
 #include <Entities/Plants/Plant.h>
+#include "./Game/WaveManager.h"
 
 class GameScene : public cocos2d::Scene {
 public:
@@ -19,6 +20,9 @@ public:
     ~GameScene();
 
 private:
+
+    WaveManager* _waveManager;
+    
     // UIÔªËØ
     cocos2d::ui::Button* _pauseButton;
     cocos2d::Label* _sunLabel;
@@ -40,6 +44,7 @@ private:
     void initGrid();
     void initPlantCards();
     void initTouchHandlers();
+    void initZombieSystem();
 
     // ÓÎÏ·Âß¼­
     void updateSunDisplay();
