@@ -78,7 +78,7 @@
     <ClCompile Include="..\Classes\Entities\Zombie\Zombie.cpp">
       <Filter>src\Entities\Zombie</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Entities\Zombie\NormalZombie.cpp">
+    <ClCompile Include="..\Classes\Entities\Zombie\ZombieNormal.cpp">
       <Filter>src\Entities\Zombie</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Game\WaveManager.cpp">
@@ -134,7 +134,7 @@
     <ClInclude Include="..\Classes\Entities\Zombie\Zombie.h">
       <Filter>src\Entities\Zombie</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Entities\Zombie\NormalZombie.h">
+    <ClInclude Include="..\Classes\Entities\Zombie\ZombieNormal.h">
       <Filter>src\Entities\Zombie</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Game\WaveManager.h">

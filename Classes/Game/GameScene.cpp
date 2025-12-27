@@ -4,6 +4,8 @@
 #include "./Entities/Plants/PlantFactory.h"
 #include "./Resources/ResourceLoader.h"
 #include "./UI/PlantCard.h" 
+#include "WaveManager.h"
+#include "./Entities/Zombie/ZombieNormal.h"
 
 USING_NS_CC;
 
@@ -22,7 +24,21 @@ GameScene::~GameScene()
     // 注意：不要调用 release()，因为 Cocos2d-x 使用自动引用计数
     // 植物节点在 removeAllChildrenWithCleanup(true) 时已经被释放
 
+    if (_waveManager)
+    {
+        _waveManager->clearAllZombies();
+    }
+
     // 只需清空指针向量
+
+    for (auto plant : _plants)
+    {
+        if (plant && plant->getParent())
+        {
+            plant->removeFromParent();
+        }
+    }
+
     _plants.clear();
     _plantCards.clear();
     _plantPreview = nullptr;
@@ -151,20 +167,155 @@ bool GameScene::init()
 
     // 设置更新调度
     this->scheduleUpdate();
+    _waveManager = WaveManager::getInstance();
+    initZombieSystem();
 
     log("GameScene: Initialized");
+    log("=== GAME SCENE INITIALIZATION COMPLETE ===");
+    log("WaveManager instance: %p", _waveManager);
+    log("=== GAME SCENE INITIALIZATION REPORT ===");
+    log("1. ResourceLoader: %s", resourceLoader ? "OK" : "NULL");
+    log("2. GameManager: %s", gameManager ? "OK" : "NULL");
+    log("3. WaveManager: %s", _waveManager ? "OK" : "NULL");
+    log("4. AudioManager: %s", audioManager ? "OK" : "NULL");
+    log("======================================");
+
     return true;
+
+}
+
+void GameScene::initZombieSystem()
+{
+    log("GameScene: Initializing zombie system...");
+
+    // 1. 預加載僵屍資源
+    auto resourceLoader = ResourceLoader::getInstance();
+    if (resourceLoader)
+    {
+        log("Preloading zombie resources...");
+        resourceLoader->preloadZombieResources();
+
+        // 立即檢查動畫是否載入成功
+        if (resourceLoader->getCachedAnimation("zombie_normal_walk")) {
+            log("? zombie_normal_walk animation loaded");
+        }
+        else {
+            log("? ERROR: zombie_normal_walk animation NOT loaded");
+        }
+
+    }
+
+    // 2. 獲取 WaveManager
+    _waveManager = WaveManager::getInstance();
+    if (!_waveManager)
+    {
+        log("ERROR: WaveManager::getInstance() returned null!");
+        return;
+    }
+
+    // 3. 先重置（不要重新 init，避免多次初始化）
+    _waveManager->reset();
+
+    // 4. 設置回調
+    _waveManager->setWaveStartedCallback([this](int waveNumber) {
+        log("GameScene: Wave %d started", waveNumber);
+
+        if (_levelLabel)
+        {
+            _levelLabel->setString(StringUtils::format("WAVE %d", waveNumber));
+
+            // 添加淡入淡出效果
+            auto fadeOut = FadeOut::create(0.3f);
+            auto fadeIn = FadeIn::create(0.3f);
+            _levelLabel->runAction(Sequence::create(fadeOut, fadeIn, nullptr));
+        }
+
+        // 播放波次開始音效
+        auto audioManager = AudioManager::getInstance();
+        if (audioManager)
+        {
+            audioManager->playSoundEffect("Sounds/SFX/wave_start.mp3");
+        }
+        });
+
+    _waveManager->setWaveCompletedCallback([this](int waveNumber) {
+        log("GameScene: Wave %d completed", waveNumber);
+
+        // 獎勵陽光
+        addSun(100);
+        });
+
+    _waveManager->setWaveAllCompletedCallback([this]() {
+        log("GameScene: All waves completed! Victory!");
+
+        // 延遲 2 秒後顯示勝利
+        this->runAction(Sequence::create(
+            DelayTime::create(2.0f),
+            CallFunc::create([this]() {
+                auto gameManager = GameManager::getInstance();
+                if (gameManager)
+                {
+                    gameManager->gameOver(true);
+                }
+                }),
+            nullptr
+        ));
+        });
+
+    _waveManager->setGameOverCallback([this]() {
+        log("GameScene: Game Over!");
+
+        // 延遲 2 秒後顯示失敗
+        this->runAction(Sequence::create(
+            DelayTime::create(2.0f),
+            CallFunc::create([this]() {
+                auto gameManager = GameManager::getInstance();
+                if (gameManager)
+                {
+                    gameManager->gameOver(false);
+                }
+                }),
+            nullptr
+        ));
+        });
+
+    // 5. 啟動第一波（延遲 3 秒開始）
+    this->runAction(Sequence::create(
+        DelayTime::create(3.0f),
+        CallFunc::create([this]() {
+            log("=== DEBUG: Manual zombie spawn test ===");
+            if (_waveManager) {
+                Zombie* zombie = _waveManager->spawnRandomZombie();
+                if (zombie) {
+                    log(" DEBUG: Test zombie spawned successfully!");
+                }
+                else {
+                    log(" DEBUG: Failed to spawn test zombie!");
+                }
+            }
+            }),
+        nullptr
+    ));
+
+    log("GameScene: Zombie system initialized successfully");
 }
 
 void GameScene::update(float delta)
 {
-    // 更新植物卡牌状态
+    // 只在 PLAYING 狀態更新遊戲邏輯
+    auto gameManager = GameManager::getInstance();
+    if (gameManager && gameManager->getCurrentState() != GameManager::GameState::PLAYING)
+    {
+        return;
+    }
+
+    // 更新植物卡牌狀態
     updatePlantCards();
 
-    //更新阳光数量
+    // 更新陽光數量
     updateSunDisplay();
 
-    // 更新植物预览位置（如果正在选择植物）
+    // 更新植物預覽位置
     if (_hasSelectedPlant && _plantPreview)
     {
         auto touchPos = Director::getInstance()->getVisibleSize() / 2; // 临时位置
@@ -199,11 +350,16 @@ void GameScene::update(float delta)
         }
     }
 
-    // 更新游戏管理器中的子弹
-    auto gameManager = GameManager::getInstance();
+    // 更新子彈
     if (gameManager)
     {
         gameManager->updateProjectiles(delta);
+    }
+
+    // 更新 WaveManager
+    if (_waveManager)
+    {
+        _waveManager->update(delta);
     }
 }
 
@@ -307,6 +463,40 @@ void GameScene::initUI()
         }
     }
     */
+
+    // 添加測試按鈕
+    auto testButton = ui::Button::create();
+    testButton->setTitleText("TEST: Spawn Zombie");
+    testButton->setTitleFontName("fonts/Marker Felt.ttf");
+    testButton->setTitleFontSize(16);
+    testButton->setTitleColor(Color3B::WHITE);
+    testButton->setContentSize(Size(150, 40));
+    testButton->setScale9Enabled(true);
+    testButton->setCapInsets(Rect(5, 5, 5, 5));
+    testButton->setColor(Color3B(200, 100, 100));
+    testButton->setPosition(Vec2(visibleSize.width - 230 + origin.x, visibleSize.height - 80 + origin.y));
+    testButton->addTouchEventListener([this](Ref* sender, ui::Widget::TouchEventType type) {
+        if (type == ui::Widget::TouchEventType::ENDED)
+        {
+            log("=== MANUAL ZOMBIE SPAWN TEST ===");
+
+            // 手動生成一個殭屍
+            auto waveManager = WaveManager::getInstance();
+            if (waveManager) {
+                Zombie* zombie = waveManager->spawnRandomZombie();
+                if (zombie) {
+                    log("Manual spawn SUCCESS!");
+                }
+                else {
+                    log("Manual spawn FAILED!");
+                }
+            }
+            else {
+                log("ERROR: WaveManager is null!");
+            }
+        }
+        });
+    this->addChild(testButton, 10);
 }
 
 void GameScene::initGrid()
@@ -849,5 +1039,12 @@ void GameScene::restartGame()
         // 备用方案：直接替换场景
         auto scene = GameScene::createScene();
         Director::getInstance()->replaceScene(TransitionFade::create(0.5f, scene));
+    }
+
+    // 重置WaveManager
+    auto waveManager = WaveManager::getInstance();
+    if (waveManager)
+    {
+        waveManager->reset();
     }
 }

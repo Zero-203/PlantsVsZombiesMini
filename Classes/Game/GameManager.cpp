@@ -1,6 +1,7 @@
 #include "GameManager.h"
 #include "./UI/MenuScene.h"
 #include "GameScene.h"
+#include "Game/WaveManager.h"
 #include "./Resources/AudioManager.h"
 #include "./Resources/ResourceLoader.h"
 #include <Entities/Projectile/Projectile.h>
@@ -53,6 +54,9 @@ bool GameManager::init()
     _isSoundEnabled = userDefaults->getBoolForKey("sound_enabled", true);
     _isMusicEnabled = userDefaults->getBoolForKey("music_enabled", true);
 
+    // 初始化 WaveManager（但不存儲為成員）
+   // WaveManager::getInstance()->init(); // 直接調用
+
     return true;
 }
 
@@ -68,13 +72,26 @@ bool GameManager::spendSun(int amount)
 
 void GameManager::startNewGame()
 {
-    // 重置游戏数据
-    _sunCount = 500; // 初始阳光
+    log("GameManager: Starting new game");
+
+    // 先清理所有資源
+    clearAllProjectiles();
+
+    // 清理殭屍
+    auto waveManager = WaveManager::getInstance();
+    if (waveManager)
+    {
+        waveManager->clearAllZombies();
+        waveManager->reset();
+    }
+
+    // 重置遊戲數據
+    _sunCount = 500;
     _currentState = GameState::PLAYING;
     _playerScore = 0;
     _projectiles.clear();
-    clearAllProjectiles();
-    // 切换到游戏场景
+
+    // 切換到遊戲場景
     goToGameScene();
 }
 

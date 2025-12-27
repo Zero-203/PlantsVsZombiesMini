@@ -538,12 +538,19 @@ void ResourceLoader::loadAnimationFrames(const std::string& animationName,
         return;
     }
 
+    log("Loading animation: %s", animationName.c_str());
+
     // 如果没有AnimationHelper，直接创建
     cocos2d::Vector<cocos2d::SpriteFrame*> spriteFrames;
     auto textureCache = Director::getInstance()->getTextureCache();
 
     for (const auto& framePath : framePaths)
     {
+        // 檢查文件是否存在
+        if (!FileUtils::getInstance()->isFileExist(framePath)) {
+            log("ERROR: File not found: %s", framePath.c_str());
+        }
+
         // 同步加载纹理
         auto texture = textureCache->addImage(framePath);
         if (texture)
@@ -701,4 +708,30 @@ void ResourceLoader::printCachedAnimations()
 bool ResourceLoader::hasAnimation(const std::string& name)
 {
     return _animations.find(name) != _animations.end();
+}
+
+void ResourceLoader::preloadZombieResources()
+{
+    // 预加载普通僵尸动画
+    std::vector<std::string> zombieWalkFrames = {
+        "Images/Zombies/Normal/walk_01.png",
+        "Images/Zombies/Normal/walk_02.png",
+        "Images/Zombies/Normal/walk_03.png",
+        "Images/Zombies/Normal/walk_04.png"
+    };
+    loadAnimationFrames("zombie_normal_walk", zombieWalkFrames, 0.2f);
+
+    // 预加载普通僵尸攻击动画
+    std::vector<std::string> zombieAttackFrames = {
+        "Images/Zombies/Normal/attack_01.png",
+        "Images/Zombies/Normal/attack_02.png"
+    };
+    loadAnimationFrames("zombie_normal_attack", zombieAttackFrames, 0.3f);
+
+    // 预加载普通僵尸死亡动画
+    std::vector<std::string> zombieDeathFrames = {
+        "Images/Zombies/Normal/death_01.png",
+        "Images/Zombies/Normal/death_02.png"
+    };
+    loadAnimationFrames("zombie_normal_death", zombieDeathFrames, 0.5f);
 }

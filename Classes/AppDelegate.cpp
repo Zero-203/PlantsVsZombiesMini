@@ -55,6 +55,11 @@ void AppDelegate::initGLContextAttrs()
 
 bool AppDelegate::applicationDidFinishLaunching()
 {
+    // 確保日誌系統已啟用
+    freopen("debug.log", "w", stdout);  // 將stdout重定向到文件
+    freopen("debug.log", "w", stderr);  // 將stderr重定向到文件
+    log("=== APPLICATION STARTED ===");
+
     // 初始化导演类
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
@@ -111,6 +116,14 @@ bool AppDelegate::applicationDidFinishLaunching()
     // 创建并运行菜单场景
     auto scene = MenuScene::createScene();
     director->runWithScene(scene);
+
+#if COCOS2D_DEBUG > 0
+    // 開啟調試模式
+    Director::getInstance()->setDisplayStats(true);
+
+    // 添加內存洩漏檢查（如果需要）
+    // 可以在每幀更新時檢查
+#endif
 
     return true;
 }
