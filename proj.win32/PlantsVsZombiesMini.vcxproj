@@ -159,6 +159,8 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Entities\Plants\WallNut.cpp" />
     <ClCompile Include="..\Classes\Entities\Projectile\Projectile.cpp" />
     <ClCompile Include="..\Classes\Entities\Zombie\Zombie.cpp" />
+    <ClCompile Include="..\Classes\Entities\Zombie\ZombieBucketHead.cpp" />
+    <ClCompile Include="..\Classes\Entities\Zombie\ZombieConeHead.cpp" />
     <ClCompile Include="..\Classes\Entities\Zombie\ZombieNormal.cpp" />
     <ClCompile Include="..\Classes\Game\GameManager.cpp" />
     <ClCompile Include="..\Classes\Game\GameScene.cpp" />
@@ -180,6 +182,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Entities\Plants\WallNut.h" />
     <ClInclude Include="..\Classes\Entities\Projectile\Projectile.h" />
     <ClInclude Include="..\Classes\Entities\Zombie\Zombie.h" />
+    <ClInclude Include="..\Classes\Entities\Zombie\ZombieBucketHead.h" />
+    <ClInclude Include="..\Classes\Entities\Zombie\ZombieConeHead.h" />
+    <ClInclude Include="..\Classes\Entities\Zombie\ZombieFactory.h" />
     <ClInclude Include="..\Classes\Entities\Zombie\ZombieNormal.h" />
     <ClInclude Include="..\Classes\Game\GameManager.h" />
     <ClInclude Include="..\Classes\Game\GameScene.h" />

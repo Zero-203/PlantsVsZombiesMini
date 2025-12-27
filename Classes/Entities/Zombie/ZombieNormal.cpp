@@ -33,7 +33,7 @@ bool ZombieNormal::init()
 
     // 創建默認的精靈（如果動畫加載失敗）
     this->setTextureRect(Rect(0, 0, 60, 100));
-    this->setColor(Color3B::GREEN);
+    this->setColor(Color3B::WHITE);
 
     // 嘗試加載動畫
     ResourceLoader* resourceLoader = ResourceLoader::getInstance();
