@@ -4,6 +4,7 @@
 
 #include "cocos2d.h"
 #include <string>
+#include "Entities/Zombie/Zombie.h"
 
 // 子弹类型枚举
 enum class ProjectileType {
@@ -23,6 +24,12 @@ enum class ProjectileState {
     DEAD            // 已销毁
 };
 
+// 伤害类型枚举
+enum class DamageType {
+    SINGLE_TARGET,  // 单体伤害
+    AREA_OF_EFFECT  // 范围伤害
+};
+
 class Projectile : public cocos2d::Sprite {
 public:
     CREATE_FUNC(Projectile);
@@ -30,8 +37,9 @@ public:
     virtual bool init() override;
     virtual void update(float delta) override;
 
-    // 初始化子弹
-    virtual bool initProjectile(ProjectileType type, int damage, float speed);
+    // 初始化子弹时指定伤害类型
+    virtual bool initProjectile(ProjectileType type, int damage, float speed,
+        DamageType damageType = DamageType::SINGLE_TARGET);
 
     // 子弹属性
     ProjectileType getType() const { return _type; }
@@ -42,6 +50,16 @@ public:
 
     // 设置发射参数
     void setLaunchParams(const cocos2d::Vec2& startPos, const cocos2d::Vec2& direction);
+    
+    // 设置范围伤害参数
+    void setSplashDamage(float radius, float damageFalloff = 1.0f) {
+        _splashRadius = radius;
+        _damageFalloff = damageFalloff;
+        _damageType = DamageType::AREA_OF_EFFECT;
+    }
+
+    // 应用范围伤害
+    void applySplashDamage(const cocos2d::Vec2& center);
 
     // 子弹行为
     virtual void fly(float delta);
@@ -84,6 +102,10 @@ protected:
     cocos2d::Vec2 _velocity;       // 速度向量
     float _rotationSpeed;          // 旋转速度
 
+    DamageType _damageType;
+    float _splashRadius;     // 溅射半径
+    float _damageFalloff;    // 伤害衰减系数
+
     // 特效属性
     bool _hasTrailEffect;          // 是否有拖尾效果
     bool _hasHitEffect;            // 是否有击中效果
@@ -100,6 +122,10 @@ protected:
 
     // 动画动作
     cocos2d::Animate* _currentAnimate;
+
+private:
+    void checkZombieCollisions();
+    void applyDamageToZombie(Zombie* zombie);
 
 public:
     // 设置资源加载器

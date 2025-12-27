@@ -337,3 +337,13 @@ void WaveManager::clearAllZombies()
     }
     _activeZombies.clear();
 }
+
+std::vector<Zombie*> WaveManager::getZombiesInRow(int row) const{
+    std::vector<Zombie*> zombiesInRow;
+    for (auto zombie : _activeZombies) {
+        if (zombie && zombie->isAlive() && zombie->getRow() == row) {
+            zombiesInRow.push_back(zombie);
+        }
+    }
+    return zombiesInRow;
+}

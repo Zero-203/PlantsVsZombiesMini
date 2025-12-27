@@ -177,6 +177,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Entities\Plants\Plant.h" />
     <ClInclude Include="..\Classes\Entities\Plants\PlantFactory.h" />
     <ClInclude Include="..\Classes\Entities\Plants\SunFlower.h" />
+    <ClInclude Include="..\Classes\Entities\Plants\WallNut.h" />
     <ClInclude Include="..\Classes\Entities\Projectile\Projectile.h" />
     <ClInclude Include="..\Classes\Entities\Zombie\Zombie.h" />
     <ClInclude Include="..\Classes\Entities\Zombie\ZombieNormal.h" />

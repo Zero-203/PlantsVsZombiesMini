@@ -116,6 +116,8 @@ void CherryBomb::explode()
     }
     */
 
+    this->onDead();
+
     // 临时实现：输出日志
     log("CherryBomb: Explosion damage %d applied in range %.0f",
         _explosionDamage, _explosionRange);
@@ -191,7 +193,8 @@ void CherryBomb::onExplodingComplete()
     onDead();
 }
 
-void CherryBomb::onDead()
-{
+void  CherryBomb::onDead(){
+    
+    this->_state = PlantState::DEAD;
     log("CherryBomb: Explosion complete, plant removed");
 }
