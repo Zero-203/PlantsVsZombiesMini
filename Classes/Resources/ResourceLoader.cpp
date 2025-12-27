@@ -67,13 +67,19 @@ void ResourceLoader::loadResourceConfig()
     _resourcePaths["font_main"] = "Fonts/Marker Felt.ttf";
     _resourcePaths["font_score"] = "Fonts/arial.ttf";
 
+    //BGM
+    _resourcePaths["sound_menu_bgm"] = "Sounds/BGM/menu_bgm.mp3";
+    _resourcePaths["sound_game_bgm"] = "Sounds/BGM/game_bgm.mp3";
+
     // “Ù–ß
     _resourcePaths["sound_button_click"] = "Sounds/SFX/button_click.mp3";
-    _resourcePaths["sound_menu_bgm"] = "Sounds/BGM/menu_bgm.mp3";
-    _resourcePaths["sound_shoot"] = "Sounds/SFX/shoot.ogg";
+    _resourcePaths["sound_shoot"] = "Sounds/SFX/shoot.mp3";
+    _resourcePaths["sound_explosion"] = "Sounds/SFX/explosion.mp3";
     _resourcePaths["sound_sun_produced"] = "Sounds/SFX/sun_produced.mp3";
     _resourcePaths["sound_sun_collected"] = "Sounds/SFX/sun_collected.mp3";
-    _resourcePaths["sound_plant_planted"] = "Sounds/SFX/plant_planted.ogg";
+    _resourcePaths["sound_plant_planted"] = "Sounds/SFX/plant_planted.mp3";
+    _resourcePaths["sound_cherrybomb"] = "Sounds/SFX/cherrybomb.mp3";
+    
 
     // ¥¥Ω®±ÿ“™µƒƒø¬º
     auto fileUtils = FileUtils::getInstance();
@@ -245,6 +251,30 @@ void ResourceLoader::loadSimpleAnimationConfig()
     };
     loadAnimationFrames("sun_collect", sunCollectFrames, 0.1f);
 
+    // ”£Ã“’®µØø’œ–∂Øª≠
+    std::vector<std::string> cherryBombIdleFrames = {
+        "Images/Plants/CherryBomb/cherrybomb_idle_01.png",
+        "Images/Plants/CherryBomb/cherrybomb_idle_02.png",
+        "Images/Plants/CherryBomb/cherrybomb_idle_03.png",
+        "Images/Plants/CherryBomb/cherrybomb_idle_04.png",
+        "Images/Plants/CherryBomb/cherrybomb_idle_05.png",
+        "Images/Plants/CherryBomb/cherrybomb_idle_06.png"
+    };
+    loadAnimationFrames("cherrybomb_idle", cherryBombIdleFrames, 0.15f);
+
+    // ”£Ã“’®µØ±¨’®∂Øª≠
+    std::vector<std::string> cherryBombExplodeFrames = {
+        "Images/Plants/CherryBomb/cherrybomb_explode_01.png",
+        "Images/Plants/CherryBomb/cherrybomb_explode_02.png",
+        "Images/Plants/CherryBomb/cherrybomb_explode_03.png",
+        "Images/Plants/CherryBomb/cherrybomb_explode_04.png",
+        "Images/Plants/CherryBomb/cherrybomb_explode_05.png",
+        "Images/Plants/CherryBomb/cherrybomb_explode_06.png",
+        "Images/Plants/CherryBomb/cherrybomb_explode_07.png",
+        "Images/Plants/CherryBomb/cherrybomb_explode_08.png"
+    };
+    loadAnimationFrames("cherrybomb_explode", cherryBombExplodeFrames, 0.07f);
+
     log("Simple animation config loaded with %d animations", (int)_animations.size());
 }
 
@@ -274,9 +304,14 @@ void ResourceLoader::preloadResources(LoadingPhase phase)
             // º”‘ÿ“Ù–ß
             std::vector<std::string> sounds = {
                 "sound_button_click",
-                "sound_menu_bgm"
             };
             loadSoundEffects(sounds);
+
+            // º”‘ÿ±≥æ∞“Ù¿÷
+            std::vector<std::string> bgm = {
+                "sound_menu_bgm"
+            };
+            loadBackgroundMusic(bgm);
 
             _isMenuResourcesLoaded = true;
         }
@@ -288,18 +323,25 @@ void ResourceLoader::preloadResources(LoadingPhase phase)
             // º”‘ÿ”Œœ∑Õº∆¨
             std::vector<std::string> gameImages = {
                 "game_background",
-                "grid_cell"
+                "card_bar_bg"
             };
             loadImages(gameImages);
 
             // º”‘ÿ”Œœ∑“Ù–ß
             std::vector<std::string> gameSounds = {
                 "sound_shoot",
+                "sound_explosion",
                 "sound_sun_produced",
                 "sound_sun_collected",
                 "sound_plant_planted"
             };
             loadSoundEffects(gameSounds);
+
+            // º”‘ÿ”Œœ∑BGM       
+            std::vector<std::string> gameBgm = {
+                "sound_game_bgm"
+            };
+            loadBackgroundMusic(gameBgm);
 
             _isGameResourcesLoaded = true;
         }

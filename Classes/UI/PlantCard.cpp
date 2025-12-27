@@ -32,9 +32,9 @@ bool PlantCard::init(PlantType plantType)
     _isCoolingDown = false;
 
     // 设置卡牌大小
-    this->setContentSize(Size(80, 90));
+    this->setContentSize(Size(60, 80));
     this->setScale9Enabled(true);
-    this->setCapInsets(Rect(10, 10, 60, 80));
+    this->setCapInsets(Rect(10, 10, 50, 70));
 
     // 设置卡牌背景颜色（根据植物类型）
     Color3B cardColor;
@@ -89,6 +89,9 @@ bool PlantCard::init(PlantType plantType)
         break;
     case PlantType::WALLNUT:
         imagePath = "Images/Plants/WallNut/wallnut_idle_01.png";
+        break;
+    case PlantType::CHERRY_BOMB:
+        imagePath = "Images/Plants/CherryBomb/cherrybomb_idle_01.png";
         break;
     default:
         imagePath = "Images/UI/card_default.png";

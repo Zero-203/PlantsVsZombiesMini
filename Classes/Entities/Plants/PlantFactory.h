@@ -7,6 +7,7 @@
 #include "Peashooter.h"
 #include "Sunflower.h"
 #include "WallNut.h"
+#include "CherryBomb.h"
 
 class PlantFactory {
 public:
@@ -24,7 +25,7 @@ public:
             plant = WallNut::create();
             break;
         case PlantType::CHERRY_BOMB:
-            // 后续实现
+            plant = CherryBomb::create();
             break;
         case PlantType::SNOW_PEA:
             // 后续实现

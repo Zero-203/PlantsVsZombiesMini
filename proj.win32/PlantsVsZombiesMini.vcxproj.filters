@@ -84,6 +84,9 @@
     <ClCompile Include="..\Classes\Game\WaveManager.cpp">
       <Filter>src\Game</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Entities\Plants\CherryBomb.cpp">
+      <Filter>src\Entities\Plants</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -136,6 +139,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Game\WaveManager.h">
       <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\Plants\CherryBomb.h">
+      <Filter>src\Entities\Plants</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

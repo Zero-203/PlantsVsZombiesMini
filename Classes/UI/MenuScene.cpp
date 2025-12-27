@@ -30,13 +30,18 @@ bool MenuScene::init()
 
     // 初始化UI
     initUI();
-
+/*
+    AudioManager::getInstance()->playSoundEffect(
+        ResourceLoader::getInstance()->getSoundEffectPath("sound_menu_bgm")
+    );
+ */
+    
     // 播放背景音乐
     AudioManager::getInstance()->playBackgroundMusic(
         ResourceLoader::getInstance()->getBackgroundMusicPath("sound_menu_bgm"),
         true
     );
-
+   
     // 设置更新调度
     this->scheduleUpdate();
 
@@ -162,14 +167,21 @@ void MenuScene::onSettingsButtonClicked(Ref* sender, Widget::TouchEventType type
     {
         // 播放按钮点击音效
         AudioManager::getInstance()->playSoundEffect(
-            ResourceLoader::getInstance()->getSoundEffectPath("sound_button_click")//""
+            ResourceLoader::getInstance()->getSoundEffectPath("sound_button_click")
         );
 
         // 播放按钮动画
         playButtonAnimation(static_cast<Button*>(sender));
 
-        // TODO: 打开设置界面（在后续阶段实现）
-        log("Settings button clicked");
+        /*
+        // 显示设置界面
+        if (_settingsLayer)
+        {
+            _settingsLayer->show();
+        }
+
+        log("Settings button clicked - 显示设置界面");
+        */
     }
 }
 

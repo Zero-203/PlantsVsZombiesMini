@@ -47,13 +47,23 @@ bool AudioManager::init()
 {
     _audioEngine = SimpleAudioEngine::getInstance();
 
-    // 从UserDefaults加载音频设置
+    // 检查音频引擎是否初始化成功
+    if (!_audioEngine)
+    {
+        log("AudioManager::init - Failed to get audio engine instance!");
+        return false;
+    }
+
+    log("AudioManager::init - Audio engine initialized");
+
     auto userDefaults = UserDefault::getInstance();
     _isMuted = userDefaults->getBoolForKey("audio_muted", false);
-    _backgroundMusicVolume = userDefaults->getFloatForKey("bgm_volume", 0.7f);
-    _soundEffectsVolume = userDefaults->getFloatForKey("sfx_volume", 0.8f);
+    _backgroundMusicVolume = userDefaults->getFloatForKey("bgm_volume", 0.5f);
+    _soundEffectsVolume = userDefaults->getFloatForKey("sfx_volume", 0.6f);
 
-    // 设置音量
+    log("AudioManager::init - muted: %d, bgm volume: %.2f, sfx volume: %.2f",
+        _isMuted, _backgroundMusicVolume, _soundEffectsVolume);
+
     _audioEngine->setBackgroundMusicVolume(_isMuted ? 0.0f : _backgroundMusicVolume);
     _audioEngine->setEffectsVolume(_isMuted ? 0.0f : _soundEffectsVolume);
 
@@ -63,13 +73,28 @@ bool AudioManager::init()
 void AudioManager::playBackgroundMusic(const std::string& filePath, bool loop)
 {
     if (_isMuted || filePath.empty())
+    {
+        log("AudioManager::playBackgroundMusic - muted or empty path");
         return;
+    }
 
+    // 保存当前播放的音乐路径
     _currentBackgroundMusic = filePath;
     _isBackgroundMusicPlaying = true;
 
-    // 预加载背景音乐
-    _audioEngine->preloadBackgroundMusic(filePath.c_str());
+    // 只预加载一次
+    if (!filePath.empty())
+    {
+        _audioEngine->preloadBackgroundMusic(filePath.c_str());
+    }
+
+    log("AudioManager::playBackgroundMusic - path: %s, loop: %d", filePath.c_str(), loop);
+
+    // 设置音量后播放
+    if (!_isMuted)
+    {
+        _audioEngine->setBackgroundMusicVolume(_backgroundMusicVolume);
+    }
 
     // 播放背景音乐
     _audioEngine->playBackgroundMusic(filePath.c_str(), loop);

@@ -1,0 +1,506 @@
+﻿“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Users\29165\Desktop\FinalPrj\PlantsVsZombiesMini\proj.win32\Debug.win32\PlantsVsZombiesMini.exe”。已加载符号。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\ntdll.dll”。已加载符号。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\kernel32.dll”。已加载符号。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\KernelBase.dll”。已加载符号。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Users\29165\Desktop\FinalPrj\PlantsVsZombiesMini\proj.win32\Debug.win32\libcocos2d.dll”。已加载符号。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\msvcp140d.dll”。已加载符号。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\vcruntime140d.dll”。已加载符号。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\ucrtbased.dll”。已加载符号。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Users\29165\Desktop\FinalPrj\PlantsVsZombiesMini\proj.win32\Debug.win32\sqlite3.dll”。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\ws2_32.dll”。已加载符号。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Users\29165\Desktop\FinalPrj\PlantsVsZombiesMini\proj.win32\Debug.win32\libcurl.dll”。模块已生成，不包含符号。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\Wldap32.dll”。已加载符号。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Users\29165\Desktop\FinalPrj\PlantsVsZombiesMini\proj.win32\Debug.win32\websockets.dll”。模块已生成，不包含符号。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\ucrtbase.dll”。已加载符号。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\ucrtbase.dll”。已加载符号。
+“PlantsVsZombiesMini.exe”(Win32): 已卸载“C:\Windows\SysWOW64\ucrtbase.dll”
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\rpcrt4.dll”。已加载符号。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\normaliz.dll”。已加载符号。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Users\29165\Desktop\FinalPrj\PlantsVsZombiesMini\proj.win32\Debug.win32\libmpg123.dll”。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\user32.dll”。已加载符号。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Users\29165\Desktop\FinalPrj\PlantsVsZombiesMini\proj.win32\Debug.win32\OpenAL32.dll”。模块已生成，不包含符号。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Users\29165\Desktop\FinalPrj\PlantsVsZombiesMini\proj.win32\Debug.win32\libvorbisfile.dll”。模块已生成，不包含符号。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\win32u.dll”。已加载符号。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\version.dll”。已加载符号。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\gdi32.dll”。已加载符号。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\shell32.dll”。已加载符号。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\gdi32full.dll”。已加载符号。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\msvcp_win.dll”。已加载符号。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\opengl32.dll”。已加载符号。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\msvcrt.dll”。已加载符号。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\msvcp_win.dll”。已加载符号。
+“PlantsVsZombiesMini.exe”(Win32): 已卸载“C:\Windows\SysWOW64\msvcp_win.dll”
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\advapi32.dll”。已加载符号。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\advapi32.dll”。已加载符号。
+“PlantsVsZombiesMini.exe”(Win32): 已卸载“C:\Windows\SysWOW64\advapi32.dll”
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\sechost.dll”。已加载符号。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\WinTypes.dll”。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Users\29165\Desktop\FinalPrj\PlantsVsZombiesMini\proj.win32\Debug.win32\zlib1.dll”。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\combase.dll”。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Users\29165\Desktop\FinalPrj\PlantsVsZombiesMini\proj.win32\Debug.win32\glew32.dll”。模块已生成，不包含符号。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\combase.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已卸载“C:\Windows\SysWOW64\combase.dll”
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\winmm.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\ole32.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\msvcr100.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Users\29165\Desktop\FinalPrj\PlantsVsZombiesMini\proj.win32\Debug.win32\libssl-1_1.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Users\29165\Desktop\FinalPrj\PlantsVsZombiesMini\proj.win32\Debug.win32\libcrypto-1_1.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Users\29165\Desktop\FinalPrj\PlantsVsZombiesMini\proj.win32\Debug.win32\uv.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已卸载“C:\Users\29165\Desktop\FinalPrj\PlantsVsZombiesMini\proj.win32\Debug.win32\libcrypto-1_1.dll”
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\vcruntime140.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\msvcr120.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Users\29165\Desktop\FinalPrj\PlantsVsZombiesMini\proj.win32\Debug.win32\libogg.dll”。模块已生成，不包含符号。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\msvcr110.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\psapi.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Users\29165\Desktop\FinalPrj\PlantsVsZombiesMini\proj.win32\Debug.win32\libvorbis.dll”。模块已生成，不包含符号。
+“PlantsVsZombiesMini.exe”(Win32): 已卸载“C:\Users\29165\Desktop\FinalPrj\PlantsVsZombiesMini\proj.win32\Debug.win32\libvorbis.dll”
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\glu32.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\userenv.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\IPHLPAPI.DLL”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Users\29165\Desktop\FinalPrj\PlantsVsZombiesMini\proj.win32\Debug.win32\libvorbis.dll”。模块已生成，不包含符号。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Users\29165\Desktop\FinalPrj\PlantsVsZombiesMini\proj.win32\Debug.win32\libcrypto-1_1.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Users\29165\Desktop\FinalPrj\PlantsVsZombiesMini\proj.win32\Debug.win32\libcrypto-1_1.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Users\29165\Desktop\FinalPrj\PlantsVsZombiesMini\proj.win32\Debug.win32\libcrypto-1_1.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已卸载“C:\Users\29165\Desktop\FinalPrj\PlantsVsZombiesMini\proj.win32\Debug.win32\libcrypto-1_1.dll”
+“PlantsVsZombiesMini.exe”(Win32): 已卸载“C:\Users\29165\Desktop\FinalPrj\PlantsVsZombiesMini\proj.win32\Debug.win32\libcrypto-1_1.dll”
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\DXCore.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\imm32.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\uxtheme.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\dinput8.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\XInput1_4.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\cfgmgr32.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\devobj.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\dwmapi.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\InputHost.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\CoreMessaging.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\SHCore.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\hid.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\bcryptprimitives.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\setupapi.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\cryptbase.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\wintrust.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\crypt32.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\msasn1.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\msctf.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\windows.storage.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\Windows.StateRepositoryCore.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\oleaut32.dll”。用户取消了自动符号加载。
+0x762F1E54 (KernelBase.dll)处(位于 PlantsVsZombiesMini.exe 中)引发的异常: WinRT originate error - 0x8007007A : '传递给系统调用的数据区域太小。'。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\bcrypt.dll”。用户取消了自动符号加载。
+onecore\base\appmodel\runtime\src\lookup.cpp(218)\kernelbase.dll!76325133: (caller: 762F5EBF) ReturnHr(1) tid(5674) 8007007A 传递给系统调用的数据区域太小。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\directxdatabasehelper.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\kernel.appcore.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\System32\DriverStore\FileRepository\nvamui.inf_amd64_8dce25ca1127eab3\nvoglv32.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\wtsapi32.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\sspicli.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\cryptnet.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\wldp.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\drvstore.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\ntmarta.dll”。用户取消了自动符号加载。
+线程 0x8490 已退出，返回值为 0 (0x0)。
+线程 0x6514 已退出，返回值为 0 (0x0)。
+线程 0x8d98 已退出，返回值为 0 (0x0)。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\imagehlp.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\cryptsp.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\rsaenh.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\System32\DriverStore\FileRepository\nvamui.inf_amd64_8dce25ca1127eab3\nvgpucomp32.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\shlwapi.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\nvspcap.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\profapi.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\dbghelp.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已卸载“C:\Windows\SysWOW64\dbghelp.dll”
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\dbghelp.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已卸载“C:\Windows\SysWOW64\dbghelp.dll”
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\dbghelp.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已卸载“C:\Windows\SysWOW64\dbghelp.dll”
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\dbghelp.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已卸载“C:\Windows\SysWOW64\dbghelp.dll”
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\powrprof.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\umpdc.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\winsta.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\TextInputFramework.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\CoreUIComponents.dll”。用户取消了自动符号加载。
+Ready for GLSL
+Ready for OpenGL 2.0
+
+{
+	gl.version: 4.6.0 NVIDIA 561.17
+	gl.supports_NPOT: true
+	cocos2d.x.version: cocos2d-x-3.17.2
+	cocos2d.x.compiled_with_profiler: false
+	cocos2d.x.build_type: DEBUG
+	cocos2d.x.compiled_with_gl_state_cache: true
+	gl.max_texture_size: 32768
+	gl.supports_OES_packed_depth_stencil: false
+	gl.vendor: NVIDIA Corporation
+	gl.renderer: NVIDIA GeForce RTX 4060 Laptop GPU/PCIe/SSE2
+	gl.max_texture_units: 192
+	gl.supports_ETC1: false
+	gl.supports_S3TC: true
+	gl.supports_ATITC: false
+	gl.supports_PVRTC: false
+	gl.supports_BGRA8888: false
+	gl.supports_discard_framebuffer: false
+	gl.supports_vertex_array_object: true
+	gl.supports_OES_map_buffer: false
+	gl.supports_OES_depth24: false
+}
+
+
+ResourceLoader::loadSimpleAnimationConfig: Starting animation loading
+PNG sequence animation created: sunflower_idle with 18 frames
+cocos2d: fullPathForFilename: No file found at Images/Plants/Sunflower/sunflower_produce_01.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/Sunflower/sunflower_produce_02.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/Sunflower/sunflower_produce_03.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/Sunflower/sunflower_produce_04.png. Possible missing file.
+PNG sequence animation created: peashooter_idle with 13 frames
+cocos2d: fullPathForFilename: No file found at Images/Plants/Peashooter/peashooter_attack_01.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/Peashooter/peashooter_attack_02.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/Peashooter/peashooter_attack_03.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/Peashooter/peashooter_attack_04.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/Peashooter/peashooter_attack_05.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/Peashooter/peashooter_attack_06.png. Possible missing file.
+PNG sequence animation created: pea_fly with 4 frames
+cocos2d: fullPathForFilename: No file found at Images/Projectiles/Pea/pea_hit_01.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Projectiles/Pea/pea_hit_02.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Projectiles/Pea/pea_hit_03.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Projectiles/Pea/pea_hit_04.png. Possible missing file.
+PNG sequence animation created: wallnut_idle with 16 frames
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_damaged1_01.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_damaged1_02.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_damaged1_03.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_damaged2_01.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_damaged2_02.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/WallNut/wallnut_damaged2_03.png. Possible missing file.
+PNG sequence animation created: sun_floating with 29 frames
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_collect_01.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_collect_02.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/UI/Sun/sun_collect_03.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/CherryBomb/cherrybomb_idle_02.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/CherryBomb/cherrybomb_idle_03.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/CherryBomb/cherrybomb_idle_04.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/CherryBomb/cherrybomb_idle_05.png. Possible missing file.
+cocos2d: fullPathForFilename: No file found at Images/Plants/CherryBomb/cherrybomb_idle_06.png. Possible missing file.
+PNG sequence animation created: cherrybomb_idle with 1 frames
+cocos2d: unsupported image format!
+PNG sequence animation created: cherrybomb_explode with 7 frames
+Simple animation config loaded with 7 animations
+AudioManager::init - Audio engine initialized
+AudioManager::init - muted: 0, bgm volume: 0.00, sfx volume: 0.60
+AudioManager::init - Audio engine initialized
+AudioManager::init - muted: 0, bgm volume: 0.00, sfx volume: 0.60
+Font found: Fonts/Marker Felt.ttf
+Font found: Fonts/arial.ttf
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\winmmbase.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\mciqtz32.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\quartz.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\clbcatq.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\devenum.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\msdmo.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\qasf.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\WMVCORE.DLL”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已卸载“C:\Windows\SysWOW64\WMVCORE.DLL”
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\WMVCORE.DLL”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\WMASF.DLL”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\MP3DMOD.DLL”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\mfplat.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\RTWorkQ.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\msacm32.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\imaadp32.acm”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\msadp32.acm”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\msg711.acm”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\msgsm32.acm”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\l3codeca.acm”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\msmpeg2adec.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\mfperfhelper.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已卸载“C:\Windows\SysWOW64\mfperfhelper.dll”
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\mfperfhelper.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\msmpeg2ac3dec.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\avrt.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\MMDevAPI.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\wdmaud.drv”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\AudioSes.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\msacm32.drv”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已卸载“C:\Windows\SysWOW64\msacm32.drv”
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\msacm32.drv”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\midimap.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\dsound.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\RESAMPLEDMO.DLL”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\ResourcePolicyClient.dll”。用户取消了自动符号加载。
+线程 0x9bd4 已退出，返回值为 0 (0x0)。
+线程 0x9fac 已退出，返回值为 0 (0x0)。
+“PlantsVsZombiesMini.exe”(Win32): 已卸载“C:\Windows\SysWOW64\avrt.dll”
+Sound effect preloaded: Sounds/SFX/button_click.mp3
+Background music preloaded: Sounds/BGM/menu_bgm.mp3
+cocos2d: fullPathForFilename: No file found at /cc_2x2_white_image. Possible missing file.
+AudioManager::playBackgroundMusic - path: Sounds/BGM/menu_bgm.mp3, loop: 1
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\avrt.dll”。用户取消了自动符号加载。
+线程 0x557c 已退出，返回值为 0 (0x0)。
+线程 0x9964 已退出，返回值为 0 (0x0)。
+“PlantsVsZombiesMini.exe”(Win32): 已卸载“C:\Windows\SysWOW64\avrt.dll”
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\Windows.UI.dll”。用户取消了自动符号加载。
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\avrt.dll”。用户取消了自动符号加载。
+cocos2d: QuadCommand: resizing index size from [-1] to [2560]
+Texture loaded: C:/Users/29165/Desktop/FinalPrj/PlantsVsZombiesMini/proj.win32/Debug.win32/Resources/Images/Backgrounds/menu_bg.png
+Texture loaded: C:/Users/29165/Desktop/FinalPrj/PlantsVsZombiesMini/proj.win32/Debug.win32/Resources/Images/UI/start_btn_normal.png
+Texture loaded: C:/Users/29165/Desktop/FinalPrj/PlantsVsZombiesMini/proj.win32/Debug.win32/Resources/Images/UI/start_btn_pressed.png
+Texture loaded: C:/Users/29165/Desktop/FinalPrj/PlantsVsZombiesMini/proj.win32/Debug.win32/Resources/Images/UI/menu_logo.png
+GameManager: Clearing all projectiles (0)
+=== Cached Animations ===
+Total animations: 7
+  Animation: cherrybomb_explode
+  Animation: cherrybomb_idle
+  Animation: pea_fly
+  Animation: peashooter_idle
+  Animation: sun_floating
+  Animation: sunflower_idle
+  Animation: wallnut_idle
+=========================
+pea_fly animation found in cache
+GameScene: Preloading game resources...
+Texture loaded: C:/Users/29165/Desktop/FinalPrj/PlantsVsZombiesMini/proj.win32/Debug.win32/Resources/Images/Backgrounds/game_bg_1.png
+Sound effect preloaded: Sounds/SFX/shoot.mp3
+Sound effect preloaded: Sounds/SFX/explosion.mp3
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/sun_produced.mp3. Possible missing file.
+Sound effect preloaded: Sounds/SFX/sun_produced.mp3
+cocos2d: fullPathForFilename: No file found at Sounds/SFX/sun_collected.mp3. Possible missing file.
+Sound effect preloaded: Sounds/SFX/sun_collected.mp3
+Sound effect preloaded: Sounds/SFX/plant_planted.mp3
+Background music preloaded: Sounds/BGM/game_bgm.mp3
+GameScene: Game resources preloaded
+GameScene: Sunflower idle animation loaded successfully
+GameScene: Peashooter idle animation loaded successfully
+GridSystem: Initialized 5 rows x 9 cols
+GridSystem: Debug grid drawn
+“PlantsVsZombiesMini.exe”(Win32): 已加载“C:\Windows\SysWOW64\TextShaping.dll”。用户取消了自动符号加载。
+AudioManager::playBackgroundMusic - path: Sounds/BGM/game_bgm.mp3, loop: 1
+线程 0xa7f4 已退出，返回值为 0 (0x0)。
+线程 0x4f5c 已退出，返回值为 0 (0x0)。
+线程 0x944c 已退出，返回值为 0 (0x0)。
+线程 0x7d5c 已退出，返回值为 0 (0x0)。
+GameScene: Initialized
+Texture loaded: C:/Users/29165/Desktop/FinalPrj/PlantsVsZombiesMini/proj.win32/Debug.win32/Resources/Images/UI/card_bar_bg.png
+线程 0x7d98 已退出，返回值为 0 (0x0)。
+线程 0x4d88 已退出，返回值为 0 (0x0)。
+Plant::initPlant: Attempting to play idle animation: peashooter_idle
+Plant::initPlant: Found animation in ResourceLoader cache
+Plant: Initialized plant type 1, health: 100
+Plant::initPlant: Attempting to play idle animation: peashooter_idle
+Plant::initPlant: Found animation in ResourceLoader cache
+Plant: Initialized plant type 1, health: 100
+GameScene: Plant preview shown
+GameScene: Selected plant type 1
+GameScene: Grid clicked at row 3, col 0
+Plant::initPlant: Attempting to play idle animation: peashooter_idle
+Plant::initPlant: Found animation in ResourceLoader cache
+Plant: Initialized plant type 1, health: 100
+Plant::initPlant: Attempting to play idle animation: peashooter_idle
+Plant::initPlant: Found animation in ResourceLoader cache
+Plant: Initialized plant type 1, health: 100
+GridSystem: Plant placed at row 3, col 0
+PlantCard: Started cooldown for Peashooter (7.5 seconds)
+GameScene: Plant placed at row 3, col 0
+GridSystem: Grid clicked at row 3, col 0
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 1
+线程 0x9198 已退出，返回值为 0 (0x0)。
+线程 0x35d0 已退出，返回值为 0 (0x0)。
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 2
+Plant::initPlant: Attempting to play idle animation: wallnut_idle
+Plant::initPlant: Found animation in ResourceLoader cache
+Plant: Initialized plant type 2, health: 400
+Plant::initPlant: Attempting to play idle animation: wallnut_idle
+Plant::initPlant: Found animation in ResourceLoader cache
+Plant: Initialized plant type 2, health: 400
+GameScene: Plant preview shown
+GameScene: Selected plant type 2
+线程 0x6de4 已退出，返回值为 0 (0x0)。
+线程 0xd20 已退出，返回值为 0 (0x0)。
+线程 0x6ec0 已退出，返回值为 0 (0x0)。
+线程 0x8388 已退出，返回值为 0 (0x0)。
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 3
+GameScene: Grid clicked at row 3, col 1
+Plant::initPlant: Attempting to play idle animation: wallnut_idle
+Plant::initPlant: Found animation in ResourceLoader cache
+Plant: Initialized plant type 2, health: 400
+Plant::initPlant: Attempting to play idle animation: wallnut_idle
+Plant::initPlant: Found animation in ResourceLoader cache
+Plant: Initialized plant type 2, health: 400
+GridSystem: Plant placed at row 3, col 1
+PlantCard: Started cooldown for Wall-nut (30.0 seconds)
+GameScene: Plant placed at row 3, col 1
+GridSystem: Grid clicked at row 3, col 1
+线程 0x4f90 已退出，返回值为 0 (0x0)。
+线程 0xa928 已退出，返回值为 0 (0x0)。
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 4
+Plant: Initialized plant type 3, health: 100
+Plant::playAnimation: Attempting to play animation: cherrybomb_idle, loop: 1
+Plant::playAnimation: Found animation in ResourceLoader cache
+Plant::playAnimation: Playing animation in loop mode
+CherryBomb: Initialized with explosion delay: 1.5, damage: 1800
+Plant::initPlant: Attempting to play idle animation: cherrybomb_idle
+Plant::initPlant: Found animation in ResourceLoader cache
+Plant: Initialized plant type 3, health: 100
+GameScene: Plant preview shown
+GameScene: Selected plant type 3
+线程 0xa6d4 已退出，返回值为 0 (0x0)。
+线程 0x1b98 已退出，返回值为 0 (0x0)。
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 5
+GameScene: Grid clicked at row 3, col 2
+Plant: Initialized plant type 3, health: 100
+Plant::playAnimation: Attempting to play animation: cherrybomb_idle, loop: 1
+Plant::playAnimation: Found animation in ResourceLoader cache
+Plant::playAnimation: Playing animation in loop mode
+CherryBomb: Initialized with explosion delay: 1.5, damage: 1800
+Plant::initPlant: Attempting to play idle animation: cherrybomb_idle
+Plant::initPlant: Found animation in ResourceLoader cache
+Plant: Initialized plant type 3, health: 100
+GridSystem: Plant placed at row 3, col 2
+线程 0x6d68 已退出，返回值为 0 (0x0)。
+线程 0x5308 已退出，返回值为 0 (0x0)。
+PlantCard: Started cooldown for Cherry Bomb (50.0 seconds)
+GameScene: Plant placed at row 3, col 2
+GridSystem: Grid clicked at row 3, col 2
+线程 0x7268 已退出，返回值为 0 (0x0)。
+线程 0x71dc 已退出，返回值为 0 (0x0)。
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 6
+线程 0x2f34 已退出，返回值为 0 (0x0)。
+线程 0x7558 已退出，返回值为 0 (0x0)。
+GameManager: Removing dead or detached projectile
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 6
+CherryBomb: Exploding!
+Plant::playAnimation: Attempting to play animation: cherrybomb_explode, loop: 0
+Plant::playAnimation: Found animation in ResourceLoader cache
+Plant::playAnimation: Playing animation once
+cocos2d: fullPathForFilename: No file found at /__firePngData. Possible missing file.
+CherryBomb: Explosion damage 1800 applied in range 150
+Remove plant at 3 row 2 col
+GridSystem: Plant removed from row 3, col 2
+线程 0x5dc8 已退出，返回值为 0 (0x0)。
+线程 0x6c70 已退出，返回值为 0 (0x0)。
+GameManager: Removing dead or detached projectile
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 6
+线程 0x9728 已退出，返回值为 0 (0x0)。
+线程 0x3cc4 已退出，返回值为 0 (0x0)。
+线程 0x7b44 已退出，返回值为 0 (0x0)。
+线程 0x6258 已退出，返回值为 0 (0x0)。
+GameManager: Removing dead or detached projectile
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 6
+GameManager: Removing dead or detached projectile
+线程 0x9aa0 已退出，返回值为 0 (0x0)。
+线程 0x7094 已退出，返回值为 0 (0x0)。
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 6
+线程 0x5064 已退出，返回值为 0 (0x0)。
+线程 0x7528 已退出，返回值为 0 (0x0)。
+GameManager: Removing dead or detached projectile
+GameScene: Grid clicked at row 4, col 0
+GridSystem: Grid clicked at row 4, col 0
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 6
+线程 0x9ce8 已退出，返回值为 0 (0x0)。
+线程 0x51d8 已退出，返回值为 0 (0x0)。
+GameManager: Removing dead or detached projectile
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 6
+线程 0x99c4 已退出，返回值为 0 (0x0)。
+线程 0x8a8c 已退出，返回值为 0 (0x0)。
+GameManager: Removing dead or detached projectile
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 6
+Plant::initPlant: Attempting to play idle animation: sunflower_idle
+Plant::initPlant: Found animation in ResourceLoader cache
+Plant: Initialized plant type 0, health: 100
+Plant::initPlant: Attempting to play idle animation: sunflower_idle
+Plant::initPlant: Found animation in ResourceLoader cache
+Plant: Initialized plant type 0, health: 100
+GameScene: Plant preview shown
+GameScene: Selected plant type 0
+线程 0xa1fc 已退出，返回值为 0 (0x0)。
+线程 0x512c 已退出，返回值为 0 (0x0)。
+GameManager: Removing dead or detached projectile
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 6
+GameScene: Grid clicked at row 4, col 1
+Plant::initPlant: Attempting to play idle animation: sunflower_idle
+Plant::initPlant: Found animation in ResourceLoader cache
+Plant: Initialized plant type 0, health: 100
+Plant::initPlant: Attempting to play idle animation: sunflower_idle
+Plant::initPlant: Found animation in ResourceLoader cache
+Plant: Initialized plant type 0, health: 100
+GridSystem: Plant placed at row 4, col 1
+PlantCard: Started cooldown for Sunflower (7.5 seconds)
+GameScene: Plant placed at row 4, col 1
+GridSystem: Grid clicked at row 4, col 1
+线程 0x88e4 已退出，返回值为 0 (0x0)。
+线程 0x9598 已退出，返回值为 0 (0x0)。
+GameManager: Removing dead or detached projectile
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 6
+线程 0x4e00 已退出，返回值为 0 (0x0)。
+线程 0xa724 已退出，返回值为 0 (0x0)。
+GameManager: Removing dead or detached projectile
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 6
+线程 0xa094 已退出，返回值为 0 (0x0)。
+线程 0x5d60 已退出，返回值为 0 (0x0)。
+线程 0x64e8 已退出，返回值为 0 (0x0)。
+线程 0xad18 已退出，返回值为 0 (0x0)。
+GameManager: Removing dead or detached projectile
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 6
+线程 0x4350 已退出，返回值为 0 (0x0)。
+线程 0x5ff0 已退出，返回值为 0 (0x0)。
+线程 0x428c 已退出，返回值为 0 (0x0)。
+线程 0x9484 已退出，返回值为 0 (0x0)。
+GameManager: Removing dead or detached projectile
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 6
+线程 0x9358 已退出，返回值为 0 (0x0)。
+线程 0x60a0 已退出，返回值为 0 (0x0)。
+GameManager: Removing dead or detached projectile
+Projectile: Animation played via ResourceLoader
+GameManager: Projectile added, total: 6
+线程 0x4a5c 已退出，返回值为 0 (0x0)。
+线程 0x8448 已退出，返回值为 0 (0x0)。
+GameScene: Destructor called
+线程 0x95e0 已退出，返回值为 0 (0x0)。
+“PlantsVsZombiesMini.exe”(Win32): 已卸载“C:\Windows\SysWOW64\avrt.dll”
+线程 0x124c 已退出，返回值为 0 (0x0)。
+线程 0x6ae8 已退出，返回值为 0 (0x0)。
+线程 0x3298 已退出，返回值为 0 (0x0)。
+线程 0x5974 已退出，返回值为 0 (0x0)。
+线程 0x6048 已退出，返回值为 0 (0x0)。
+线程 0xa2a8 已退出，返回值为 0 (0x0)。
+线程 0x13e8 已退出，返回值为 0 (0x0)。
+线程 0x39d8 已退出，返回值为 0 (0x0)。
+线程 0x97e0 已退出，返回值为 0 (0x0)。
+线程 0x9288 已退出，返回值为 0 (0x0)。
+线程 0x4a34 已退出，返回值为 0 (0x0)。
+线程 0x210 已退出，返回值为 0 (0x0)。
+线程 0x6b2c 已退出，返回值为 0 (0x0)。
+线程 0x7020 已退出，返回值为 0 (0x0)。
+线程 0x8ae8 已退出，返回值为 0 (0x0)。
+线程 0x9428 已退出，返回值为 0 (0x0)。
+线程 0xaac 已退出，返回值为 0 (0x0)。
+线程 0x5b00 已退出，返回值为 0 (0x0)。
+线程 0x9bd0 已退出，返回值为 0 (0x0)。
+线程 0xa654 已退出，返回值为 0 (0x0)。
+线程 0xb94 已退出，返回值为 0 (0x0)。
+线程 0x7b08 已退出，返回值为 0 (0x0)。
+线程 0x13c8 已退出，返回值为 0 (0x0)。
+线程 0xaeec 已退出，返回值为 0 (0x0)。
+线程 0x91bc 已退出，返回值为 0 (0x0)。
+线程 0x8aa8 已退出，返回值为 0 (0x0)。
+线程 0x7950 已退出，返回值为 0 (0x0)。
+线程 0x7494 已退出，返回值为 0 (0x0)。
+线程 0x13fc 已退出，返回值为 0 (0x0)。
+程序“[30016] PlantsVsZombiesMini.exe”已退出，返回值为 0 (0x0)。
