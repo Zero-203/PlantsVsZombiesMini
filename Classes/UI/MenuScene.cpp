@@ -30,18 +30,13 @@ bool MenuScene::init()
 
     // 初始化UI
     initUI();
-/*
-    AudioManager::getInstance()->playSoundEffect(
-        ResourceLoader::getInstance()->getSoundEffectPath("sound_menu_bgm")
-    );
- */
-    
+
     // 播放背景音乐
     AudioManager::getInstance()->playBackgroundMusic(
         ResourceLoader::getInstance()->getBackgroundMusicPath("sound_menu_bgm"),
         true
     );
-   
+
     // 设置更新调度
     this->scheduleUpdate();
 
@@ -89,35 +84,40 @@ void MenuScene::initUI()
         this->addChild(_startButton, 1);
     }
 
+    /*
     // 3. 设置按钮 - 修改：添加背景和调整位置
     _settingsButton = Button::create();
 
     // 设置按钮背景（使用与开始按钮相同的背景资源）
-    std::string settingsNormal = ResourceLoader::getInstance()->getTexture("normal_button") ?
-        ResourceLoader::getInstance()->getTexture("normal_button")->getPath() :
-        "Images/UI/btn_test.png";
+    std::string settingsNormal = ResourceLoader::getInstance()->getTexture("start_button_normal") ?
+        ResourceLoader::getInstance()->getTexture("start_button_normal")->getPath() :
+        "Images/UI/start_btn_normal.png";
 
-    std::string settingsPressed = ResourceLoader::getInstance()->getTexture("normal_button") ?
-        ResourceLoader::getInstance()->getTexture("normal_button")->getPath() :
-        "Images/UI/btn_test.png";
+    std::string settingsPressed = ResourceLoader::getInstance()->getTexture("start_button_pressed") ?
+        ResourceLoader::getInstance()->getTexture("start_button_pressed")->getPath() :
+        "Images/UI/start_btn_pressed.png";
 
     // 尝试加载按钮背景图片
     if (FileUtils::getInstance()->isFileExist(settingsNormal)) {
         _settingsButton->loadTextures(settingsNormal, settingsPressed, "");
     }
 
+    // 设置按钮文本属性
+    _settingsButton->setTitleText("设置");
+    _settingsButton->setTitleFontName(ResourceLoader::getInstance()->getFontPath("font_main"));
+    _settingsButton->setTitleFontSize(24);  // 稍微减小字体大小
+    _settingsButton->setTitleColor(Color3B::BLACK);  // 改为黑色以在浅色背景上更明显
+
     // 调整按钮大小
-    _settingsButton->setContentSize(Size(20, 15));
+    _settingsButton->setContentSize(Size(150, 60));
 
     // 调整位置：放在开始按钮下方
-    _settingsButton->setPosition(Vec2(visibleSize.width * 24 / 32 + origin.x,
-        visibleSize.height * 0.15f + origin.y));
+    _settingsButton->setPosition(Vec2(visibleSize.width * 23 / 32 + origin.x,
+        visibleSize.height * 0.55f + origin.y));
 
     // 添加点击事件
     _settingsButton->addTouchEventListener(CC_CALLBACK_2(MenuScene::onSettingsButtonClicked, this));
     this->addChild(_settingsButton, 1);
-
-    //_settingsButton->setVisible(false);
 
     // 4. 退出按钮 - 修改：添加背景和调整位置
     _exitButton = Button::create();
@@ -127,15 +127,24 @@ void MenuScene::initUI()
         _exitButton->loadTextures(settingsNormal, settingsPressed, "");
     }
 
-    // 调整位置：放在开始按钮下方
-    _exitButton->setPosition(Vec2(visibleSize.width * 30 / 32 + origin.x,
-        visibleSize.height * 0.12f + origin.y));
+    // 设置退出按钮文本属性
+    _exitButton->setTitleText("退出游戏");
+    _exitButton->setTitleFontName(ResourceLoader::getInstance()->getFontPath("font_main"));
+    _exitButton->setTitleFontSize(24);
+    _exitButton->setTitleColor(Color3B::BLACK);  // 改为黑色以在浅色背景上更明显
+
+    // 调整按钮大小
+    _exitButton->setContentSize(Size(200, 60));
+
+    // 调整位置：放在设置按钮下方
+    _exitButton->setPosition(Vec2(visibleSize.width * 23 / 32 + origin.x,
+        visibleSize.height * 0.45f + origin.y));
 
     // 添加点击事件
     _exitButton->addTouchEventListener(CC_CALLBACK_2(MenuScene::onExitButtonClicked, this));
     this->addChild(_exitButton, 1);
+    */
    
-    //_exitButton->setVisible(false);
 }
 
 void MenuScene::onStartButtonClicked(Ref* sender, Widget::TouchEventType type)
@@ -167,21 +176,14 @@ void MenuScene::onSettingsButtonClicked(Ref* sender, Widget::TouchEventType type
     {
         // 播放按钮点击音效
         AudioManager::getInstance()->playSoundEffect(
-            ResourceLoader::getInstance()->getSoundEffectPath("sound_button_click")
+            ResourceLoader::getInstance()->getSoundEffectPath("sound_button_click")//""
         );
 
         // 播放按钮动画
         playButtonAnimation(static_cast<Button*>(sender));
 
-        /*
-        // 显示设置界面
-        if (_settingsLayer)
-        {
-            _settingsLayer->show();
-        }
-
-        log("Settings button clicked - 显示设置界面");
-        */
+        // TODO: 打开设置界面（在后续阶段实现）
+        log("Settings button clicked");
     }
 }
 

@@ -54,6 +54,20 @@ bool Zombie::initWithType(ZombieType type)
             _damage = 10;
             break;
 
+        case ZombieType::CONEHEAD:
+            _maxHealth = 280;
+            _health = _maxHealth;
+            _speed = 15.0f;
+            _damage = 10;
+            break;
+
+        case ZombieType::BUCKETHEAD:
+            _maxHealth = 580;
+            _health = _maxHealth;
+            _speed = 12.0f;
+            _damage = 15;
+            break;
+
         default:
             break;
     }
@@ -280,6 +294,10 @@ std::string Zombie::getWalkAnimationName() const
     {
         case ZombieType::NORMAL:
             return "zombie_normal_walk";
+        case ZombieType::CONEHEAD:
+            return "zombie_conehead_walk";
+        case ZombieType::BUCKETHEAD:
+            return "zombie_buckethead_walk";
         default:
             return "zombie_normal_walk";
     }
@@ -291,6 +309,10 @@ std::string Zombie::getAttackAnimationName() const
     {
         case ZombieType::NORMAL:
             return "zombie_normal_attack";
+        case ZombieType::CONEHEAD:
+            return "zombie_conehead_attack";
+        case ZombieType::BUCKETHEAD:
+            return "zombie_buckethead_attack";
         default:
             return "zombie_normal_attack";
     }
@@ -302,6 +324,10 @@ std::string Zombie::getDeathAnimationName() const
     {
         case ZombieType::NORMAL:
             return "zombie_normal_death";
+        case ZombieType::CONEHEAD:
+            return "zombie_conehead_death";
+        case ZombieType::BUCKETHEAD:
+            return "zombie_buckethead_death";
         default:
             return "zombie_normal_death";
     }

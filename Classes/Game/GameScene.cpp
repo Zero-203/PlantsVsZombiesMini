@@ -40,6 +40,7 @@ GameScene::~GameScene()
     }
 
     _plants.clear();
+    _plants.clear();
     _plantCards.clear();
     _plantPreview = nullptr;
     _pauseButton = nullptr;
@@ -110,9 +111,9 @@ bool GameScene::init()
     resourceLoader = ResourceLoader::getInstance();
     if (resourceLoader)
     {
-        log("GameScene: Preloading game resources...");
+        CCLOG("GameScene: Preloading game resources...");
         resourceLoader->preloadResources(ResourceLoader::LoadingPhase::GAME_RESOURCES);
-        log("GameScene: Game resources preloaded");
+        CCLOG("GameScene: Game resources preloaded");
 
         // 检查关键动画是否加载成功
         if (resourceLoader->getCachedAnimation("sunflower_idle")) {
@@ -159,11 +160,12 @@ bool GameScene::init()
         updateSunDisplay();
     }
 
-    // 播放背景音乐
-    AudioManager::getInstance()->playBackgroundMusic(
-        ResourceLoader::getInstance()->getBackgroundMusicPath("sound_game_bgm"),
-        true
-    );
+    // 播放游戏背景音乐
+    auto audioManager = AudioManager::getInstance();
+    if (audioManager)
+    {
+        audioManager->playBackgroundMusic("Sounds/BGM/game_bgm.mp3", true);
+    }
 
     // 设置更新调度
     this->scheduleUpdate();
@@ -177,7 +179,7 @@ bool GameScene::init()
     log("1. ResourceLoader: %s", resourceLoader ? "OK" : "NULL");
     log("2. GameManager: %s", gameManager ? "OK" : "NULL");
     log("3. WaveManager: %s", _waveManager ? "OK" : "NULL");
-    //log("4. AudioManager: %s", _audioManager ? "OK" : "NULL");
+    log("4. AudioManager: %s", audioManager ? "OK" : "NULL");
     log("======================================");
 
     return true;
@@ -318,35 +320,25 @@ void GameScene::update(float delta)
     // 更新植物預覽位置
     if (_hasSelectedPlant && _plantPreview)
     {
-        auto touchPos = Director::getInstance()->getVisibleSize() / 2; // 临时位置
+        auto touchPos = Director::getInstance()->getVisibleSize() / 2;
         updatePlantPreviewPosition(touchPos);
     }
 
-    // 更新植物行为 - 使用安全的迭代器
-    auto it = _plants.begin(); int i = 0;
-    while (it != _plants.end())
+    // 更新植物行為
+    for (auto it = _plants.begin(); it != _plants.end();)
     {
-        if (!*it) {
-            it = _plants.erase(it);
-            continue;
-        }
-            
-        Plant* plant = *it; i++;
-        //log("Plants: %d Check plant %s at %d row %d col",i, (*it)->getName(),(*it)->getRow(), (*it)->getRow());
-        if (plant && plant->isAlive())  // 检查植物是否仍然在场景中
+        Plant* plant = *it;
+        if (plant && plant->getParent())
         {
-            plant->update(delta);
+            if (plant->isAlive())
+            {
+                plant->update(delta);
+            }
             ++it;
         }
         else
         {
-            // 植物已被移除，从列表中删除
-            log("Remove plant at %d row %d col", (*it)->getRow(), (*it)->getCol());
-            auto gridsystem = GridSystem::getInstance();
-            gridsystem->removePlant((*it)->getRow(), (*it)->getCol());
-            plant->removeFromParent();
             it = _plants.erase(it);
-
         }
     }
 
@@ -526,15 +518,14 @@ void GameScene::initPlantCards()
     std::vector<PlantType> plantTypes = {
         PlantType::SUNFLOWER,
         PlantType::PEASHOOTER,
-        PlantType::WALLNUT,
-        PlantType::CHERRY_BOMB
+        PlantType::WALLNUT
     };
 
     // 创建植物卡牌
      // 计算起始位置：阳光数量标签的右侧
-    float startX = _sunLabel->getPosition().x + _sunLabel->getContentSize().width + 50;
+    float startX = _sunLabel->getPosition().x + _sunLabel->getContentSize().width + 60;
     float cardY = _sunLabel->getPosition().y + 30;
-    float cardSpacing = 60; // 卡牌间距
+    float cardSpacing = 80; // 卡牌间距
 
     for (size_t i = 0; i < plantTypes.size(); i++)
     {
@@ -746,9 +737,11 @@ void GameScene::placePlant(PlantType plantType, int row, int col)
     _plants.push_back(plant);
 
     // 播放种植音效
-    AudioManager::getInstance()->playSoundEffect(
-        ResourceLoader::getInstance()->getSoundEffectPath("sound_plant_planted")
-    );
+    auto audioManager = AudioManager::getInstance();
+    if (audioManager)
+    {
+        audioManager->playSoundEffect("Sounds/SFX/plant_planted.ogg");
+    }
 
     // 更新阳光显示
     updateSunDisplay();

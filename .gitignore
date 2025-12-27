@@ -13,5 +13,4 @@
 *.ilk
  .vs/ 
 /proj.win32/Debug.win32
-/proj.win32/.vs
-/cocos2d/cocos/2d/Debug.win32
+/proj.win32/.vs 

@@ -1,7 +1,6 @@
 #include "Peashooter.h"
 #include "./Game/GameManager.h"
 #include "./Resources/AudioManager.h"
-#include "./Resources/ResourceLoader.h"
 
 USING_NS_CC;
 
@@ -30,9 +29,11 @@ void Peashooter::attack(float delta)
 void Peashooter::shootPea()
 {
     // 播放射击音效
-    AudioManager::getInstance()->playSoundEffect(
-        ResourceLoader::getInstance()->getSoundEffectPath("sound_shoot")
-    );
+    auto audioManager = AudioManager::getInstance();
+    if (audioManager)
+    {
+        audioManager->playSoundEffect("Sounds/SFX/shoot.ogg");
+    }
 
     // 创建豌豆子弹
     auto pea = Projectile::create();

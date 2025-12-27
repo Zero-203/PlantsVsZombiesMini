@@ -54,7 +54,6 @@ void ResourceLoader::loadResourceConfig()
     _resourcePaths["menu_background"] = "Images/Backgrounds/menu_bg.png";
     _resourcePaths["start_button_normal"] = "Images/UI/start_btn_normal.png";
     _resourcePaths["start_button_pressed"] = "Images/UI/start_btn_pressed.png";
-    _resourcePaths["normal_button"] = "Images/UI/btn_test.png";
 
     _resourcePaths["menu_logo"] = "Images/UI/menu_logo.png";
 
@@ -67,19 +66,13 @@ void ResourceLoader::loadResourceConfig()
     _resourcePaths["font_main"] = "Fonts/Marker Felt.ttf";
     _resourcePaths["font_score"] = "Fonts/arial.ttf";
 
-    //BGM
-    _resourcePaths["sound_menu_bgm"] = "Sounds/BGM/menu_bgm.mp3";
-    _resourcePaths["sound_game_bgm"] = "Sounds/BGM/game_bgm.mp3";
-
     // “Ù–ß
     _resourcePaths["sound_button_click"] = "Sounds/SFX/button_click.mp3";
-    _resourcePaths["sound_shoot"] = "Sounds/SFX/shoot.mp3";
-    _resourcePaths["sound_explosion"] = "Sounds/SFX/explosion.mp3";
+    _resourcePaths["sound_menu_bgm"] = "Sounds/BGM/menu_bgm.mp3";
+    _resourcePaths["sound_shoot"] = "Sounds/SFX/shoot.ogg";
     _resourcePaths["sound_sun_produced"] = "Sounds/SFX/sun_produced.mp3";
     _resourcePaths["sound_sun_collected"] = "Sounds/SFX/sun_collected.mp3";
-    _resourcePaths["sound_plant_planted"] = "Sounds/SFX/plant_planted.mp3";
-    _resourcePaths["sound_cherrybomb"] = "Sounds/SFX/cherrybomb.mp3";
-    
+    _resourcePaths["sound_plant_planted"] = "Sounds/SFX/plant_planted.ogg";
 
     // ¥¥Ω®±ÿ“™µƒƒø¬º
     auto fileUtils = FileUtils::getInstance();
@@ -251,30 +244,6 @@ void ResourceLoader::loadSimpleAnimationConfig()
     };
     loadAnimationFrames("sun_collect", sunCollectFrames, 0.1f);
 
-    // ”£Ã“’®µØø’œ–∂Øª≠
-    std::vector<std::string> cherryBombIdleFrames = {
-        "Images/Plants/CherryBomb/cherrybomb_idle_01.png",
-        "Images/Plants/CherryBomb/cherrybomb_idle_02.png",
-        "Images/Plants/CherryBomb/cherrybomb_idle_03.png",
-        "Images/Plants/CherryBomb/cherrybomb_idle_04.png",
-        "Images/Plants/CherryBomb/cherrybomb_idle_05.png",
-        "Images/Plants/CherryBomb/cherrybomb_idle_06.png"
-    };
-    loadAnimationFrames("cherrybomb_idle", cherryBombIdleFrames, 0.15f);
-
-    // ”£Ã“’®µØ±¨’®∂Øª≠
-    std::vector<std::string> cherryBombExplodeFrames = {
-        "Images/Plants/CherryBomb/cherrybomb_explode_01.png",
-        "Images/Plants/CherryBomb/cherrybomb_explode_02.png",
-        "Images/Plants/CherryBomb/cherrybomb_explode_03.png",
-        "Images/Plants/CherryBomb/cherrybomb_explode_04.png",
-        "Images/Plants/CherryBomb/cherrybomb_explode_05.png",
-        "Images/Plants/CherryBomb/cherrybomb_explode_06.png",
-        "Images/Plants/CherryBomb/cherrybomb_explode_07.png",
-        "Images/Plants/CherryBomb/cherrybomb_explode_08.png"
-    };
-    loadAnimationFrames("cherrybomb_explode", cherryBombExplodeFrames, 0.07f);
-
     log("Simple animation config loaded with %d animations", (int)_animations.size());
 }
 
@@ -304,14 +273,9 @@ void ResourceLoader::preloadResources(LoadingPhase phase)
             // º”‘ÿ“Ù–ß
             std::vector<std::string> sounds = {
                 "sound_button_click",
-            };
-            loadSoundEffects(sounds);
-
-            // º”‘ÿ±≥æ∞“Ù¿÷
-            std::vector<std::string> bgm = {
                 "sound_menu_bgm"
             };
-            loadBackgroundMusic(bgm);
+            loadSoundEffects(sounds);
 
             _isMenuResourcesLoaded = true;
         }
@@ -323,25 +287,18 @@ void ResourceLoader::preloadResources(LoadingPhase phase)
             // º”‘ÿ”Œœ∑Õº∆¨
             std::vector<std::string> gameImages = {
                 "game_background",
-                "card_bar_bg"
+                "grid_cell"
             };
             loadImages(gameImages);
 
             // º”‘ÿ”Œœ∑“Ù–ß
             std::vector<std::string> gameSounds = {
                 "sound_shoot",
-                "sound_explosion",
                 "sound_sun_produced",
                 "sound_sun_collected",
                 "sound_plant_planted"
             };
             loadSoundEffects(gameSounds);
-
-            // º”‘ÿ”Œœ∑BGM       
-            std::vector<std::string> gameBgm = {
-                "sound_game_bgm"
-            };
-            loadBackgroundMusic(gameBgm);
 
             _isGameResourcesLoaded = true;
         }
@@ -717,21 +674,138 @@ void ResourceLoader::preloadZombieResources()
         "Images/Zombies/Normal/walk_01.png",
         "Images/Zombies/Normal/walk_02.png",
         "Images/Zombies/Normal/walk_03.png",
-        "Images/Zombies/Normal/walk_04.png"
+        "Images/Zombies/Normal/walk_04.png",
+        "Images/Zombies/Normal/walk_05.png",
+        "Images/Zombies/Normal/walk_06.png",
+        "Images/Zombies/Normal/walk_07.png",
+        "Images/Zombies/Normal/walk_08.png",
+        "Images/Zombies/Normal/walk_09.png",
+        "Images/Zombies/Normal/walk_10.png",
+        "Images/Zombies/Normal/walk_11.png",
+        "Images/Zombies/Normal/walk_12.png",
+        "Images/Zombies/Normal/walk_13.png",
+        "Images/Zombies/Normal/walk_14.png",
+        "Images/Zombies/Normal/walk_15.png",
+        "Images/Zombies/Normal/walk_16.png",
+        "Images/Zombies/Normal/walk_17.png",
+        "Images/Zombies/Normal/walk_18.png"
     };
     loadAnimationFrames("zombie_normal_walk", zombieWalkFrames, 0.2f);
 
     // ‘§º”‘ÿ∆’Õ®Ω© ¨π•ª˜∂Øª≠
     std::vector<std::string> zombieAttackFrames = {
         "Images/Zombies/Normal/attack_01.png",
-        "Images/Zombies/Normal/attack_02.png"
+        "Images/Zombies/Normal/attack_02.png",
+        "Images/Zombies/Normal/attack_03.png",
+        "Images/Zombies/Normal/attack_04.png",
+        "Images/Zombies/Normal/attack_05.png",
+        "Images/Zombies/Normal/attack_06.png",
+        "Images/Zombies/Normal/attack_07.png",
+        "Images/Zombies/Normal/attack_08.png",
+        "Images/Zombies/Normal/attack_09.png",
+        "Images/Zombies/Normal/attack_10.png",
+        "Images/Zombies/Normal/attack_11.png",
+        "Images/Zombies/Normal/attack_12.png",
+        "Images/Zombies/Normal/attack_13.png",
+        "Images/Zombies/Normal/attack_14.png",
+        "Images/Zombies/Normal/attack_15.png",
+        "Images/Zombies/Normal/attack_16.png",
+        "Images/Zombies/Normal/attack_17.png",
+        "Images/Zombies/Normal/attack_18.png",
+        "Images/Zombies/Normal/attack_19.png",
+        "Images/Zombies/Normal/attack_20.png",
+        "Images/Zombies/Normal/attack_21.png"
     };
     loadAnimationFrames("zombie_normal_attack", zombieAttackFrames, 0.3f);
 
     // ‘§º”‘ÿ∆’Õ®Ω© ¨À¿Õˆ∂Øª≠
     std::vector<std::string> zombieDeathFrames = {
         "Images/Zombies/Normal/death_01.png",
-        "Images/Zombies/Normal/death_02.png"
+        "Images/Zombies/Normal/death_02.png",
+        "Images/Zombies/Normal/death_03.png",
+        "Images/Zombies/Normal/death_04.png",
+        "Images/Zombies/Normal/death_05.png",
+        "Images/Zombies/Normal/death_06.png",
+        "Images/Zombies/Normal/death_07.png",
+        "Images/Zombies/Normal/death_08.png",
+        "Images/Zombies/Normal/death_09.png",
+        "Images/Zombies/Normal/death_10.png"
     };
     loadAnimationFrames("zombie_normal_death", zombieDeathFrames, 0.5f);
+
+    // ‘§º”‘ÿ¬∑’œΩ© ¨∂Øª≠£®–Ë“™ƒ„µƒÕº∆¨◊ ‘¥£©
+    std::vector<std::string> coneheadWalkFrames = {
+        "Images/Zombies/Conehead/walk_01.png",
+        "Images/Zombies/Conehead/walk_02.png",
+        "Images/Zombies/Conehead/walk_03.png",
+        "Images/Zombies/Conehead/walk_04.png",
+        "Images/Zombies/Conehead/walk_05.png",
+        "Images/Zombies/Conehead/walk_06.png",
+        "Images/Zombies/Conehead/walk_07.png",
+        "Images/Zombies/Conehead/walk_08.png",
+        "Images/Zombies/Conehead/walk_09.png",
+        "Images/Zombies/Conehead/walk_10.png",
+        "Images/Zombies/Conehead/walk_11.png",
+        "Images/Zombies/Conehead/walk_12.png",
+        "Images/Zombies/Conehead/walk_13.png",
+        "Images/Zombies/Conehead/walk_14.png",
+        "Images/Zombies/Conehead/walk_15.png",
+        "Images/Zombies/Conehead/walk_16.png",
+        "Images/Zombies/Conehead/walk_17.png",
+        "Images/Zombies/Conehead/walk_18.png",
+        "Images/Zombies/Conehead/walk_19.png",
+        "Images/Zombies/Conehead/walk_20.png",
+        "Images/Zombies/Conehead/walk_21.png"
+    };
+    loadAnimationFrames("zombie_conehead_walk", coneheadWalkFrames, 0.2f);
+
+    std::vector<std::string> coneheadAttackFrames = {
+        "Images/Zombies/Conehead/attack_01.png",
+        "Images/Zombies/Conehead/attack_02.png",
+        "Images/Zombies/Conehead/attack_03.png",
+        "Images/Zombies/Conehead/attack_04.png",
+        "Images/Zombies/Conehead/attack_05.png",
+        "Images/Zombies/Conehead/attack_06.png",
+        "Images/Zombies/Conehead/attack_07.png",
+        "Images/Zombies/Conehead/attack_08.png",
+        "Images/Zombies/Conehead/attack_09.png",
+        "Images/Zombies/Conehead/attack_10.png",
+        "Images/Zombies/Conehead/attack_11.png"
+    };
+    loadAnimationFrames("zombie_conehead_attack", coneheadAttackFrames, 0.3f);
+
+    // ‘§º”‘ÿÃ˙Õ∞Ω© ¨∂Øª≠£®–Ë“™ƒ„µƒÕº∆¨◊ ‘¥£©
+    std::vector<std::string> bucketheadWalkFrames = {
+        "Images/Zombies/Buckethead/walk_01.png",
+        "Images/Zombies/Buckethead/walk_02.png",
+        "Images/Zombies/Buckethead/walk_03.png",
+        "Images/Zombies/Buckethead/walk_04.png",
+        "Images/Zombies/Buckethead/walk_05.png",
+        "Images/Zombies/Buckethead/walk_06.png",
+        "Images/Zombies/Buckethead/walk_07.png",
+        "Images/Zombies/Buckethead/walk_08.png",
+        "Images/Zombies/Buckethead/walk_09.png",
+        "Images/Zombies/Buckethead/walk_10.png",
+        "Images/Zombies/Buckethead/walk_11.png",
+        "Images/Zombies/Buckethead/walk_12.png",
+        "Images/Zombies/Buckethead/walk_13.png",
+        "Images/Zombies/Buckethead/walk_14.png",
+        "Images/Zombies/Buckethead/walk_15.png"
+    };
+    loadAnimationFrames("zombie_buckethead_walk", bucketheadWalkFrames, 0.2f);
+
+    std::vector<std::string> bucketheadAttackFrames = {
+        "Images/Zombies/Buckethead/attack_01.png",
+        "Images/Zombies/Buckethead/attack_02.png",
+        "Images/Zombies/Buckethead/attack_03.png",
+        "Images/Zombies/Buckethead/attack_04.png",
+        "Images/Zombies/Buckethead/attack_05.png",
+        "Images/Zombies/Buckethead/attack_06.png",
+        "Images/Zombies/Buckethead/attack_07.png",
+        "Images/Zombies/Buckethead/attack_08.png",
+        "Images/Zombies/Buckethead/attack_09.png",
+        "Images/Zombies/Buckethead/attack_10.png",
+        "Images/Zombies/Buckethead/attack_11.png"
+    };
+    loadAnimationFrames("zombie_buckethead_attack", bucketheadAttackFrames, 0.3f);
 }
