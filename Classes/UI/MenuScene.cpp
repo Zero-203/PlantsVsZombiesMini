@@ -78,37 +78,72 @@ void MenuScene::initUI()
     if (_startButton)
     {
         _startButton->setPosition(Vec2(visibleSize.width * 23 / 32 + origin.x, visibleSize.height * 0.75f + origin.y));
-        _startButton->setTitleText("开始游戏");
-        _startButton->setTitleFontName(ResourceLoader::getInstance()->getFontPath("font_main"));
-        _startButton->setTitleFontSize(36);
-        _startButton->setTitleColor(Color3B::BLACK);
         _startButton->setScale(1.2f);
-
         // 添加点击事件
         _startButton->addTouchEventListener(CC_CALLBACK_2(MenuScene::onStartButtonClicked, this));
-
         this->addChild(_startButton, 1);
     }
 
-    // 3. 设置按钮
+    /*
+    // 3. 设置按钮 - 修改：添加背景和调整位置
     _settingsButton = Button::create();
+
+    // 设置按钮背景（使用与开始按钮相同的背景资源）
+    std::string settingsNormal = ResourceLoader::getInstance()->getTexture("start_button_normal") ?
+        ResourceLoader::getInstance()->getTexture("start_button_normal")->getPath() :
+        "Images/UI/start_btn_normal.png";
+
+    std::string settingsPressed = ResourceLoader::getInstance()->getTexture("start_button_pressed") ?
+        ResourceLoader::getInstance()->getTexture("start_button_pressed")->getPath() :
+        "Images/UI/start_btn_pressed.png";
+
+    // 尝试加载按钮背景图片
+    if (FileUtils::getInstance()->isFileExist(settingsNormal)) {
+        _settingsButton->loadTextures(settingsNormal, settingsPressed, "");
+    }
+
+    // 设置按钮文本属性
     _settingsButton->setTitleText("设置");
     _settingsButton->setTitleFontName(ResourceLoader::getInstance()->getFontPath("font_main"));
-    _settingsButton->setTitleFontSize(28);
-    _settingsButton->setTitleColor(Color3B::WHITE);
-    _settingsButton->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height * 0.35f + origin.y));
-    _settingsButton->addTouchEventListener(CC_CALLBACK_2(MenuScene::onSettingsButtonClicked, this));
-    this->addChild(_settingsButton, 2);
+    _settingsButton->setTitleFontSize(24);  // 稍微减小字体大小
+    _settingsButton->setTitleColor(Color3B::BLACK);  // 改为黑色以在浅色背景上更明显
 
-    // 4. 退出按钮
+    // 调整按钮大小
+    _settingsButton->setContentSize(Size(150, 60));
+
+    // 调整位置：放在开始按钮下方
+    _settingsButton->setPosition(Vec2(visibleSize.width * 23 / 32 + origin.x,
+        visibleSize.height * 0.55f + origin.y));
+
+    // 添加点击事件
+    _settingsButton->addTouchEventListener(CC_CALLBACK_2(MenuScene::onSettingsButtonClicked, this));
+    this->addChild(_settingsButton, 1);
+
+    // 4. 退出按钮 - 修改：添加背景和调整位置
     _exitButton = Button::create();
+
+    // 设置退出按钮背景
+    if (FileUtils::getInstance()->isFileExist(settingsNormal)) {
+        _exitButton->loadTextures(settingsNormal, settingsPressed, "");
+    }
+
+    // 设置退出按钮文本属性
     _exitButton->setTitleText("退出游戏");
     _exitButton->setTitleFontName(ResourceLoader::getInstance()->getFontPath("font_main"));
-    _exitButton->setTitleFontSize(28);
-    _exitButton->setTitleColor(Color3B::WHITE);
-    _exitButton->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height * 0.28f + origin.y));
+    _exitButton->setTitleFontSize(24);
+    _exitButton->setTitleColor(Color3B::BLACK);  // 改为黑色以在浅色背景上更明显
+
+    // 调整按钮大小
+    _exitButton->setContentSize(Size(200, 60));
+
+    // 调整位置：放在设置按钮下方
+    _exitButton->setPosition(Vec2(visibleSize.width * 23 / 32 + origin.x,
+        visibleSize.height * 0.45f + origin.y));
+
+    // 添加点击事件
     _exitButton->addTouchEventListener(CC_CALLBACK_2(MenuScene::onExitButtonClicked, this));
-    this->addChild(_exitButton, 2);
+    this->addChild(_exitButton, 1);
+    */
    
 }
 

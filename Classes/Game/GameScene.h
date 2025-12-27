@@ -39,6 +39,9 @@ private:
     // 游戏元素
     std::vector<Plant*> _plants;
 
+    // 卡牌栏背景
+    cocos2d::Sprite* _cardBarBackground;   
+
     // 初始化方法
     void initUI();
     void initGrid();
