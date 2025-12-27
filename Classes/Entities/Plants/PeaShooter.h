@@ -13,6 +13,7 @@ public:
 
     // ¹¥»÷·½·¨
     virtual void attack(float delta) override;
+    virtual void onDead() override;
 
 private:
     void shootPea();

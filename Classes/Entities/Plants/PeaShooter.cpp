@@ -66,3 +66,7 @@ void Peashooter::shootPea()
         }
     }
 }
+
+void Peashooter::onDead() {
+    this->_state = PlantState::DEAD;
+}

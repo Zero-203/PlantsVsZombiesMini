@@ -50,6 +50,11 @@ void Sunflower::produceSun()
     createSun();
 }
 
+void Sunflower::onDead()
+{
+    this->_state = PlantState::DEAD;
+}
+
 void Sunflower::createSun()
 {
     log("Sunflower: Producing sun!");

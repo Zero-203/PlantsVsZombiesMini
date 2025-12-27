@@ -37,6 +37,8 @@ public:
     void setupFallbackAnimation();
     virtual void update(float delta) override;
 
+    bool hasZombieInAttackRange();
+
     // ≥ı ºªØ÷≤ŒÔ
     bool initPlant(PlantType type, int sunCost, float cooldown, int health);
 

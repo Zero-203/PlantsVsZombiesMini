@@ -5,6 +5,7 @@
 #include "./Resources/ResourceLoader.h"
 #include <cocos2d.h>
 #include "Game/WaveManager.h"
+#include "Game/GridSystem.h"
 USING_NS_CC;
 
 Zombie::Zombie()
@@ -132,6 +133,7 @@ void Zombie::update(float delta)
     // 检查碰撞
     checkCollisions();
 
+    _targetPlant = this->findPlantInFront();
     // 如果有目标植物，则攻击
     if (_targetPlant && _targetPlant->isAlive())
     {
@@ -375,10 +377,6 @@ void Zombie::updateMovement(float delta)
 
 void Zombie::checkCollisions()
 {
-    // 检查与植物的碰撞
-    auto gameManager = GameManager::getInstance();
-    if (!gameManager) return;
-
     // 这里需要根据实际网格系统实现碰撞检测
     // 暂时使用简单的距离检测
 
@@ -391,32 +389,36 @@ void Zombie::checkCollisions()
 
 Plant* Zombie::findPlantInFront()
 {
-    // 实际实现需要与GridSystem交互
-    // 这里提供一个框架
-
-    /*
     auto gridSystem = GridSystem::getInstance();
     if (!gridSystem) return nullptr;
 
-    // 获取当前僵尸所在的行
-    int currentCol = 0;
-    // 需要将世界坐标转换为网格坐标
+    // 获取僵尸当前位置对应的网格
+    int col, row;
+    Vec2 worldPos = this->getPosition();
 
-    // 检查前方格子是否有植物
-    for (int col = currentCol; col >= 0; col--)
-    {
-        Plant* plant = gridSystem->getPlantAt(_row, col);
-        if (plant && plant->isAlive())
-        {
-            // 检查距离
-            float distance = abs(this->getPositionX() - plant->getPositionX());
-            if (distance < 50) // 攻击范围
-            {
+    // 尝试将世界坐标转换为网格坐标
+    if (gridSystem->worldToGrid(worldPos, row, col)) {
+        // 检查当前格子是否有植物
+        Plant* plant = gridSystem->getPlantAt(row, col);
+        if (plant && plant->isAlive()) {
+            float distance = std::abs(this->getPositionX() - plant->getPositionX());
+            if (distance < 50) { // 攻击范围
                 return plant;
             }
         }
+
+        // 检查前方格子（左侧）
+        if (col > 0) {
+            plant = gridSystem->getPlantAt(row, col - 1);
+            if (plant && plant->isAlive()) {
+                float distance = std::abs(this->getPositionX() - plant->getPositionX());
+                if (distance < 100) { // 稍大的检测范围
+                    return plant;
+                }
+            }
+        }
     }
-    */
+
 
     return nullptr;
 }

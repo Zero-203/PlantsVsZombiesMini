@@ -12,6 +12,7 @@ public:
 
     // 生产阳光方法
     virtual void produceSun() override;
+    virtual void onDead() override;
 
 private:
     void createSun();

@@ -1,6 +1,7 @@
 #include "Projectile.h"
 #include "./Resources/ResourceLoader.h"
 #include "./Entities/Zombie/Zombie.h"
+#include <Game/WaveManager.h>
 
 //#include "./Utils/AnimationHelper.h"
 
@@ -42,8 +43,8 @@ bool Projectile::init()
     return true;
 }
 
-bool Projectile::initProjectile(ProjectileType type, int damage, float speed)
-{
+bool Projectile::initProjectile(ProjectileType type, int damage, float speed,
+    DamageType damageType) {
     _type = type;
     _damage = damage;
     _speed = speed;
@@ -85,15 +86,77 @@ void Projectile::update(float delta)
     {
     case ProjectileState::FLYING:
         fly(delta);
+        checkZombieCollisions();
         break;
 
     case ProjectileState::HIT:
         // 短暂延迟后销毁
         this->scheduleOnce([this](float dt) {
             destroy();
-            }, 0.1f, "delayed_destroy");
+            }, 0.05f, "delayed_destroy");
         break;
 
+    default:
+        break;
+    }
+}
+
+void Projectile::checkZombieCollisions() {
+    if (_state != ProjectileState::FLYING) {
+        return;
+    }
+
+    auto waveManager = WaveManager::getInstance();
+    if (!waveManager) return;
+
+    const auto& zombies = waveManager->getActiveZombies();
+    Rect projectileRect = this->getBoundingBox();
+
+    bool hitSomething = false;
+
+    for (auto zombie : zombies) {
+        if (!zombie || !zombie->isAlive()) continue;
+
+        Rect zombieRect = zombie->getBoundingBox();
+
+        if (projectileRect.intersectsRect(zombieRect)) {
+            hitSomething = true;
+
+            // 对僵尸造成伤害
+            applyDamageToZombie(zombie);
+
+            // 如果是单体伤害子弹，只攻击一个目标
+            if (_damageType == DamageType::SINGLE_TARGET) {
+                hitTarget();
+                break;
+            }
+        }
+    }
+
+    // 如果是范围伤害，击中一个目标后继续飞行直到消失或超时
+    if (hitSomething && _damageType == DamageType::AREA_OF_EFFECT) {
+        // 范围伤害击中后可以继续飞行（可选）
+        // 或者直接销毁
+        // destroy();
+    }
+}
+
+void Projectile::applyDamageToZombie(Zombie* zombie) {
+    if (!zombie || !zombie->isAlive()) return;
+
+    // 基础伤害
+    zombie->takeDamage(_damage);
+
+    // 根据子弹类型添加特效
+    switch (_type) {
+    case ProjectileType::SNOW_PEA:
+        zombie->freeze(3.0f);  // 冰冻3秒
+        break;
+    case ProjectileType::FIRE_PEA:
+        // 火焰持续伤害效果
+        zombie->setColor(Color3B::RED);
+        // 可以添加火焰特效标记
+        break;
     default:
         break;
     }
@@ -167,6 +230,35 @@ void Projectile::setLaunchParams(const cocos2d::Vec2& startPos, const cocos2d::V
     }
 }
 
+void Projectile::applySplashDamage(const Vec2& center) {
+    auto waveManager = WaveManager::getInstance();
+    if (!waveManager) return;
+
+    const auto& zombies = waveManager->getActiveZombies();
+
+    for (auto zombie : zombies) {
+        if (!zombie || !zombie->isAlive()) continue;
+
+        Vec2 zombiePos = zombie->getPosition();
+        float distance = center.distance(zombiePos);
+
+        if (distance <= _splashRadius) {
+            // 根据距离计算伤害衰减
+            float falloff = 1.0f - (distance / _splashRadius) * _damageFalloff;
+            int splashDamage = _damage * falloff;
+
+            if (splashDamage > 0) {
+                zombie->takeDamage(splashDamage);
+
+                // 如果是冰冻或火焰子弹，添加特效
+                if (_type == ProjectileType::SNOW_PEA) {
+                    zombie->freeze(2.0f * falloff);
+                }
+            }
+        }
+    }
+}
+
 void Projectile::fly(float delta)
 {
     // 更新位置
@@ -213,6 +305,7 @@ void Projectile::hitTarget()
 
 void Projectile::destroy()
 {
+    this->setVisible(false);
     if (_state == ProjectileState::DEAD)
     {
         return;
@@ -320,7 +413,7 @@ void Projectile::addHitEffect()
 
 void Projectile::explode()
 {
-    // 空实现，因为我们当前不需要爆炸功能
+    // 空实现，保留以备后用
 }
 
 void Projectile::setupAnimations()

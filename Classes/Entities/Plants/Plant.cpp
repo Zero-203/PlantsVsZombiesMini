@@ -1,6 +1,8 @@
 // Plant.cpp - 完整文件
 #include "Plant.h"
+#include "Entities/Zombie/Zombie.h"
 #include "./Resources/ResourceLoader.h"
+#include "./Game/WaveManager.h"
 
 USING_NS_CC;
 
@@ -73,7 +75,7 @@ bool Plant::initPlant(PlantType type, int sunCost, float cooldown, int health)
 
     case PlantType::PEASHOOTER:
         _canAttack = true;
-        _attackRange = 500.0f;
+        _attackRange = 800.0f;
         _attackSpeed = 1.5f;
         _attackDamage = 20;
         _idleAnimationName = "peashooter_idle";
@@ -208,8 +210,11 @@ void Plant::update(float delta)
             _attackTimer += delta;
             if (_attackTimer >= 1.0f / _attackSpeed)
             {
-                _attackTimer = 0.0f;
-                attack(delta);
+                if (Plant::hasZombieInAttackRange()) {
+                    _attackTimer = 0.0f;
+                    attack(delta);
+                }
+               
             }
         }
 
@@ -248,6 +253,32 @@ void Plant::update(float delta)
     }
 }
 
+bool Plant::hasZombieInAttackRange() {
+    if (!_canAttack) return false;
+
+    auto waveManager = WaveManager::getInstance();
+    if (!waveManager) return false;
+
+    // 获取同一行的僵尸
+    auto zombiesInRow = waveManager->getZombiesInRow(_row);
+
+    Vec2 plantPos = this->getPosition();
+
+    for (auto zombie : zombiesInRow) {
+        if (!zombie || !zombie->isAlive()) continue;
+
+        Vec2 zombiePos = zombie->getPosition();
+        float distance = std::abs(plantPos.x - zombiePos.x);
+
+        // 检查僵尸是否在攻击范围内（前方）
+        if (zombiePos.x > plantPos.x && distance <= _attackRange) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 void Plant::setGridPosition(int row, int col)
 {
     _row = row;
@@ -280,6 +311,7 @@ void Plant::takeDamage(int damage)
 
     if (_health <= 0)
     {
+        _state = PlantState::DYING;
         die();
     }
     else
@@ -308,6 +340,9 @@ void Plant::die()
     // 停止所有动画
     stopCurrentAnimation();
     this->stopAllActions();
+
+    //停止更新
+    this->unscheduleUpdate();
 
     // 播放死亡动画
     if (!_dyingAnimationName.empty())
@@ -429,7 +464,7 @@ void Plant::stopCurrentAnimation()
 
 void Plant::onDyingComplete()
 {
-    this->removeFromParent();
+    //this->removeFromParent();
     _state = PlantState::DEAD;
     onDead();
 }

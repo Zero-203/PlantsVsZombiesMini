@@ -79,7 +79,9 @@ public:
     void clearAllZombies();
 
     // ĞŞ¸Ä”µ“şîĞÍ
-    //std::vector<Zombie*> _activeZombies;
+    const std::vector<Zombie*>& getActiveZombies() const { return _activeZombies; }
+
+    std::vector<Zombie*> getZombiesInRow(int row) const;
 
 private:
     WaveManager();
