@@ -101,10 +101,13 @@ void ZombieConeHead::takeDamage(int damage)
 
             this->setColor(Color3B::WHITE); // 变成普通僵尸颜色
 
-            // 路障被破坏时的效果
-            auto fadeAction = FadeOut::create(0.3f);
-            auto removeAction = RemoveSelf::create();
-            this->runAction(Sequence::create(fadeAction, removeAction, nullptr));
+            auto shakeAction = Sequence::create(
+                MoveBy::create(0.1f, Vec2(5, 0)),
+                MoveBy::create(0.1f, Vec2(-10, 0)),
+                MoveBy::create(0.1f, Vec2(5, 0)),
+                nullptr
+            );
+            this->runAction(shakeAction);
         }
 
         // 受伤效果（针对路障）

@@ -18,45 +18,61 @@ ZombieBucketHead* ZombieBucketHead::create()
 
 bool ZombieBucketHead::init()
 {
-    if (!Zombie::init())
+    // 先调用父类的initWithType，指定类型
+    if (!initWithType(ZombieType::BUCKETHEAD))
     {
         return false;
     }
 
-    // 设置铁桶僵尸的特定属性
-    _maxHealth = 580;     // 总生命值（铁桶500 + 僵尸80）
+    _type = ZombieType::BUCKETHEAD;
+    _state = ZombieState::ALIVE;
+    _maxHealth = 580;
     _health = _maxHealth;
-    _speed = 12.0f;       // 最慢的僵尸
-    _damage = 15;         // 伤害更高
-    _attackInterval = 2.0f;
+    _speed = 12.0f;
+    _damage = 15;
+    _attackTimer = 0;
+    _attackInterval = 1.0f;
+    _freezeTimer = 0;
+    _targetPlant = nullptr;
 
+    // 鐵桶特有屬性
+    _bucketHealth = 500;
     _bucketDestroyed = false;
-    _bucketHealth = 500;  // 铁桶生命值
 
-    // 尝试加载动画
+    // 注意：父类Zombie::initWithType已经调用了scheduleUpdate()，这里不要重复调用
+    // 設置物理尺寸和錨點
+    this->setContentSize(Size(60, 100));
+    this->setAnchorPoint(Vec2(0.5f, 0.3f)); // 腳部對齊地面
+    
+    // 加载特定动画
     ResourceLoader* resourceLoader = ResourceLoader::getInstance();
     if (resourceLoader)
     {
-        // 尝试加载走动画
-        auto walkAnim = resourceLoader->getCachedAnimation("zombie_buckethead_walk");
-        if (walkAnim)
+        // 嘗試加載鐵桶動畫
+        _walkAnimation = resourceLoader->getCachedAnimation("zombie_buckethead_walk");
+        _attackAnimation = resourceLoader->getCachedAnimation("zombie_buckethead_attack");
+        _deathAnimation = resourceLoader->getCachedAnimation("zombie_normal_death");
+
+        // 如果沒有鐵桶動畫，使用普通僵屍動畫作為備用
+        if (!_walkAnimation)
         {
-            _walkAnimation = walkAnim;
+            _walkAnimation = resourceLoader->getCachedAnimation("zombie_normal_walk");
+            log("WARNING: Using normal zombie walk animation for buckethead");
+        }
+
+        if (_walkAnimation)
+        {
             this->runAction(RepeatForever::create(Animate::create(_walkAnimation)));
         }
         else
         {
-            log("WARNING: zombie_buckethead_walk animation not found, using default sprite");
-            // 使用默认精灵
+            // 連備用動畫都沒有，創建簡單的視覺效果
             this->setTextureRect(Rect(0, 0, 60, 100));
-            this->setColor(Color3B(100, 100, 100)); // 灰色表示铁桶僵尸
+            this->setColor(Color3B(50, 50, 50)); // 灰色表示鐵桶
         }
     }
 
-    // 开始移动
     startMoving();
-
-    // 启动更新
     this->scheduleUpdate();
 
     log("ZombieBucketHead: Initialized successfully");
@@ -70,13 +86,8 @@ bool ZombieBucketHead::initWithType(ZombieType type)
         return false;
     }
 
-    // 铁桶僵尸的特定初始化
-    _maxHealth = 580;
-    _health = _maxHealth;
     _bucketHealth = 500;
     _bucketDestroyed = false;
-    _speed = 12.0f;
-    _damage = 15;
 
     return true;
 }

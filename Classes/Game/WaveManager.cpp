@@ -61,30 +61,45 @@ void WaveManager::init(int totalWaves)
 
 void WaveManager::update(float delta)
 {
-    // 只在 SPAWNING 状态生成僵尸
-    if (_state == WaveState::SPAWNING)
+    if (_state == WaveState::GAME_OVER || _state == WaveState::COMPLETED)
     {
-        // 检查是否已经生成了足够数量的僵尸
-        if (_zombiesSpawned < _currentWaveData.zombieCount)
-        {
-            _spawnTimer += delta;
+        return;
+    }
 
-            // 根据生成间隔生成僵尸
-            if (_spawnTimer >= _currentWaveData.spawnInterval)
+    switch (_state)
+    {
+        case WaveState::PREPARING:
+            // 准备阶段倒计时
+            _preparationTimer -= delta;
+            if (_preparationTimer <= 0)
             {
-                log("WaveManager: Attempting to spawn zombie %d/%d",
-                    _zombiesSpawned + 1, _currentWaveData.zombieCount);
-
-                spawnZombie(); // 调用生成函数
-                _spawnTimer = 0.0f;
+                startNextWave();
             }
-        }
+            break;
 
-        // 检查波次是否完成（所有僵尸都已生成且被消灭）
-        if (isWaveComplete())
-        {
-            completeWave();
-        }
+        case WaveState::SPAWNING:
+            // 生成僵尸的逻辑保持不变
+            if (_zombiesSpawned < _currentWaveData.zombieCount)
+            {
+                _spawnTimer += delta;
+                if (_spawnTimer >= _currentWaveData.spawnInterval)
+                {
+                    spawnZombie();
+                    _spawnTimer = 0.0f;
+                }
+            }
+
+            // 清理並檢查
+            cleanupZombieList();
+
+            // 检查波次完成条件
+            if (_zombiesSpawned >= _currentWaveData.zombieCount && _activeZombies.empty())
+            {
+                log("WaveManager: Wave %d completion condition met (spawned: %d, active: %d)",
+                    _currentWave, _zombiesSpawned, (int)_activeZombies.size());
+                completeWave();
+            }
+            break;
     }
 
     // 清理无效的僵尸指针
@@ -114,6 +129,7 @@ void WaveManager::cleanupZombieList()
 
 void WaveManager::startNextWave()
 {
+
     if (_currentWave < _totalWaves)
     {
         _currentWave++;
@@ -209,12 +225,7 @@ Zombie* WaveManager::spawnRandomZombie()
     if (!zombie)
     {
         log("ERROR: Failed to create zombie!");
-        // 如果创建失败，创建普通僵尸作为后备
-        zombie = ZombieNormal::create();
-        if (!zombie) {
-            log("CRITICAL ERROR: Failed to create even normal zombie!");
-            return nullptr;
-        }
+        return nullptr;
     }
 
     log("WaveManager::spawnRandomZombie: Zombie created successfully (Type: %d)", (int)zombie->getType());
@@ -247,13 +258,6 @@ Zombie* WaveManager::spawnRandomZombie()
     // 5. 添加到活躍列表
     _activeZombies.push_back(zombie);
 
-
-    // 6. 确保僵尸开始更新
-    if (!zombie->isScheduled(schedule_selector(Zombie::update)))
-    {
-        zombie->scheduleUpdate();
-    }
-
     log("WaveManager::spawnRandomZombie: Zombie added successfully");
     return zombie;
 }
@@ -265,6 +269,8 @@ void WaveManager::zombieSpawned(Zombie* zombie)
 
 void WaveManager::zombieKilled(Zombie* zombie)
 {
+    if (!zombie) return;
+
     _zombiesKilled++;
     log("WaveManager: Zombie killed (%d/%d)", _zombiesKilled, _currentWaveData.zombieCount);
 
@@ -278,6 +284,8 @@ void WaveManager::zombieKilled(Zombie* zombie)
 
 void WaveManager::zombieReachedEnd(Zombie* zombie)
 {
+    if (!zombie) return;
+
     _zombiesReachedEnd++;
     log("WaveManager: Zombie reached end (%d/%d)", _zombiesReachedEnd, _currentWaveData.zombieCount);
 
@@ -300,12 +308,18 @@ void WaveManager::completeWave()
     _state = WaveState::COMPLETED;
     _waveTimer = 0;
 
+    // 清除當前波次的數據
+    _zombiesSpawned = 0;
+    _zombiesKilled = 0;
+    _zombiesReachedEnd = 0;
+
     log("WaveManager: Wave %d completed!", _currentWave);
 
     if (_waveCompletedCallback)
     {
         _waveCompletedCallback(_currentWave);
     }
+
 }
 
 void WaveManager::gameOver()
@@ -351,20 +365,71 @@ void WaveManager::resumeWave()
 
 void WaveManager::reset()
 {
-    clearAllZombies();
-    init(_totalWaves);
-}
-
-void WaveManager::clearAllZombies()
-{
-    for (auto& zombie : _activeZombies)
+    // 清理所有活躍殭屍
+    auto it = _activeZombies.begin();
+    while (it != _activeZombies.end())
     {
+        Zombie* zombie = *it;
         if (zombie && zombie->getParent())
         {
             zombie->removeFromParent();
         }
+        it = _activeZombies.erase(it);
     }
     _activeZombies.clear();
+
+    // 重新初始化
+    _currentWave = 0;
+    _state = WaveState::PREPARING;
+    _zombiesSpawned = 0;
+    _zombiesKilled = 0;
+    _zombiesRemaining = 0;
+    _zombiesReachedEnd = 0;
+    _spawnTimer = 0;
+    _waveTimer = 0;
+    _preparationTimer = 10.0f; // 設置為3秒準備時間
+
+    log("WaveManager: Reset complete, active zombies: %d", (int)_activeZombies.size());
+}
+
+void WaveManager::clearAllZombies()
+{
+    auto it = _activeZombies.begin();
+    while (it != _activeZombies.end())
+    {
+        Zombie* zombie = *it;
+
+        // 检查僵尸是否有效
+        bool shouldRemove = false;
+
+        if (!zombie) {
+            shouldRemove = true;
+        }
+        else if (!zombie->getParent()) {
+            // 僵尸已从场景移除
+            shouldRemove = true;
+            log("WaveManager: Removing zombie without parent");
+        }
+        else if (!zombie->isAlive()) {
+            // 僵尸已死亡但未被正确清理
+            shouldRemove = true;
+            log("WaveManager: Removing dead zombie");
+        }
+        else if (zombie->getPositionX() < -100) {
+            // 僵尸已经移出屏幕左侧（可能已经到达终点但未被正确处理）
+            shouldRemove = true;
+            log("WaveManager: Removing zombie that left screen");
+            zombieReachedEnd(zombie);  // 记录僵尸到达终点
+        }
+
+        if (shouldRemove) {
+            it = _activeZombies.erase(it);
+            log("WaveManager: Cleaned up invalid zombie");
+        }
+        else {
+            ++it;
+        }
+    }
 }
 
 std::vector<Zombie*> WaveManager::getZombiesInRow(int row) const{
