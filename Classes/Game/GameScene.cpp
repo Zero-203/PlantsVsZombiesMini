@@ -177,7 +177,7 @@ bool GameScene::init()
     log("1. ResourceLoader: %s", resourceLoader ? "OK" : "NULL");
     log("2. GameManager: %s", gameManager ? "OK" : "NULL");
     log("3. WaveManager: %s", _waveManager ? "OK" : "NULL");
-    log("4. AudioManager: %s", audioManager ? "OK" : "NULL");
+    //log("4. AudioManager: %s", _audioManager ? "OK" : "NULL");
     log("======================================");
 
     return true;
