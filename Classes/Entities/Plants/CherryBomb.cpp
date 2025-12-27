@@ -112,8 +112,6 @@ void CherryBomb::explode()
             }
         }
     }
-    }
-    */
 
     this->onDead();
 
