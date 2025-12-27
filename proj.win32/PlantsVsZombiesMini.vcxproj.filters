@@ -28,8 +28,8 @@
     <Filter Include="src\Entities\Projectile">
       <UniqueIdentifier>{10b97148-6334-48b9-a5e0-c6d52d49a375}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Entities\Zombie">
-      <UniqueIdentifier>{b3b83b42-71a1-4838-af52-3d9aab6d3552}</UniqueIdentifier>
+    <Filter Include="src\Zombie">
+      <UniqueIdentifier>{6104157f-f28e-4127-908e-242a34abeb67}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -75,11 +75,23 @@
     <ClCompile Include="..\Classes\Entities\Projectile\Projectile.cpp">
       <Filter>src\Entities\Projectile</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Game\WaveManager.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\Plants\CherryBomb.cpp">
+      <Filter>src\Entities\Plants</Filter>
+    </ClCompile>
     <ClCompile Include="..\Classes\Entities\Zombie\Zombie.cpp">
-      <Filter>src\Entities\Zombie</Filter>
+      <Filter>src\Zombie</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\Zombie\ZombieBucketHead.cpp">
+      <Filter>src\Zombie</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entities\Zombie\ZombieConeHead.cpp">
+      <Filter>src\Zombie</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Entities\Zombie\ZombieNormal.cpp">
-      <Filter>src\Entities\Zombie</Filter>
+      <Filter>src\Zombie</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Game\WaveManager.cpp">
       <Filter>src\Game</Filter>
@@ -131,11 +143,29 @@
     <ClInclude Include="..\Classes\Entities\Projectile\Projectile.h">
       <Filter>src\Entities\Projectile</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\Game\WaveManager.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\Plants\CherryBomb.h">
+      <Filter>src\Entities\Plants</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\Plants\WallNut.h">
+      <Filter>src\Entities\Plants</Filter>
+    </ClInclude>
     <ClInclude Include="..\Classes\Entities\Zombie\Zombie.h">
-      <Filter>src\Entities\Zombie</Filter>
+      <Filter>src\Zombie</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\Zombie\ZombieBucketHead.h">
+      <Filter>src\Zombie</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\Zombie\ZombieConeHead.h">
+      <Filter>src\Zombie</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Entities\Zombie\ZombieNormal.h">
-      <Filter>src\Entities\Zombie</Filter>
+      <Filter>src\Zombie</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\Zombie\ZombieFactory.h">
+      <Filter>src\Zombie</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Game\WaveManager.h">
       <Filter>src\Game</Filter>

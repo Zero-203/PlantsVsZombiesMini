@@ -717,21 +717,138 @@ void ResourceLoader::preloadZombieResources()
         "Images/Zombies/Normal/walk_01.png",
         "Images/Zombies/Normal/walk_02.png",
         "Images/Zombies/Normal/walk_03.png",
-        "Images/Zombies/Normal/walk_04.png"
+        "Images/Zombies/Normal/walk_04.png",
+        "Images/Zombies/Normal/walk_05.png",
+        "Images/Zombies/Normal/walk_06.png",
+        "Images/Zombies/Normal/walk_07.png",
+        "Images/Zombies/Normal/walk_08.png",
+        "Images/Zombies/Normal/walk_09.png",
+        "Images/Zombies/Normal/walk_10.png",
+        "Images/Zombies/Normal/walk_11.png",
+        "Images/Zombies/Normal/walk_12.png",
+        "Images/Zombies/Normal/walk_13.png",
+        "Images/Zombies/Normal/walk_14.png",
+        "Images/Zombies/Normal/walk_15.png",
+        "Images/Zombies/Normal/walk_16.png",
+        "Images/Zombies/Normal/walk_17.png",
+        "Images/Zombies/Normal/walk_18.png"
     };
     loadAnimationFrames("zombie_normal_walk", zombieWalkFrames, 0.2f);
 
     // ‘§º”‘ÿ∆’Õ®Ω© ¨π•ª˜∂Øª≠
     std::vector<std::string> zombieAttackFrames = {
         "Images/Zombies/Normal/attack_01.png",
-        "Images/Zombies/Normal/attack_02.png"
+        "Images/Zombies/Normal/attack_02.png",
+        "Images/Zombies/Normal/attack_03.png",
+        "Images/Zombies/Normal/attack_04.png",
+        "Images/Zombies/Normal/attack_05.png",
+        "Images/Zombies/Normal/attack_06.png",
+        "Images/Zombies/Normal/attack_07.png",
+        "Images/Zombies/Normal/attack_08.png",
+        "Images/Zombies/Normal/attack_09.png",
+        "Images/Zombies/Normal/attack_10.png",
+        "Images/Zombies/Normal/attack_11.png",
+        "Images/Zombies/Normal/attack_12.png",
+        "Images/Zombies/Normal/attack_13.png",
+        "Images/Zombies/Normal/attack_14.png",
+        "Images/Zombies/Normal/attack_15.png",
+        "Images/Zombies/Normal/attack_16.png",
+        "Images/Zombies/Normal/attack_17.png",
+        "Images/Zombies/Normal/attack_18.png",
+        "Images/Zombies/Normal/attack_19.png",
+        "Images/Zombies/Normal/attack_20.png",
+        "Images/Zombies/Normal/attack_21.png"
     };
     loadAnimationFrames("zombie_normal_attack", zombieAttackFrames, 0.3f);
 
     // ‘§º”‘ÿ∆’Õ®Ω© ¨À¿Õˆ∂Øª≠
     std::vector<std::string> zombieDeathFrames = {
         "Images/Zombies/Normal/death_01.png",
-        "Images/Zombies/Normal/death_02.png"
+        "Images/Zombies/Normal/death_02.png",
+        "Images/Zombies/Normal/death_03.png",
+        "Images/Zombies/Normal/death_04.png",
+        "Images/Zombies/Normal/death_05.png",
+        "Images/Zombies/Normal/death_06.png",
+        "Images/Zombies/Normal/death_07.png",
+        "Images/Zombies/Normal/death_08.png",
+        "Images/Zombies/Normal/death_09.png",
+        "Images/Zombies/Normal/death_10.png"
     };
     loadAnimationFrames("zombie_normal_death", zombieDeathFrames, 0.5f);
+
+    // ‘§º”‘ÿ¬∑’œΩ© ¨∂Øª≠£®–Ë“™ƒ„µƒÕº∆¨◊ ‘¥£©
+    std::vector<std::string> coneheadWalkFrames = {
+        "Images/Zombies/Conehead/walk_01.png",
+        "Images/Zombies/Conehead/walk_02.png",
+        "Images/Zombies/Conehead/walk_03.png",
+        "Images/Zombies/Conehead/walk_04.png",
+        "Images/Zombies/Conehead/walk_05.png",
+        "Images/Zombies/Conehead/walk_06.png",
+        "Images/Zombies/Conehead/walk_07.png",
+        "Images/Zombies/Conehead/walk_08.png",
+        "Images/Zombies/Conehead/walk_09.png",
+        "Images/Zombies/Conehead/walk_10.png",
+        "Images/Zombies/Conehead/walk_11.png",
+        "Images/Zombies/Conehead/walk_12.png",
+        "Images/Zombies/Conehead/walk_13.png",
+        "Images/Zombies/Conehead/walk_14.png",
+        "Images/Zombies/Conehead/walk_15.png",
+        "Images/Zombies/Conehead/walk_16.png",
+        "Images/Zombies/Conehead/walk_17.png",
+        "Images/Zombies/Conehead/walk_18.png",
+        "Images/Zombies/Conehead/walk_19.png",
+        "Images/Zombies/Conehead/walk_20.png",
+        "Images/Zombies/Conehead/walk_21.png"
+    };
+    loadAnimationFrames("zombie_conehead_walk", coneheadWalkFrames, 0.2f);
+
+    std::vector<std::string> coneheadAttackFrames = {
+        "Images/Zombies/Conehead/attack_01.png",
+        "Images/Zombies/Conehead/attack_02.png",
+        "Images/Zombies/Conehead/attack_03.png",
+        "Images/Zombies/Conehead/attack_04.png",
+        "Images/Zombies/Conehead/attack_05.png",
+        "Images/Zombies/Conehead/attack_06.png",
+        "Images/Zombies/Conehead/attack_07.png",
+        "Images/Zombies/Conehead/attack_08.png",
+        "Images/Zombies/Conehead/attack_09.png",
+        "Images/Zombies/Conehead/attack_10.png",
+        "Images/Zombies/Conehead/attack_11.png"
+    };
+    loadAnimationFrames("zombie_conehead_attack", coneheadAttackFrames, 0.3f);
+
+    // ‘§º”‘ÿÃ˙Õ∞Ω© ¨∂Øª≠£®–Ë“™ƒ„µƒÕº∆¨◊ ‘¥£©
+    std::vector<std::string> bucketheadWalkFrames = {
+        "Images/Zombies/Buckethead/walk_01.png",
+        "Images/Zombies/Buckethead/walk_02.png",
+        "Images/Zombies/Buckethead/walk_03.png",
+        "Images/Zombies/Buckethead/walk_04.png",
+        "Images/Zombies/Buckethead/walk_05.png",
+        "Images/Zombies/Buckethead/walk_06.png",
+        "Images/Zombies/Buckethead/walk_07.png",
+        "Images/Zombies/Buckethead/walk_08.png",
+        "Images/Zombies/Buckethead/walk_09.png",
+        "Images/Zombies/Buckethead/walk_10.png",
+        "Images/Zombies/Buckethead/walk_11.png",
+        "Images/Zombies/Buckethead/walk_12.png",
+        "Images/Zombies/Buckethead/walk_13.png",
+        "Images/Zombies/Buckethead/walk_14.png",
+        "Images/Zombies/Buckethead/walk_15.png"
+    };
+    loadAnimationFrames("zombie_buckethead_walk", bucketheadWalkFrames, 0.2f);
+
+    std::vector<std::string> bucketheadAttackFrames = {
+        "Images/Zombies/Buckethead/attack_01.png",
+        "Images/Zombies/Buckethead/attack_02.png",
+        "Images/Zombies/Buckethead/attack_03.png",
+        "Images/Zombies/Buckethead/attack_04.png",
+        "Images/Zombies/Buckethead/attack_05.png",
+        "Images/Zombies/Buckethead/attack_06.png",
+        "Images/Zombies/Buckethead/attack_07.png",
+        "Images/Zombies/Buckethead/attack_08.png",
+        "Images/Zombies/Buckethead/attack_09.png",
+        "Images/Zombies/Buckethead/attack_10.png",
+        "Images/Zombies/Buckethead/attack_11.png"
+    };
+    loadAnimationFrames("zombie_buckethead_attack", bucketheadAttackFrames, 0.3f);
 }

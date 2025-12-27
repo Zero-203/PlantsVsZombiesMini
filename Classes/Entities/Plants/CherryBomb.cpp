@@ -3,6 +3,7 @@
 #include "./Resources/AudioManager.h"
 #include "./Resources/ResourceLoader.h"
 #include <Entities/Zombie/Zombie.h>  // 假设有僵尸类
+#include <Game/WaveManager.h>
 
 USING_NS_CC;
 
@@ -92,29 +93,29 @@ void CherryBomb::explode()
     // 这里需要获取场景中的所有僵尸并检查距离
     // 注意：这需要与僵尸管理器或场景中的僵尸列表交互
     // 以下为示例代码，实际实现可能需要调整
+    auto waveManager = WaveManager::getInstance();
+    if (!waveManager) return;
 
-    /*
-    auto gameScene = dynamic_cast<GameScene*>(this->getParent()->getParent());
-    if (gameScene)
+    const auto& zombies = waveManager->getActiveZombies();
+    for (auto zombie : zombies)
     {
-        auto& zombies = gameScene->getZombies(); // 假设GameScene有getZombies方法
-        for (auto zombie : zombies)
+        if (zombie && zombie->isAlive())
         {
-            if (zombie && zombie->isAlive())
-            {
-                Vec2 zombiePos = zombie->getPosition();
-                float distanceSquared = bombPos.distanceSquared(zombiePos);
+            Vec2 zombiePos = zombie->getPosition();
+            float distanceSquared = bombPos.distanceSquared(zombiePos);
 
-                if (distanceSquared <= rangeSquared)
-                {
-                    // 对僵尸造成伤害
-                    zombie->takeDamage(_explosionDamage);
-                    log("CherryBomb: Zombie hit with explosion damage: %d", _explosionDamage);
-                }
+            if (distanceSquared <= rangeSquared)
+            {
+                // 对僵尸造成伤害
+                zombie->takeDamage(_explosionDamage);
+                log("CherryBomb: Zombie hit with explosion damage: %d", _explosionDamage);
             }
         }
     }
+    }
     */
+
+    this->onDead();
 
     // 临时实现：输出日志
     log("CherryBomb: Explosion damage %d applied in range %.0f",
@@ -191,7 +192,8 @@ void CherryBomb::onExplodingComplete()
     onDead();
 }
 
-void CherryBomb::onDead()
-{
+void  CherryBomb::onDead(){
+    
+    this->_state = PlantState::DEAD;
     log("CherryBomb: Explosion complete, plant removed");
 }
