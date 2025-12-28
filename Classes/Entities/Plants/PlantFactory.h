@@ -8,6 +8,7 @@
 #include "Sunflower.h"
 #include "WallNut.h"
 #include "CherryBomb.h"
+#include "SnowPea.h"
 
 class PlantFactory {
 public:
@@ -28,7 +29,7 @@ public:
             plant = CherryBomb::create();
             break;
         case PlantType::SNOW_PEA:
-            // 后续实现
+            plant = SnowPea::create();
             break;
         case PlantType::POTATO_MINE:
             // 后续实现
@@ -51,7 +52,7 @@ public:
         case PlantType::PEASHOOTER: return 100;
         case PlantType::WALLNUT: return 50;
         case PlantType::CHERRY_BOMB: return 150;
-        case PlantType::SNOW_PEA: return 175;
+        case PlantType::SNOW_PEA: return 150;
         case PlantType::POTATO_MINE: return 25;
         default: return 0;
         }
@@ -62,7 +63,7 @@ public:
         case PlantType::SUNFLOWER: return 7.5f;
         case PlantType::PEASHOOTER: return 7.5f;
         case PlantType::WALLNUT: return 30.0f;
-        case PlantType::CHERRY_BOMB: return 50.0f;
+        case PlantType::CHERRY_BOMB: return 30.0f;
         case PlantType::SNOW_PEA: return 7.5f;
         case PlantType::POTATO_MINE: return 30.0f;
         default: return 0.0f;
@@ -74,7 +75,7 @@ public:
         case PlantType::SUNFLOWER: return 100;
         case PlantType::PEASHOOTER: return 100;
         case PlantType::WALLNUT: return 400;
-        case PlantType::CHERRY_BOMB: return 100;
+        case PlantType::CHERRY_BOMB: return 400;
         case PlantType::SNOW_PEA: return 100;
         case PlantType::POTATO_MINE: return 100;
         default: return 0;

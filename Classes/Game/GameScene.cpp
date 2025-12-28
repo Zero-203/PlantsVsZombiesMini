@@ -568,7 +568,8 @@ void GameScene::initPlantCards()
         PlantType::SUNFLOWER,
         PlantType::PEASHOOTER,
         PlantType::WALLNUT,
-        PlantType::CHERRY_BOMB
+        PlantType::CHERRY_BOMB,
+        PlantType::SNOW_PEA
     };
 
     // ´´½¨Ö²Îï¿¨ÅÆ

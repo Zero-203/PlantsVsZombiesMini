@@ -155,6 +155,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Entities\Plants\CherryBomb.cpp" />
     <ClCompile Include="..\Classes\Entities\Plants\PeaShooter.cpp" />
     <ClCompile Include="..\Classes\Entities\Plants\Plant.cpp" />
+    <ClCompile Include="..\Classes\Entities\Plants\SnowPea.cpp" />
     <ClCompile Include="..\Classes\Entities\Plants\SunFlower.cpp" />
     <ClCompile Include="..\Classes\Entities\Plants\WallNut.cpp" />
     <ClCompile Include="..\Classes\Entities\Projectile\Projectile.cpp" />
@@ -178,6 +179,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Entities\Plants\PeaShooter.h" />
     <ClInclude Include="..\Classes\Entities\Plants\Plant.h" />
     <ClInclude Include="..\Classes\Entities\Plants\PlantFactory.h" />
+    <ClInclude Include="..\Classes\Entities\Plants\SnowPea.h" />
     <ClInclude Include="..\Classes\Entities\Plants\SunFlower.h" />
     <ClInclude Include="..\Classes\Entities\Plants\WallNut.h" />
     <ClInclude Include="..\Classes\Entities\Projectile\Projectile.h" />
