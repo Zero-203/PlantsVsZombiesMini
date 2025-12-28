@@ -34,6 +34,16 @@ GameScene::~GameScene()
         }
     }
 
+    // 清理随机阳光
+    for (auto sun : _randomSuns)
+    {
+        if (sun && sun->getParent())
+        {
+            sun->removeFromParent();
+        }
+    }
+    _randomSuns.clear();
+
     _plants.clear();
     _plantCards.clear();
     _cardBarBackground = nullptr;
@@ -186,6 +196,9 @@ bool GameScene::init()
     _waveManager = WaveManager::getInstance();
     initZombieSystem();
 
+    // 初始化随机阳光系统
+    initRandomSunSystem();
+
     log("GameScene: Initialized");
     log("=== GAME SCENE INITIALIZATION COMPLETE ===");
     log("WaveManager instance: %p", _waveManager);
@@ -335,6 +348,9 @@ void GameScene::update(float delta)
 
     // 更新陽光數量
     updateSunDisplay();
+
+    // 更新随机阳光
+    updateRandomSuns(delta);
 
     // 更新植物預覽位置
     if (_hasSelectedPlant && _plantPreview)
@@ -1060,4 +1076,243 @@ void GameScene::restartGame()
     {
         waveManager->reset();
     }
+}
+
+// 初始化随机阳光系统
+void GameScene::initRandomSunSystem()
+{
+    log("GameScene: Initializing random sun system...");
+
+    // 初始化参数
+    _randomSunTimer = 0.0f;
+    _randomSunInterval = 8.0f;  // 初始8秒生成一个随机阳光
+    _randomSunSpeed = 60.0f;    // 下落速度
+
+    _randomSuns.clear();
+
+    log("GameScene: Random sun system initialized");
+}
+
+// 更新随机阳光
+void GameScene::updateRandomSuns(float delta)
+{
+    // 更新计时器
+    _randomSunTimer += delta;
+
+    // 检查是否需要生成新的随机阳光
+    if (_randomSunTimer >= _randomSunInterval)
+    {
+        _randomSunTimer = 0.0f;
+        spawnRandomSun();
+
+        // 随机化下一次生成间隔 (5-12秒)
+        _randomSunInterval = 5.0f + CCRANDOM_0_1() * 7.0f;
+    }
+
+    // 更新所有随机阳光的位置
+    auto it = _randomSuns.begin();
+    while (it != _randomSuns.end())
+    {
+        if (!*it)
+        {
+            it = _randomSuns.erase(it);
+            continue;
+        }
+
+        cocos2d::Sprite* sun = *it;
+
+        // 检查阳光是否被收集（已经移除了）
+        if (!sun->getParent())
+        {
+            it = _randomSuns.erase(it);
+            continue;
+        }
+
+        // 继续下一项
+        ++it;
+    }
+}
+
+// 生成随机阳光
+void GameScene::spawnRandomSun()
+{
+    auto visibleSize = Director::getInstance()->getVisibleSize();
+    auto origin = Director::getInstance()->getVisibleOrigin();
+
+    // 随机生成位置（从屏幕顶部随机位置落下）
+    float randomX = origin.x + 50.0f + CCRANDOM_0_1() * (visibleSize.width - 100.0f);
+    float startY = origin.y + visibleSize.height + 30.0f;  // 从屏幕顶部上方开始
+
+    createRandomSunAtPosition(cocos2d::Vec2(randomX, startY));
+
+    log("GameScene: Random sun spawned at (%.0f, %.0f)", randomX, startY);
+}
+
+// 在指定位置创建随机阳光
+void GameScene::createRandomSunAtPosition(const cocos2d::Vec2& startPos)
+{
+    log("GameScene: Creating random sun at position (%.0f, %.0f)", startPos.x, startPos.y);
+
+    // 获取ResourceLoader实例
+    auto resourceLoader = ResourceLoader::getInstance();
+
+    // 创建太阳精灵
+    cocos2d::Sprite* sun = nullptr;
+
+    if (resourceLoader && resourceLoader->hasAnimation("sun_floating"))
+    {
+        // 使用动画创建太阳
+        log("GameScene: Creating sun with sun_floating animation");
+
+        // 获取动画
+        auto animation = resourceLoader->getCachedAnimation("sun_floating");
+        if (animation)
+        {
+            // 创建一个精灵来播放动画
+            sun = cocos2d::Sprite::create();
+
+            // 创建一个Animate动作
+            auto animate = cocos2d::Animate::create(animation);
+            if (animate)
+            {
+                // 循环播放动画
+                auto repeatAnimation = cocos2d::RepeatForever::create(animate);
+                sun->runAction(repeatAnimation);
+            }
+        }
+    }
+
+    // 如果动画创建失败，使用简单的图形作为后备
+    if (!sun)
+    {
+        log("GameScene: Using fallback sun graphic for random sun");
+        sun = cocos2d::Sprite::create();
+        sun->setTextureRect(cocos2d::Rect(0, 0, 30, 30));
+        sun->setColor(cocos2d::Color3B(255, 255, 0));
+    }
+
+    // 设置阳光位置
+    sun->setPosition(startPos);
+
+    // 添加到场景
+    this->addChild(sun, 10); // 最高层级
+
+    // 添加到阳光列表
+    _randomSuns.push_back(sun);
+
+    // 阳光浮动动画
+    auto floatAction = cocos2d::RepeatForever::create(
+        cocos2d::Sequence::create(
+            cocos2d::MoveBy::create(0.5f, cocos2d::Vec2(0, 10)),
+            cocos2d::MoveBy::create(0.5f, cocos2d::Vec2(0, -10)),
+            nullptr
+        )
+    );
+    sun->runAction(floatAction);
+
+    // 阳光旋转动画
+    auto rotateAction = cocos2d::RepeatForever::create(
+        cocos2d::RotateBy::create(4.0f, 360)
+    );
+    sun->runAction(rotateAction);
+
+    // 添加点击收集功能
+    auto listener = cocos2d::EventListenerTouchOneByOne::create();
+    listener->setSwallowTouches(true);
+    listener->onTouchBegan = [sun, this](cocos2d::Touch* touch, cocos2d::Event* event) {
+        cocos2d::Vec2 locationInNode = sun->convertToNodeSpace(touch->getLocation());
+        cocos2d::Size s = sun->getContentSize();
+        cocos2d::Rect rect = cocos2d::Rect(0, 0, s.width, s.height);
+
+        if (rect.containsPoint(locationInNode))
+        {
+            collectRandomSun(sun);
+            return true;
+        }
+        return false;
+    };
+
+    this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, sun);
+
+    // 自动消失（15秒后）
+    sun->runAction(cocos2d::Sequence::create(
+        cocos2d::DelayTime::create(15.0f),
+        cocos2d::FadeOut::create(0.5f),
+        cocos2d::CallFunc::create([sun, this]() {
+            // 从列表中移除
+            auto it = std::find(_randomSuns.begin(), _randomSuns.end(), sun);
+            if (it != _randomSuns.end())
+            {
+                _randomSuns.erase(it);
+            }
+            }),
+        cocos2d::RemoveSelf::create(),
+                nullptr
+                ));
+
+    // 下落动画
+    auto visibleSize = Director::getInstance()->getVisibleSize();
+    auto origin = Director::getInstance()->getVisibleOrigin();
+
+    // 计算落点位置（草坪区域）
+    float endY = origin.y + 100.0f + CCRANDOM_0_1() * 300.0f;
+    float endX = startPos.x + (CCRANDOM_MINUS1_1() * 50.0f); // 轻微左右偏移
+    cocos2d::Vec2 endPos = cocos2d::Vec2(endX, endY);
+
+    // 抛物线下落效果
+    float fallDuration = 3.0f + CCRANDOM_0_1() * 0.5f; // 2.5-3.5秒
+
+    auto fallAction = cocos2d::Sequence::create(
+        cocos2d::Spawn::create(
+            cocos2d::MoveTo::create(fallDuration, endPos),
+            cocos2d::ScaleTo::create(fallDuration * 0.3f, 1.2f),  // 先放大
+            cocos2d::ScaleTo::create(fallDuration * 0.7f, 1.0f),  // 再恢复
+            nullptr
+        ),
+        nullptr
+    );
+
+    sun->runAction(fallAction);
+}
+
+// 收集随机阳光
+void GameScene::collectRandomSun(cocos2d::Sprite* sun)
+{
+    if (!sun) return;
+
+    // 播放收集音效
+    auto audioManager = AudioManager::getInstance();
+    if (audioManager)
+    {
+        audioManager->playSoundEffect("Sounds/SFX/sun_collected.mp3");
+    }
+
+    // 增加阳光数量
+    auto gameManager = GameManager::getInstance();
+    if (gameManager)
+    {
+        gameManager->addSun(25);
+        updateSunDisplay();
+    }
+
+    // 收集动画
+    auto scaleUp = cocos2d::ScaleTo::create(0.1f, 1.5f);
+    auto fadeOut = cocos2d::FadeOut::create(0.1f);
+    auto remove = cocos2d::RemoveSelf::create();
+
+    auto sequence = cocos2d::Sequence::create(
+        cocos2d::Spawn::create(scaleUp, fadeOut, nullptr),
+        cocos2d::CallFunc::create([sun, this]() {
+            // 从列表中移除
+            auto it = std::find(_randomSuns.begin(), _randomSuns.end(), sun);
+            if (it != _randomSuns.end())
+            {
+                _randomSuns.erase(it);
+            }
+            }),
+        remove,
+                nullptr
+                );
+
+    sun->runAction(sequence);
 }

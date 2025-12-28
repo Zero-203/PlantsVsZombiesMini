@@ -39,6 +39,14 @@ private:
     // 游戏元素
     std::vector<Plant*> _plants;
 
+    // 随机阳光管理
+    std::vector<cocos2d::Sprite*> _randomSuns;
+
+    // 随机阳光参数
+    float _randomSunTimer;
+    float _randomSunInterval;
+    float _randomSunSpeed;
+
     // 卡牌栏背景
     cocos2d::Sprite* _cardBarBackground;   
 
@@ -48,10 +56,12 @@ private:
     void initPlantCards();
     void initTouchHandlers();
     void initZombieSystem();
+    void initRandomSunSystem();
 
     // 游戏逻辑
     void updateSunDisplay();
     void updatePlantCards();
+    void updateRandomSuns(float delta);
 
     // 事件处理
     void onPlantCardSelected(PlantType plantType);
@@ -65,6 +75,10 @@ private:
     void hidePlantPreview();
     void updatePlantPreviewPosition(const cocos2d::Vec2& position);
 
+    // 阳光相关
+    void spawnRandomSun();
+    void createRandomSunAtPosition(const cocos2d::Vec2& position);
+    void collectRandomSun(cocos2d::Sprite* sun);
     // 阳光操作
     void addSun(int amount);
     void spendSun(int amount);
