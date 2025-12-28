@@ -68,7 +68,7 @@ bool ZombieBucketHead::init()
         {
             // 連備用動畫都沒有，創建簡單的視覺效果
             this->setTextureRect(Rect(0, 0, 60, 100));
-            this->setColor(Color3B(50, 50, 50)); // 灰色表示鐵桶
+            this->setColor(Color3B::WHITE); // 灰色表示鐵桶
         }
     }
 
