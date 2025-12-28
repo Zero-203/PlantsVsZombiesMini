@@ -79,6 +79,10 @@ bool Zombie::initWithType(ZombieType type)
     _freezeTimer = 0;
     _targetPlant = nullptr;
 
+    // 確保設置物理尺寸（重要！）
+    this->setContentSize(Size(60, 100));
+    this->setAnchorPoint(Vec2(0.5f, 0.3f)); // 調整錨點使其腳部對齊地面
+
     // 加载动画资源
     ResourceLoader* resourceLoader = ResourceLoader::getInstance();
     if (resourceLoader)
@@ -95,6 +99,8 @@ bool Zombie::initWithType(ZombieType type)
 
     // 开始移动
     startMoving();
+
+    this->scheduleUpdate();
 
     log("Zombie: Initialized type %d at row %d", (int)type, _row);
     return true;
@@ -215,28 +221,33 @@ void Zombie::die()
     // 停止更新
     this->unscheduleUpdate();
 
-    // 播放死亡動畫
-    playDeathAnimation();
+    // 立即通知WaveManager
+    auto waveManager = WaveManager::getInstance();
+    if (waveManager)
+    {
+        waveManager->zombieKilled(this);
+    }
 
-    // 延遲移除
-    this->runAction(Sequence::create(
-        DelayTime::create(1.0f),
-        CallFunc::create([this]() {
-            // 通知 WaveManager
-            auto waveManager = WaveManager::getInstance();
-            if (waveManager)
-            {
-                waveManager->zombieKilled(this);
-            }
-
-            // 從場景移除
+    // 播放死亡動畫並立即移除
+    if (_deathAnimation)
+    {
+        auto deathAction = Animate::create(_deathAnimation);
+        auto removeAction = CallFunc::create([this]() {
             if (this->getParent())
             {
                 this->removeFromParent();
             }
-            }),
-        nullptr
-    ));
+            });
+        this->runAction(Sequence::create(deathAction, removeAction, nullptr));
+    }
+    else
+    {
+        // 沒有動畫，立即移除
+        if (this->getParent())
+        {
+            this->removeFromParent();
+        }
+    }
 
     log("Zombie: Died");
 }

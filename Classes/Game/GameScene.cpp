@@ -51,10 +51,30 @@ GameScene::~GameScene()
 
     _plants.clear();
     _plantCards.clear();
+    _cardBarBackground = nullptr;
     _plantPreview = nullptr;
     _pauseButton = nullptr;
     _sunLabel = nullptr;
     _levelLabel = nullptr;
+
+    // 清理 WaveManager 中的殭屍
+    if (_waveManager)
+    {
+        _waveManager->clearAllZombies(); // 使用 reset() 而不是 clearAllZombies()
+    }
+
+    // 清理其他資源
+    if (_plantPreview && _plantPreview->getParent())
+    {
+        _plantPreview->removeFromParent();
+    }
+
+    // 清理 GameManager 中的子彈
+    auto gameManager = GameManager::getInstance();
+    if (gameManager)
+    {
+        gameManager->clearAllProjectiles();
+    }
 }
 
 bool GameScene::init()
@@ -190,7 +210,7 @@ bool GameScene::init()
     log("1. ResourceLoader: %s", resourceLoader ? "OK" : "NULL");
     log("2. GameManager: %s", gameManager ? "OK" : "NULL");
     log("3. WaveManager: %s", _waveManager ? "OK" : "NULL");
-    //log("4. AudioManager: %s", _audioManager ? "OK" : "NULL");
+    //log("4. AudioManager: %s", audioManager ? "OK" : "NULL");
     log("======================================");
 
     return true;
@@ -207,15 +227,6 @@ void GameScene::initZombieSystem()
     {
         log("Preloading zombie resources...");
         resourceLoader->preloadZombieResources();
-
-        // 立即檢查動畫是否載入成功
-        if (resourceLoader->getCachedAnimation("zombie_normal_walk")) {
-            log("? zombie_normal_walk animation loaded");
-        }
-        else {
-            log("? ERROR: zombie_normal_walk animation NOT loaded");
-        }
-
     }
 
     // 2. 獲取 WaveManager
@@ -254,20 +265,40 @@ void GameScene::initZombieSystem()
     _waveManager->setWaveCompletedCallback([this](int waveNumber) {
         log("GameScene: Wave %d completed", waveNumber);
 
-        // 獎勵陽光
-        addSun(100);
+        // 不要在这里清理僵尸，让 WaveManager 自己管理
+        // 直接延迟后开始下一波
+        this->runAction(Sequence::create(
+            DelayTime::create(3.0f),
+            CallFunc::create([this]() {
+                if (_waveManager) {
+                    // 检查是否还有更多波次
+                    if (_waveManager->getCurrentWave() < _waveManager->getTotalWaves()) {
+                        log("GameScene: Starting next wave...");
+                        _waveManager->startNextWave();
+                    }
+                    else {
+                        log("GameScene: All waves completed!");
+                        // 触发胜利条件
+                        auto gameManager = GameManager::getInstance();
+                        if (gameManager) {
+                            gameManager->gameOver(true);
+                        }
+                    }
+                }
+                }),
+            nullptr
+        ));
         });
 
     _waveManager->setWaveAllCompletedCallback([this]() {
-        log("GameScene: All waves completed! Victory!");
+        log("GameScene: All waves completed!");
 
-        // 延遲 2 秒後顯示勝利
+        // 延迟后触发胜利
         this->runAction(Sequence::create(
             DelayTime::create(2.0f),
             CallFunc::create([this]() {
                 auto gameManager = GameManager::getInstance();
-                if (gameManager)
-                {
+                if (gameManager) {
                     gameManager->gameOver(true);
                 }
                 }),
@@ -294,17 +325,11 @@ void GameScene::initZombieSystem()
 
     // 5. 啟動第一波（延遲 3 秒開始）
     this->runAction(Sequence::create(
-        DelayTime::create(3.0f),
+        DelayTime::create(5.0f),
         CallFunc::create([this]() {
-            log("=== DEBUG: Manual zombie spawn test ===");
+            log("=== Starting first wave ===");
             if (_waveManager) {
-                Zombie* zombie = _waveManager->spawnRandomZombie();
-                if (zombie) {
-                    log(" DEBUG: Test zombie spawned successfully!");
-                }
-                else {
-                    log(" DEBUG: Failed to spawn test zombie!");
-                }
+                _waveManager->startNextWave(); // 開始第一波
             }
             }),
         nullptr
@@ -334,7 +359,7 @@ void GameScene::update(float delta)
     // 更新植物預覽位置
     if (_hasSelectedPlant && _plantPreview)
     {
-        auto touchPos = Director::getInstance()->getVisibleSize() / 2; // 临时位置
+        auto touchPos = Director::getInstance()->getVisibleSize() / 2;
         updatePlantPreviewPosition(touchPos);
     }
 
@@ -385,7 +410,7 @@ void GameScene::initUI()
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
     // 游戏标题
-    auto titleLabel = Label::createWithTTF("LEVEL 1", "fonts/Marker Felt.ttf", 24);
+    auto titleLabel = Label::createWithTTF("WAVE 0", "fonts/Marker Felt.ttf", 24);
     titleLabel->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height - 30 + origin.y));
     titleLabel->setColor(Color3B::YELLOW);
     titleLabel->enableOutline(Color4B::BLACK, 2);
@@ -543,7 +568,8 @@ void GameScene::initPlantCards()
         PlantType::SUNFLOWER,
         PlantType::PEASHOOTER,
         PlantType::WALLNUT,
-        PlantType::CHERRY_BOMB
+        PlantType::CHERRY_BOMB,
+        PlantType::SNOW_PEA
     };
 
     // 创建植物卡牌

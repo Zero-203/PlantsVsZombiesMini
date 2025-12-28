@@ -57,7 +57,11 @@ bool Projectile::initProjectile(ProjectileType type, int damage, float speed,
         _hitAnimationName = "pea_hit";
         _maxLifeTime = 4.0f;
         break;
-
+    case ProjectileType::SNOW_PEA:
+        _flyAnimationName = "snow_pea_fly";
+        _hitAnimationName = "pea_hit";
+        _maxLifeTime = 4.0f;
+        break;
     default:
         break;
     }

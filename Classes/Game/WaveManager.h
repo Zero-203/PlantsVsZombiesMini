@@ -17,9 +17,9 @@ struct WaveData {
     float waveDelay;         // 波次间延迟（秒）
 
     WaveData(int num = 1) : waveNumber(num),
-        zombieCount(2 + num),  // 減少初始數量以便測試
+        zombieCount(2 + num * 2),  // 減少初始數量以便測試
         zombieTypes(1),
-        spawnInterval(1.5f),   // 減少生成間隔
+        spawnInterval(2.0f),   // 減少生成間隔
         waveDelay(10.0f) {
         if (spawnInterval < 0.5f) spawnInterval = 0.5f;
     }

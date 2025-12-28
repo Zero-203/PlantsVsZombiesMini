@@ -76,7 +76,7 @@ bool Plant::initPlant(PlantType type, int sunCost, float cooldown, int health)
     case PlantType::PEASHOOTER:
         _canAttack = true;
         _attackRange = 800.0f;
-        _attackSpeed = 1.5f;
+        _attackSpeed = 1.0f;
         _attackDamage = 20;
         _idleAnimationName = "peashooter_idle";
         _attackAnimationName = "peashooter_attack";
@@ -87,6 +87,15 @@ bool Plant::initPlant(PlantType type, int sunCost, float cooldown, int health)
         _maxHealth = 400;
         _idleAnimationName = "wallnut_idle";
         _damagedAnimationName = "wallnut_damaged1";
+        break;
+
+    case PlantType::SNOW_PEA:
+        _canAttack = true;
+        _attackRange = 800.0f;
+        _attackSpeed = 1.0f;
+        _attackDamage = 20;
+        _idleAnimationName = "snowpea_idle";
+        _attackAnimationName = "snowpea_attack";
         break;
 
     default:

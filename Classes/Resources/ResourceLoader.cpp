@@ -172,6 +172,15 @@ void ResourceLoader::loadSimpleAnimationConfig()
     };
     loadAnimationFrames("pea_hit", peaHitFrames, 0.07f);
 
+    // ±˘∂π∑…––∂Øª≠
+    std::vector<std::string> snowPeaFlyFrames = {
+        "Images/Projectiles/SnowPea/snow_pea_01.png",
+        "Images/Projectiles/SnowPea/snow_pea_02.png",
+        "Images/Projectiles/SnowPea/snow_pea_03.png",
+        "Images/Projectiles/SnowPea/snow_pea_04.png"
+    };
+    loadAnimationFrames("snow_pea_fly", snowPeaFlyFrames, 0.1f);
+
     // º·π˚«Ωø’œ–∂Øª≠
     std::vector<std::string> wallnutIdleFrames = {
         "Images/Plants/WallNut/wallnut_idle_01.png",
@@ -274,6 +283,26 @@ void ResourceLoader::loadSimpleAnimationConfig()
         "Images/Plants/CherryBomb/cherrybomb_explode_08.png"
     };
     loadAnimationFrames("cherrybomb_explode", cherryBombExplodeFrames, 0.07f);
+
+    // ∫Æ±˘…‰ ÷ø’œ–∂Øª≠
+    std::vector<std::string> snowpeaIdleFrames = {
+        "Images/Plants/SnowPea/snowpea_idle_01.png",
+        "Images/Plants/SnowPea/snowpea_idle_02.png",
+        "Images/Plants/SnowPea/snowpea_idle_03.png",
+        "Images/Plants/SnowPea/snowpea_idle_04.png",
+        "Images/Plants/SnowPea/snowpea_idle_05.png",
+        "Images/Plants/SnowPea/snowpea_idle_06.png",
+        "Images/Plants/SnowPea/snowpea_idle_07.png",
+        "Images/Plants/SnowPea/snowpea_idle_08.png",
+        "Images/Plants/SnowPea/snowpea_idle_09.png",
+        "Images/Plants/SnowPea/snowpea_idle_10.png",
+        "Images/Plants/SnowPea/snowpea_idle_11.png",
+        "Images/Plants/SnowPea/snowpea_idle_12.png",
+        "Images/Plants/SnowPea/snowpea_idle_13.png",
+        "Images/Plants/SnowPea/snowpea_idle_14.png",
+        "Images/Plants/SnowPea/snowpea_idle_15.png"
+    };
+    loadAnimationFrames("snowpea_idle", snowpeaIdleFrames, 0.2f);
 
     log("Simple animation config loaded with %d animations", (int)_animations.size());
 }

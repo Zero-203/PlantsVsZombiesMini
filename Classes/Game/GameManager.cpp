@@ -248,3 +248,15 @@ void GameManager::clearAllProjectiles()
     }
     _projectiles.clear();
 }
+
+void GameManager::removeProjectile(Projectile* projectile)
+{
+    if (!projectile) return;
+
+    auto it = std::find(_projectiles.begin(), _projectiles.end(), projectile);
+    if (it != _projectiles.end())
+    {
+        _projectiles.erase(it);
+        log("GameManager: Projectile removed, total: %d", (int)_projectiles.size());
+    }
+}

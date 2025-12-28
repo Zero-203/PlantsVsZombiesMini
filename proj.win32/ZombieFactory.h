@@ -3,9 +3,9 @@
 #define __ZOMBIE_FACTORY_H__
 
 #include "./Entities/Zombie/Zombie.h"
-#include "./Entities/Zombie/ZombieNormal.h"
+#include "./Entities/Zombie/ZombieNo mal.h"
 #include "./Entities/Zombie/ZombieConeHead.h"
-#include "./Entities/Zombie/ZombieBucketHead.h"
+#include "./Entities/Zombie/ZombieConeHead.h"
 
 class ZombieFactory {
 public:
