@@ -148,9 +148,12 @@ void Projectile::checkZombieCollisions() {
 void Projectile::applyDamageToZombie(Zombie* zombie) {
     if (!zombie || !zombie->isAlive()) return;
 
+    bool dead = zombie->getHealth() - _damage <= 0;
     // 基础伤害
     zombie->takeDamage(_damage);
 
+    if (dead)
+        return;
     // 根据子弹类型添加特效
     switch (_type) {
     case ProjectileType::SNOW_PEA:

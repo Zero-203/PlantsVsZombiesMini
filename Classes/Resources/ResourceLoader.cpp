@@ -337,6 +337,28 @@ void ResourceLoader::loadSimpleAnimationConfig()
     };
     loadAnimationFrames("potatomine_explode", potatomineExplodeFrames, 1.0f);
 
+    std::vector<std::string> normalZombieWalkFrames = {
+        "Images/Zombies/Normal/walk_01.png",
+        "Images/Zombies/Normal/walk_02.png",
+        "Images/Zombies/Normal/walk_03.png",
+        "Images/Zombies/Normal/walk_04.png",
+        "Images/Zombies/Normal/walk_05.png",
+        "Images/Zombies/Normal/walk_06.png",
+        "Images/Zombies/Normal/walk_07.png",
+        "Images/Zombies/Normal/walk_08.png",
+        "Images/Zombies/Normal/walk_09.png",
+        "Images/Zombies/Normal/walk_10.png",
+        "Images/Zombies/Normal/walk_11.png",
+        "Images/Zombies/Normal/walk_12.png",
+        "Images/Zombies/Normal/walk_13.png",
+        "Images/Zombies/Normal/walk_14.png",
+        "Images/Zombies/Normal/walk_15.png",
+        "Images/Zombies/Normal/walk_16.png",
+        "Images/Zombies/Normal/walk_17.png",
+        "Images/Zombies/Normal/walk_18.png",
+    };
+    loadAnimationFrames("zombie_normal_walk", normalZombieWalkFrames, 1.0f);
+
     log("Simple animation config loaded with %d animations", (int)_animations.size());
 }
 

@@ -23,8 +23,8 @@ bool PotatoMine::init()
     _isArmed = false;             // 初始未激活
     _isTriggered = false;         // 初始未触发
 
-    _triggerRange = 130.0f;        // 触发范围（僵尸进入此范围即触发）
-    _explosionRange = 150.0f;     // 爆炸范围（实际伤害范围，大于触发范围）
+    _triggerRange = 30.0f;        // 触发范围（僵尸进入此范围即触发）
+    _explosionRange = 50.0f;     // 爆炸范围（实际伤害范围，大于触发范围）
     _explosionDamage = 1800;      // 爆炸伤害，秒杀普通僵尸
 
     // 设置动画名称
