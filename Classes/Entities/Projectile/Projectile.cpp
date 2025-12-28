@@ -154,7 +154,7 @@ void Projectile::applyDamageToZombie(Zombie* zombie) {
     // 根据子弹类型添加特效
     switch (_type) {
     case ProjectileType::SNOW_PEA:
-        zombie->freeze(3.0f);  // 冰冻3秒
+        zombie->freeze(1.0f);  // 冰冻1秒
         break;
     case ProjectileType::FIRE_PEA:
         // 火焰持续伤害效果

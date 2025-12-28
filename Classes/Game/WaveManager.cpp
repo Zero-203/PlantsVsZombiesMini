@@ -245,7 +245,7 @@ Zombie* WaveManager::spawnRandomZombie()
     // 隨機選擇行（0-4）
     int row = rand() % 5;
     float x = visibleSize.width + 100; // 從屏幕右側外生成
-    float y = 150 + row * 130; // 根據網格系統調整
+    float y = 75 + row * 130; // 根據網格系統調整
 
     zombie->setPosition(Vec2(x, y));
     zombie->setRow(row);

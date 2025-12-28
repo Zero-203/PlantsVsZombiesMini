@@ -54,6 +54,7 @@ public:
     virtual void attack(Plant* plant);
     virtual void die();
     virtual void freeze(float duration);
+    virtual void unFreeze();  // 新增：解除冰冻
 
     // 移动控制
     virtual void startMoving();
@@ -93,6 +94,8 @@ protected:
     int _maxHealth;
     float _speed;       // 像素/秒
     int _damage;        // 每次攻击伤害
+    float _originalSpeed;  // 存储原始速度
+    bool _isFrozen;        // 是否处于冰冻状态
 
     // 状态计时器
     float _attackTimer;

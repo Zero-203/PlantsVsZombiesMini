@@ -23,6 +23,8 @@ Zombie::Zombie()
     , _walkAnimation(nullptr)
     , _attackAnimation(nullptr)
     , _deathAnimation(nullptr)
+    , _originalSpeed(20.0f)    
+    , _isFrozen(false)         
 {
 }
 
@@ -52,6 +54,7 @@ bool Zombie::initWithType(ZombieType type)
             _maxHealth = 100;
             _health = _maxHealth;
             _speed = 20.0f;
+            _originalSpeed = 20.0f;  // 添加
             _damage = 10;
             break;
 
@@ -59,6 +62,7 @@ bool Zombie::initWithType(ZombieType type)
             _maxHealth = 280;
             _health = _maxHealth;
             _speed = 15.0f;
+            _originalSpeed = 15.0f;  // 添加
             _damage = 10;
             break;
 
@@ -66,6 +70,7 @@ bool Zombie::initWithType(ZombieType type)
             _maxHealth = 580;
             _health = _maxHealth;
             _speed = 12.0f;
+            _originalSpeed = 12.0f;  // 添加
             _damage = 15;
             break;
 
@@ -81,7 +86,7 @@ bool Zombie::initWithType(ZombieType type)
 
     // 確保設置物理尺寸（重要！）
     this->setContentSize(Size(60, 100));
-    this->setAnchorPoint(Vec2(0.5f, 0.3f)); // 調整錨點使其腳部對齊地面
+    this->setAnchorPoint(Vec2(0.3f, 0.3f)); // 調整錨點使其腳部對齊地面
 
     // 加载动画资源
     ResourceLoader* resourceLoader = ResourceLoader::getInstance();
@@ -132,6 +137,7 @@ void Zombie::update(float delta)
         if (_freezeTimer <= 0)
         {
             // 解除冰冻
+            unFreeze();
             this->setColor(Color3B::WHITE);
         }
     }
@@ -254,9 +260,41 @@ void Zombie::die()
 
 void Zombie::freeze(float duration)
 {
+    if (_state == ZombieState::DEAD) return;
+
     _freezeTimer = duration;
+    _isFrozen = true;
+
+    // 保存原始速度（如果不是已经被冰冻）
+    if (!_isFrozen) {
+        _originalSpeed = _speed;
+    }
+
+    // 设置减速效果（例如减速到原速度的30%）
+    float slowFactor = 0.3f;  // 调整为需要的减速比例
+    _speed = _originalSpeed * slowFactor;
+
+    // 冰冻视觉效果
     this->setColor(Color3B(100, 100, 255)); // 蓝色冰冻效果
-    _speed *= 0.5f; // 减速50%
+    this->setOpacity(180); // 稍微透明一点
+
+    log("Zombie: Frozen for %.1f seconds, speed reduced from %.1f to %.1f",
+        duration, _originalSpeed, _speed);
+}
+
+void Zombie::unFreeze()
+{
+    if (!_isFrozen) return;
+
+    // 恢复原始速度
+    _speed = _originalSpeed;
+    _isFrozen = false;
+
+    // 恢复视觉外观
+    this->setColor(Color3B::WHITE);
+    this->setOpacity(255);
+
+    log("Zombie: Unfrozen, speed restored to %.1f", _speed);
 }
 
 void Zombie::startMoving()
@@ -413,7 +451,7 @@ Plant* Zombie::findPlantInFront()
         Plant* plant = gridSystem->getPlantAt(row, col);
         if (plant && plant->isAlive()) {
             float distance = std::abs(this->getPositionX() - plant->getPositionX());
-            if (distance < 50) { // 攻击范围
+            if (distance < 5) { // 攻击范围
                 return plant;
             }
         }
@@ -423,7 +461,7 @@ Plant* Zombie::findPlantInFront()
             plant = gridSystem->getPlantAt(row, col - 1);
             if (plant && plant->isAlive()) {
                 float distance = std::abs(this->getPositionX() - plant->getPositionX());
-                if (distance < 100) { // 稍大的检测范围
+                if (distance < 30) { // 稍大的检测范围
                     return plant;
                 }
             }
