@@ -545,7 +545,7 @@ void GameScene::initGrid()
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-    // 初始化网格系统：5行9列，每格80x100像素
+    // 初始化网格系统：5行9列，每格90x130像素
     auto gridSystem = GridSystem::getInstance();
     gridSystem->init(5, 9, Size(90, 130), Vec2(145 + origin.x, 25 + origin.y));
 
@@ -569,7 +569,8 @@ void GameScene::initPlantCards()
         PlantType::PEASHOOTER,
         PlantType::WALLNUT,
         PlantType::CHERRY_BOMB,
-        PlantType::SNOW_PEA
+        PlantType::SNOW_PEA,
+        PlantType::POTATO_MINE,
     };
 
     // 创建植物卡牌

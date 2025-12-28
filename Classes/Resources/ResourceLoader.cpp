@@ -304,6 +304,39 @@ void ResourceLoader::loadSimpleAnimationConfig()
     };
     loadAnimationFrames("snowpea_idle", snowpeaIdleFrames, 0.2f);
 
+    // 土豆地雷空闲动画（未激活状态）
+    std::vector<std::string> potatomineIdleFrames = {
+        "Images/Plants/PotatoMine/potatomine_idle_01.png",
+        "Images/Plants/PotatoMine/potatomine_idle_02.png",
+        "Images/Plants/PotatoMine/potatomine_idle_03.png",
+        "Images/Plants/PotatoMine/potatomine_idle_04.png"
+    };
+    loadAnimationFrames("potatomine_idle", potatomineIdleFrames, 0.3f);
+
+    // 土豆地雷激活动画
+    std::vector<std::string> potatomineArmedFrames = {
+        "Images/Plants/PotatoMine/potatomine_armed_01.png",
+        "Images/Plants/PotatoMine/potatomine_armed_02.png",
+        "Images/Plants/PotatoMine/potatomine_armed_03.png",
+        "Images/Plants/PotatoMine/potatomine_armed_04.png",
+        "Images/Plants/PotatoMine/potatomine_armed_05.png",
+        "Images/Plants/PotatoMine/potatomine_armed_06.png",
+        "Images/Plants/PotatoMine/potatomine_armed_07.png",
+        "Images/Plants/PotatoMine/potatomine_armed_08.png"
+    };
+    loadAnimationFrames("potatomine_armed", potatomineArmedFrames, 0.2f);
+
+    // 土豆地雷爆炸动画
+    std::vector<std::string> potatomineExplodeFrames = {
+        "Images/Plants/PotatoMine/potatomine_explode_01.png",
+        "Images/Plants/PotatoMine/potatomine_explode_02.png",
+        "Images/Plants/PotatoMine/potatomine_explode_03.png",
+        "Images/Plants/PotatoMine/potatomine_explode_04.png",
+        "Images/Plants/PotatoMine/potatomine_explode_05.png",
+        "Images/Plants/PotatoMine/potatomine_explode_06.png"
+    };
+    loadAnimationFrames("potatomine_explode", potatomineExplodeFrames, 1.0f);
+
     log("Simple animation config loaded with %d animations", (int)_animations.size());
 }
 
