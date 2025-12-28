@@ -96,6 +96,9 @@
     <ClCompile Include="..\Classes\Entities\Plants\SnowPea.cpp">
       <Filter>src\Entities\Plants</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Entities\Plants\PotatoMine.cpp">
+      <Filter>src\Entities\Plants</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -165,6 +168,9 @@
       <Filter>src\Entities\Zombie</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Entities\Plants\SnowPea.h">
+      <Filter>src\Entities\Plants</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entities\Plants\PotatoMine.h">
       <Filter>src\Entities\Plants</Filter>
     </ClInclude>
   </ItemGroup>

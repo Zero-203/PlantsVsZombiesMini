@@ -9,6 +9,7 @@
 #include "WallNut.h"
 #include "CherryBomb.h"
 #include "SnowPea.h"
+#include "PotatoMine.h"
 
 class PlantFactory {
 public:
@@ -32,7 +33,7 @@ public:
             plant = SnowPea::create();
             break;
         case PlantType::POTATO_MINE:
-            // 后续实现
+            plant = PotatoMine::create();
             break;
         default:
             CCLOG("PlantFactory: Unknown plant type");

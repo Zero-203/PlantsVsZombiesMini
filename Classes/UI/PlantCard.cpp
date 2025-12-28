@@ -96,6 +96,9 @@ bool PlantCard::init(PlantType plantType)
     case PlantType::SNOW_PEA:
         imagePath = "Images/Plants/SnowPea/snowpea_idle_01.png";
         break;
+    case PlantType::POTATO_MINE:
+        imagePath = "Images/Plants/PotatoMine/potatomine_armed_01.png";
+        break;
     default:
         imagePath = "Images/UI/card_default.png";
     }

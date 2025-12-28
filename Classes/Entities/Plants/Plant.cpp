@@ -98,6 +98,11 @@ bool Plant::initPlant(PlantType type, int sunCost, float cooldown, int health)
         _attackAnimationName = "snowpea_attack";
         break;
 
+    case PlantType::POTATO_MINE:
+        _canAttack = false;  // 土豆地雷不主动攻击
+        _idleAnimationName = "potatomine_idle";
+        break;
+
     default:
         break;
     }
