@@ -430,6 +430,7 @@ void WaveManager::clearAllZombies()
             ++it;
         }
     }
+    _activeZombies.clear();
 }
 
 std::vector<Zombie*> WaveManager::getZombiesInRow(int row) const{

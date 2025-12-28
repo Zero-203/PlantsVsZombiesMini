@@ -43,7 +43,7 @@ bool ZombieBucketHead::init()
     // 設置物理尺寸和錨點
     this->setContentSize(Size(60, 100));
     this->setAnchorPoint(Vec2(0.5f, 0.3f)); // 腳部對齊地面
-    
+
     // 加载特定动画
     ResourceLoader* resourceLoader = ResourceLoader::getInstance();
     if (resourceLoader)
@@ -72,7 +72,10 @@ bool ZombieBucketHead::init()
         }
     }
 
+    // 开始移动
     startMoving();
+
+    // 启动更新
     this->scheduleUpdate();
 
     log("ZombieBucketHead: Initialized successfully");
@@ -86,8 +89,13 @@ bool ZombieBucketHead::initWithType(ZombieType type)
         return false;
     }
 
+    // 铁桶僵尸的特定初始化
+    _maxHealth = 580;
+    _health = _maxHealth;
     _bucketHealth = 500;
     _bucketDestroyed = false;
+    _speed = 12.0f;
+    _damage = 15;
 
     return true;
 }
