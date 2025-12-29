@@ -270,8 +270,8 @@ void Zombie::freeze(float duration)
         _originalSpeed = _speed;
     }
 
-    // 设置减速效果（例如减速到原速度的30%）
-    float slowFactor = 0.3f;  // 调整为需要的减速比例
+    // 设置减速效果（例如减速到原速度的75%）
+    float slowFactor = 0.75f;  // 调整为需要的减速比例
     _speed = _originalSpeed * slowFactor;
 
     // 冰冻视觉效果
@@ -395,7 +395,7 @@ void Zombie::updateMovement(float delta)
     float actualSpeed = _speed;
     if (_freezeTimer > 0)
     {
-        actualSpeed *= 0.5f;
+        actualSpeed = 0.5*_speed;
     }
 
     // 向左移动

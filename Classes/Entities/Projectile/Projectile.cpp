@@ -294,6 +294,8 @@ void Projectile::hitTarget()
 
     _state = ProjectileState::HIT;
 
+    this->fly(50.0f / _velocity.x);
+
     // Í£Ö¹·ÉÐÐ¶¯»­
     stopCurrentAnimation();
 

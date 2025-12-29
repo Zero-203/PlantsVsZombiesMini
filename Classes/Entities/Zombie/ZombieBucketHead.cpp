@@ -19,7 +19,7 @@ ZombieBucketHead* ZombieBucketHead::create()
 bool ZombieBucketHead::init()
 {
     // 先调用父类的initWithType，指定类型
-    if (!initWithType(ZombieType::BUCKETHEAD))
+    if (!Zombie::init())
     {
         return false;
     }
@@ -62,10 +62,13 @@ bool ZombieBucketHead::init()
 
         if (_walkAnimation)
         {
+            log("ZombieBucketHead: Walk animation loaded successfully, frame count: %d",
+                _walkAnimation->getFrames().size());
             this->runAction(RepeatForever::create(Animate::create(_walkAnimation)));
         }
         else
         {
+            log("ZombieBucketHead: ERROR: Walk animation not loaded!");
             // 連備用動畫都沒有，創建簡單的視覺效果
             this->setTextureRect(Rect(0, 0, 60, 100));
             this->setColor(Color3B(50, 50, 50)); // 灰色表示鐵桶
@@ -127,6 +130,7 @@ void ZombieBucketHead::takeDamage(int damage)
             this->setColor(Color3B::WHITE);
         }
 
+        
         // 受伤效果（针对铁桶）
         auto tintAction = Sequence::create(
             TintTo::create(0.1f, Color3B(200, 200, 200)),
