@@ -356,13 +356,6 @@ void GameScene::update(float delta)
     // 更新随机阳光
     updateRandomSuns(delta);
 
-    // 更新植物預覽位置
-    if (_hasSelectedPlant && _plantPreview)
-    {
-        auto touchPos = Director::getInstance()->getVisibleSize() / 2;
-        updatePlantPreviewPosition(touchPos);
-    }
-
     // 更新植物行为 - 使用安全的迭代器
     auto it = _plants.begin(); int i = 0;
     while (it != _plants.end())
@@ -603,40 +596,49 @@ void GameScene::initPlantCards()
 
 void GameScene::initTouchHandlers()
 {
-    auto touchListener = EventListenerTouchOneByOne::create();
-    touchListener->setSwallowTouches(true);
+    // 创建鼠标事件监听器（PC平台）
+    auto mouseListener = EventListenerMouse::create();
 
-    touchListener->onTouchBegan = [this](Touch* touch, Event* event) {
-        // 如果正在选择植物，更新预览位置
-        if (_hasSelectedPlant)
+    // 鼠标移动事件处理 - 追踪鼠标位置
+    mouseListener->onMouseMove = [this](EventMouse* event) {
+        if (_hasSelectedPlant && _plantPreview)
         {
-            updatePlantPreviewPosition(touch->getLocation());
-        }
-        return true;
-    };
-
-    touchListener->onTouchMoved = [this](Touch* touch, Event* event) {
-        // 如果正在选择植物，更新预览位置
-        if (_hasSelectedPlant)
-        {
-            updatePlantPreviewPosition(touch->getLocation());
+            Vec2 mousePos(event->getCursorX(), event->getCursorY());
+            updatePlantPreviewPosition(mousePos);
         }
     };
 
-    touchListener->onTouchEnded = [this](Touch* touch, Event* event) {
-        // 处理网格点击
-        auto gridSystem = GridSystem::getInstance();
-        gridSystem->handleTouch(touch->getLocation());
+    // 鼠标按下事件处理
+    mouseListener->onMouseDown = [this](EventMouse* event) {
+        if (event->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT) {
+            Vec2 mousePos(event->getCursorX(), event->getCursorY());
 
-        // 如果正在选择植物，点击后取消选择
-        if (_hasSelectedPlant)
-        {
-            hidePlantPreview();
-            _hasSelectedPlant = false;
+            // 检查是否点击了植物卡牌（由卡牌自身处理）
+            bool clickedOnCard = false;
+            for (auto card : _plantCards) {
+                if (card && card->getBoundingBox().containsPoint(mousePos)) {
+                    clickedOnCard = true;
+                    break;
+                }
+            }
+
+            // 如果没有点击卡牌，处理网格点击
+            if (!clickedOnCard) {
+                auto gridSystem = GridSystem::getInstance();
+                gridSystem->handleTouch(mousePos);
+
+                // 如果正在选择植物，点击后取消选择
+                if (_hasSelectedPlant)
+                {
+                    hidePlantPreview();
+                    _hasSelectedPlant = false;
+                }
+            }
         }
     };
 
-    _eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
+    // 添加事件监听器
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(mouseListener, this);
 }
 
 void GameScene::updateSunDisplay()
@@ -823,13 +825,16 @@ void GameScene::showPlantPreview(PlantType plantType, const Vec2& position)
         return;
     }
 
-    // 设置预览属性
+    // 使用传入的位置（鼠标当前位置）
     _plantPreview->setPosition(position);
     _plantPreview->setOpacity(150); // 半透明
     _plantPreview->unscheduleUpdate();
 
     // 添加到场景 - 使用 addChild，Cocos2d-x 会自动管理内存
     this->addChild(_plantPreview, 4);
+
+    // 立即更新一次预览位置和颜色
+    updatePlantPreviewPosition(position);
 
     log("GameScene: Plant preview shown");
 }
@@ -847,6 +852,7 @@ void GameScene::updatePlantPreviewPosition(const Vec2& position)
 {
     if (_plantPreview)
     {
+        // 直接设置位置（跟随鼠标）
         _plantPreview->setPosition(position);
 
         // 检查当前位置是否可以放置
@@ -854,14 +860,30 @@ void GameScene::updatePlantPreviewPosition(const Vec2& position)
         auto gridSystem = GridSystem::getInstance();
         if (gridSystem && gridSystem->worldToGrid(position, row, col))
         {
-            if (gridSystem->canPlantAt(row, col))
+            // 检查植物冷却
+            bool isCooling = false;
+            for (auto plantcard : _plantCards) {
+                if (_selectedPlantType == plantcard->getPlantType()) {
+                    if (plantcard->isCoolingDown()) {
+                        isCooling = true;
+                        break;
+                    }
+                }
+            }
+
+            if (gridSystem->canPlantAt(row, col) && !isCooling)
             {
                 _plantPreview->setColor(Color3B::WHITE); // 可以放置：白色
             }
             else
             {
-                _plantPreview->setColor(Color3B::RED); // 不能放置：红色
+                _plantPreview->setColor(Color3B::RED);   // 不能放置：红色
             }
+        }
+        else
+        {
+            // 如果不在网格内，显示为红色
+            _plantPreview->setColor(Color3B::RED);
         }
     }
 }
