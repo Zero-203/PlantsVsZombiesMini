@@ -67,7 +67,7 @@ bool Plant::initPlant(PlantType type, int sunCost, float cooldown, int health)
     {
     case PlantType::SUNFLOWER:
         _canProduce = true;
-        _produceInterval = 24.0f;
+        _produceInterval = 50.0f;
         _sunProduceAmount = 25;
         _idleAnimationName = "sunflower_idle";
         _produceAnimationName = "sunflower_produce";
@@ -76,8 +76,8 @@ bool Plant::initPlant(PlantType type, int sunCost, float cooldown, int health)
     case PlantType::PEASHOOTER:
         _canAttack = true;
         _attackRange = 800.0f;
-        _attackSpeed = 1.0f;
-        _attackDamage = 20;
+        _attackSpeed = 0.25f;
+        _attackDamage = 15;
         _idleAnimationName = "peashooter_idle";
         _attackAnimationName = "peashooter_attack";
         break;
@@ -92,8 +92,8 @@ bool Plant::initPlant(PlantType type, int sunCost, float cooldown, int health)
     case PlantType::SNOW_PEA:
         _canAttack = true;
         _attackRange = 800.0f;
-        _attackSpeed = 1.0f;
-        _attackDamage = 20;
+        _attackSpeed = 0.25f;
+        _attackDamage = 15;
         _idleAnimationName = "snowpea_idle";
         _attackAnimationName = "snowpea_attack";
         break;

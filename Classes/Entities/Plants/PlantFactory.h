@@ -63,10 +63,10 @@ public:
         switch (type) {
         case PlantType::SUNFLOWER: return 7.5f;
         case PlantType::PEASHOOTER: return 7.5f;
-        case PlantType::WALLNUT: return 30.0f;
-        case PlantType::CHERRY_BOMB: return 30.0f;
+        case PlantType::WALLNUT: return 15.0f;
+        case PlantType::CHERRY_BOMB: return 22.5f;
         case PlantType::SNOW_PEA: return 7.5f;
-        case PlantType::POTATO_MINE: return 30.0f;
+        case PlantType::POTATO_MINE: return 15.0f;
         default: return 0.0f;
         }
     }
@@ -75,8 +75,8 @@ public:
         switch (type) {
         case PlantType::SUNFLOWER: return 100;
         case PlantType::PEASHOOTER: return 100;
-        case PlantType::WALLNUT: return 400;
-        case PlantType::CHERRY_BOMB: return 400;
+        case PlantType::WALLNUT: return 600;
+        case PlantType::CHERRY_BOMB: return 600;
         case PlantType::SNOW_PEA: return 100;
         case PlantType::POTATO_MINE: return 100;
         default: return 0;

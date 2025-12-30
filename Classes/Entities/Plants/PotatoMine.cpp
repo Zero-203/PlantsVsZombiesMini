@@ -14,18 +14,15 @@ bool PotatoMine::init()
         return false;
     }
 
-    // 初始化土豆地雷特有属性
-    initPlant(PlantType::POTATO_MINE, 25, 30.0f, 100);
-
     // 设置地雷属性
-    _armingTime = 10.0f;          // 10秒准备时间
+    _armingTime = 20.0f;          // 20秒准备时间
     _armingTimer = 0.0f;          // 准备计时器
     _isArmed = false;             // 初始未激活
     _isTriggered = false;         // 初始未触发
 
     _triggerRange = 30.0f;        // 触发范围（僵尸进入此范围即触发）
-    _explosionRange = 50.0f;     // 爆炸范围（实际伤害范围，大于触发范围）
-    _explosionDamage = 1800;      // 爆炸伤害，秒杀普通僵尸
+    _explosionRange = 80.0f;     // 爆炸范围（实际伤害范围，大于触发范围）
+    _explosionDamage = 200;      // 爆炸伤害，秒杀普通僵尸
 
     // 设置动画名称
     setIdleAnimation("potatomine_idle");      // 未激活状态

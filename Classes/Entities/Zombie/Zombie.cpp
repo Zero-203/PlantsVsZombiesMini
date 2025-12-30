@@ -15,7 +15,7 @@ Zombie::Zombie()
     , _health(100)
     , _maxHealth(100)
     , _speed(20.0f)
-    , _damage(10)
+    , _damage(20)
     , _attackTimer(0)
     , _attackInterval(1.0f)
     , _freezeTimer(0)
@@ -53,25 +53,19 @@ bool Zombie::initWithType(ZombieType type)
         case ZombieType::NORMAL:
             _maxHealth = 100;
             _health = _maxHealth;
-            _speed = 20.0f;
-            _originalSpeed = 20.0f;  // 添加
-            _damage = 10;
+            _damage = 20;
             break;
 
         case ZombieType::CONEHEAD:
-            _maxHealth = 280;
+            _maxHealth = 100;
             _health = _maxHealth;
-            _speed = 15.0f;
-            _originalSpeed = 15.0f;  // 添加
-            _damage = 10;
+            _damage = 20;
             break;
 
         case ZombieType::BUCKETHEAD:
-            _maxHealth = 580;
+            _maxHealth = 100;
             _health = _maxHealth;
-            _speed = 12.0f;
-            _originalSpeed = 12.0f;  // 添加
-            _damage = 15;
+            _damage = 25;
             break;
 
         default:
@@ -270,8 +264,8 @@ void Zombie::freeze(float duration)
         _originalSpeed = _speed;
     }
 
-    // 设置减速效果（例如减速到原速度的30%）
-    float slowFactor = 0.3f;  // 调整为需要的减速比例
+    // 设置减速效果（例如减速到原速度的75%）
+    float slowFactor = 0.75f;  // 调整为需要的减速比例
     _speed = _originalSpeed * slowFactor;
 
     // 冰冻视觉效果
@@ -395,7 +389,7 @@ void Zombie::updateMovement(float delta)
     float actualSpeed = _speed;
     if (_freezeTimer > 0)
     {
-        actualSpeed *= 0.5f;
+        actualSpeed = 0.5*_speed;
     }
 
     // 向左移动
@@ -450,8 +444,8 @@ Plant* Zombie::findPlantInFront()
         // 检查当前格子是否有植物
         Plant* plant = gridSystem->getPlantAt(row, col);
         if (plant && plant->isAlive()) {
-            float distance = std::abs(this->getPositionX() - plant->getPositionX());
-            if (distance < 5) { // 攻击范围
+            float distance = abs(this->getPositionX() - plant->getPositionX());
+            if (distance <= 5) { // 攻击范围
                 return plant;
             }
         }
@@ -461,7 +455,7 @@ Plant* Zombie::findPlantInFront()
             plant = gridSystem->getPlantAt(row, col - 1);
             if (plant && plant->isAlive()) {
                 float distance = std::abs(this->getPositionX() - plant->getPositionX());
-                if (distance < 30) { // 稍大的检测范围
+                if (distance <= 25) { // 稍大的检测范围
                     return plant;
                 }
             }

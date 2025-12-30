@@ -225,7 +225,7 @@ void GridSystem::drawDebugGrid(Node* parent)
     {
         _debugNode->removeFromParent();
     }
-    */
+    
     _debugNode = DrawNode::create();
     parent->addChild(_debugNode, 9999); // 最高层级显示
 
@@ -269,7 +269,8 @@ void GridSystem::drawDebugGrid(Node* parent)
     }
 
     log("GridSystem: Debug grid drawn");
-    }
+    */
+}
 
 void GridSystem::clearAll()
 {

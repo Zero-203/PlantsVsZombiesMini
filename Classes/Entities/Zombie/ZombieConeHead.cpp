@@ -23,15 +23,8 @@ bool ZombieConeHead::init()
         return false;
     }
 
-    // 设置路障僵尸的特定属性
-    _maxHealth = 280;     // 总生命值（路障200 + 僵尸80）
-    _health = _maxHealth;
-    _speed = 15.0f;       // 比普通僵尸慢
-    _damage = 10;
-    _attackInterval = 1.5f;
-
     _coneDestroyed = false;
-    _coneHealth = 200;    // 路障生命值
+    _coneHealth = 100;    // 路障生命值
 
     // 尝试加载动画
     ResourceLoader* resourceLoader = ResourceLoader::getInstance();
@@ -71,12 +64,8 @@ bool ZombieConeHead::initWithType(ZombieType type)
     }
 
     // 路障僵尸的特定初始化
-    _maxHealth = 280;
-    _health = _maxHealth;
     _coneHealth = 200;
     _coneDestroyed = false;
-    _speed = 15.0f;
-    _damage = 10;
 
     return true;
 }
@@ -91,7 +80,15 @@ void ZombieConeHead::takeDamage(int damage)
     // 先扣除路障生命值
     if (!_coneDestroyed && _coneHealth > 0)
     {
-        _coneHealth -= damage;
+        if (_coneHealth >= damage) {
+            _coneHealth -= damage;
+            damage = 0;
+        }
+        else
+        {
+            damage -= _coneHealth;
+            _coneHealth = 0;
+        }
 
         // 路障被破坏的效果
         if (_coneHealth <= 0)
@@ -119,11 +116,11 @@ void ZombieConeHead::takeDamage(int damage)
         this->runAction(tintAction);
 
         log("ZombieConeHead: Cone took %d damage, cone health: %d", damage, _coneHealth);
-        return;
     }
 
+    if(damage)
     // 路障已被破坏，伤害僵尸本体
-    Zombie::takeDamage(damage);
+        Zombie::takeDamage(damage);
 }
 
 std::string ZombieConeHead::getWalkAnimationName() const
@@ -138,5 +135,5 @@ std::string ZombieConeHead::getAttackAnimationName() const
 
 std::string ZombieConeHead::getDeathAnimationName() const
 {
-    return "zombie_conehead_death";
+    return "zombie_normal_death";
 }

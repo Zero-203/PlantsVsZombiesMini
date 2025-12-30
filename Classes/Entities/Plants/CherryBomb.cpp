@@ -14,13 +14,10 @@ bool CherryBomb::init()
         return false;
     }
 
-    // 初始化樱桃炸弹特有属性
-    initPlant(PlantType::CHERRY_BOMB, 150, 50.0f, 100);
-
     // 设置爆炸属性
     _explosionDelay = 1.5f;     // 1.5秒后爆炸
     _explosionRange = 150.0f;   // 爆炸范围150像素
-    _explosionDamage = 1800;    // 爆炸伤害，足以秒杀所有僵尸
+    _explosionDamage = 500;    // 爆炸伤害，足以秒杀所有僵尸
     _isExploding = false;
     _explosionTimer = 0.0f;
 
@@ -90,9 +87,7 @@ void CherryBomb::explode()
     Vec2 bombPos = this->getPosition();
     float rangeSquared = _explosionRange * _explosionRange;
 
-    // 这里需要获取场景中的所有僵尸并检查距离
-    // 注意：这需要与僵尸管理器或场景中的僵尸列表交互
-    // 以下为示例代码，实际实现可能需要调整
+    // 这里获取场景中的所有僵尸并检查距离
     auto waveManager = WaveManager::getInstance();
     if (!waveManager) return;
 

@@ -12,13 +12,6 @@ bool Peashooter::init()
         return false;
     }
 
-    // 初始化豌豆射手属性
-    initPlant(PlantType::PEASHOOTER, 100, 7.5f, 100);
-
-    // 设置豌豆射手特有属性
-    _attackSpeed = 2.0f;
-    _attackDamage = 20;
-
     return true;
 }
 
