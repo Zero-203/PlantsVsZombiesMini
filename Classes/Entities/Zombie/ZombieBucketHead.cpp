@@ -24,19 +24,8 @@ bool ZombieBucketHead::init()
         return false;
     }
 
-    _type = ZombieType::BUCKETHEAD;
-    _state = ZombieState::ALIVE;
-    _maxHealth = 580;
-    _health = _maxHealth;
-    _speed = 12.0f;
-    _damage = 15;
-    _attackTimer = 0;
-    _attackInterval = 1.0f;
-    _freezeTimer = 0;
-    _targetPlant = nullptr;
-
     // 鐵桶特有屬性
-    _bucketHealth = 500;
+    _bucketHealth = 200;
     _bucketDestroyed = false;
 
     // 注意：父类Zombie::initWithType已经调用了scheduleUpdate()，这里不要重复调用
@@ -93,12 +82,8 @@ bool ZombieBucketHead::initWithType(ZombieType type)
     }
 
     // 铁桶僵尸的特定初始化
-    _maxHealth = 580;
-    _health = _maxHealth;
-    _bucketHealth = 500;
+    _bucketHealth = 200;
     _bucketDestroyed = false;
-    _speed = 12.0f;
-    _damage = 15;
 
     return true;
 }
@@ -113,7 +98,15 @@ void ZombieBucketHead::takeDamage(int damage)
     // 先扣除铁桶生命值
     if (!_bucketDestroyed && _bucketHealth > 0)
     {
-        _bucketHealth -= damage;
+        if (_bucketHealth >= damage) {
+            _bucketHealth -= damage;
+            damage = 0;
+        }
+        else
+        {
+            damage -= _bucketHealth;
+            _bucketHealth = 0;
+        }
 
         // 铁桶被破坏的效果
         if (_bucketHealth <= 0)
@@ -140,9 +133,9 @@ void ZombieBucketHead::takeDamage(int damage)
         this->runAction(tintAction);
 
         log("ZombieBucketHead: Bucket took %d damage, bucket health: %d", damage, _bucketHealth);
-        return;
     }
 
+    if(damage>0)
     // 铁桶已被破坏，伤害僵尸本体
     Zombie::takeDamage(damage);
 }
@@ -159,5 +152,5 @@ std::string ZombieBucketHead::getAttackAnimationName() const
 
 std::string ZombieBucketHead::getDeathAnimationName() const
 {
-    return "zombie_buckethead_death";
+    return "zombie_normal_death";
 }

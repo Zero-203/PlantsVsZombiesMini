@@ -16,7 +16,7 @@ bool Sunflower::init()
     initPlant(PlantType::SUNFLOWER, 50, 7.5f, 100);
 
     // 设置向日葵特有属性
-    _produceInterval = 24.0f; // 每24秒生产一次
+    _produceInterval = 25.0f; // 每24秒生产一次
 
     // 设置颜色和大小
     this->setColor(Color3B(255, 255, 0)); // 黄色

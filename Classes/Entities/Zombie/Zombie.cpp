@@ -15,7 +15,7 @@ Zombie::Zombie()
     , _health(100)
     , _maxHealth(100)
     , _speed(20.0f)
-    , _damage(10)
+    , _damage(20)
     , _attackTimer(0)
     , _attackInterval(1.0f)
     , _freezeTimer(0)
@@ -53,25 +53,19 @@ bool Zombie::initWithType(ZombieType type)
         case ZombieType::NORMAL:
             _maxHealth = 100;
             _health = _maxHealth;
-            _speed = 20.0f;
-            _originalSpeed = 20.0f;  // Ìí¼Ó
-            _damage = 10;
+            _damage = 20;
             break;
 
         case ZombieType::CONEHEAD:
-            _maxHealth = 280;
+            _maxHealth = 100;
             _health = _maxHealth;
-            _speed = 15.0f;
-            _originalSpeed = 15.0f;  // Ìí¼Ó
-            _damage = 10;
+            _damage = 20;
             break;
 
         case ZombieType::BUCKETHEAD:
-            _maxHealth = 580;
+            _maxHealth = 100;
             _health = _maxHealth;
-            _speed = 12.0f;
-            _originalSpeed = 12.0f;  // Ìí¼Ó
-            _damage = 15;
+            _damage = 25;
             break;
 
         default:
@@ -450,8 +444,8 @@ Plant* Zombie::findPlantInFront()
         // ¼ì²éµ±Ç°¸ñ×ÓÊÇ·ñÓÐÖ²Îï
         Plant* plant = gridSystem->getPlantAt(row, col);
         if (plant && plant->isAlive()) {
-            float distance = std::abs(this->getPositionX() - plant->getPositionX());
-            if (distance < 5) { // ¹¥»÷·¶Î§
+            float distance = abs(this->getPositionX() - plant->getPositionX());
+            if (distance <= 5) { // ¹¥»÷·¶Î§
                 return plant;
             }
         }
@@ -461,7 +455,7 @@ Plant* Zombie::findPlantInFront()
             plant = gridSystem->getPlantAt(row, col - 1);
             if (plant && plant->isAlive()) {
                 float distance = std::abs(this->getPositionX() - plant->getPositionX());
-                if (distance < 30) { // ÉÔ´óµÄ¼ì²â·¶Î§
+                if (distance <= 25) { // ÉÔ´óµÄ¼ì²â·¶Î§
                     return plant;
                 }
             }

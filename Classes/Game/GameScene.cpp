@@ -104,39 +104,9 @@ bool GameScene::init()
     this->addChild(background, 0);
 
 
-    // 获取ResourceLoader并检查动画
+    // 获取ResourceLoader并预加载游戏资源
     ResourceLoader* resourceLoader = ResourceLoader::getInstance();
-    if (resourceLoader)
-    {
-        resourceLoader->printCachedAnimations();
 
-        // 检查特定动画
-        if (!resourceLoader->hasAnimation("pea_fly"))
-        {
-            log("ERROR: pea_fly animation not loaded!");
-
-            // 尝试重新加载
-            std::vector<std::string> peaFlyFrames = {
-                "Images/Projectiles/Pea/pea_01.png",
-                "Images/Projectiles/Pea/pea_02.png",
-                "Images/Projectiles/Pea/pea_03.png",
-                "Images/Projectiles/Pea/pea_04.png"
-            };
-            resourceLoader->loadAnimationFrames("pea_fly", peaFlyFrames, 0.1f);
-
-            // 再次检查
-            if (resourceLoader->hasAnimation("pea_fly"))
-            {
-                log("Successfully reloaded pea_fly animation");
-            }
-        }
-        else
-        {
-            log("pea_fly animation found in cache");
-        }
-    }
-
-    // 预加载游戏资源
     resourceLoader = ResourceLoader::getInstance();
     if (resourceLoader)
     {
@@ -185,7 +155,7 @@ bool GameScene::init()
     auto gameManager = GameManager::getInstance();
     if (gameManager)
     {
-        gameManager->setSunCount(500); // 初始50阳光
+        gameManager->setSunCount(100); // 初始100阳光
         updateSunDisplay();
     }
 
@@ -404,7 +374,7 @@ void GameScene::initUI()
 
     // 游戏标题
     auto titleLabel = Label::createWithTTF("WAVE 0", "fonts/Marker Felt.ttf", 24);
-    titleLabel->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height - 30 + origin.y));
+    titleLabel->setPosition(Vec2(visibleSize.width / 2 + origin.x+200, visibleSize.height - 30 + origin.y));
     titleLabel->setColor(Color3B::YELLOW);
     titleLabel->enableOutline(Color4B::BLACK, 2);
     this->addChild(titleLabel, 10);
@@ -498,6 +468,7 @@ void GameScene::initUI()
     }
     */
 
+    /*
     // 添加測試按鈕
     auto testButton = ui::Button::create();
     testButton->setTitleText("TEST: Spawn Zombie");
@@ -531,6 +502,7 @@ void GameScene::initUI()
         }
         });
     this->addChild(testButton, 10);
+    */
 }
 
 void GameScene::initGrid()
@@ -685,15 +657,27 @@ void GameScene::onPlantCardSelected(PlantType plantType)
         log("GameScene: Not enough sun to select plant");
         return;
     }
+    //检查冷却
+    for (auto card : _plantCards)
+    {
+        if (card->getPlantType()==plantType)
+        {
+            if (card->isCoolingDown()) {
+                log("GameScene: Selected plant is cooling");
+                return;
+            }
+            else {
+                // 设置选中的植物类型
+                _selectedPlantType = plantType;
+                _hasSelectedPlant = true;
 
-    // 设置选中的植物类型
-    _selectedPlantType = plantType;
-    _hasSelectedPlant = true;
+                // 显示植物预览
+                showPlantPreview(plantType, card->getPosition());
 
-    // 显示植物预览
-    showPlantPreview(plantType, Director::getInstance()->getVisibleSize() / 2);
-
-    log("GameScene: Selected plant type %d", (int)plantType);
+                log("GameScene: Selected plant type %d", (int)plantType);
+            }
+        }
+    }
 }
 
 void GameScene::onGridClicked(int row, int col, const Vec2& worldPos)

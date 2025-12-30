@@ -86,7 +86,7 @@ void GameManager::startNewGame()
     }
 
     // 重置遊戲數據
-    _sunCount = 500;
+    _sunCount = 100;
     _currentState = GameState::PLAYING;
     _playerScore = 0;
     _projectiles.clear();
@@ -130,7 +130,7 @@ void GameManager::resumeGame()
 void GameManager::restartGame()
 {
     // 重置游戏数据
-    _sunCount = 500;
+    _sunCount = 100;
     _playerScore = 0;
     _currentState = GameState::PLAYING;
     clearAllProjectiles();

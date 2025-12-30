@@ -23,14 +23,6 @@ bool ZombieNormal::init()
         return false;
     }
 
-
-    // 設置普通殭屍的特定屬性
-    _maxHealth = 100;
-    _health = _maxHealth;
-    _speed = 30.0f; // 稍微加快速度
-    _damage = 10;
-    _attackInterval = 1.5f;
-
     // 創建默認的精靈（如果動畫加載失敗）
     this->setTextureRect(Rect(0, 0, 60, 100));
     this->setColor(Color3B::WHITE);
@@ -68,12 +60,6 @@ bool ZombieNormal::initWithType(ZombieType type)
     {
         return false;
     }
-
-    // 普通僵尸的特定初始化
-    _maxHealth = 100;
-    _health = _maxHealth;
-    _speed = 20.0f;
-    _damage = 10;
 
     // 加载普通僵尸的特定资源
     ResourceLoader* resourceLoader = ResourceLoader::getInstance();

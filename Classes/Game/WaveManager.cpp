@@ -29,7 +29,7 @@ WaveManager::WaveManager()
     , _zombiesReachedEnd(0)
     , _spawnTimer(0)
     , _waveTimer(0)
-    , _preparationTimer(10.0f) // 初始准备时间10秒
+    , _preparationTimer(50.0f) // 初始准备时间10秒
 {
 }
 
@@ -51,7 +51,7 @@ void WaveManager::init(int totalWaves)
 
     _spawnTimer = 0;
     _waveTimer = 0;
-    _preparationTimer = 2.0f; // 初始准备时间10秒
+    _preparationTimer = 50.0f; // 初始准备时间10秒
 
     _activeZombies.clear();
 
@@ -207,14 +207,15 @@ Zombie* WaveManager::spawnRandomZombie()
     int zombieType = rand() % 100;
 
     // 随着波次增加，出现更强僵尸的概率增加
-    int strongZombieChance = std::min(30, _currentWave * 5); // 最多30%概率
+    int strongZombieChance = std::min(0, (_currentWave - 4) * 10); // 最多40%概率
+    zombieType += strongZombieChance;
 
-    if (zombieType < 70 - strongZombieChance) {
-        // 普通僵尸 (70% - strongZombieChance)
+    if (zombieType <= 60) {
+        // 普通僵尸 (60% - strongZombieChance)
         zombie = ZombieNormal::create();
     }
-    else if (zombieType < 90) {
-        // 路障僵尸 (20%)
+    else if (zombieType <= 90) {
+        // 路障僵尸 (30%)
         zombie = ZombieConeHead::create();
     }
     else {
@@ -244,7 +245,7 @@ Zombie* WaveManager::spawnRandomZombie()
 
     // 隨機選擇行（0-4）
     int row = rand() % 5;
-    float x = visibleSize.width + 100; // 從屏幕右側外生成
+    float x = visibleSize.width - 20; // 從屏幕右側外生成
     float y = 75 + row * 130; // 根據網格系統調整
 
     zombie->setPosition(Vec2(x, y));
@@ -297,7 +298,7 @@ void WaveManager::zombieReachedEnd(Zombie* zombie)
     }
 
     // 检查是否游戏结束
-    if (_zombiesReachedEnd >= 3) // 3个僵尸到达终点则游戏结束
+    if (_zombiesReachedEnd >= 1) // 3个僵尸到达终点则游戏结束
     {
         gameOver();
     }
@@ -387,7 +388,7 @@ void WaveManager::reset()
     _zombiesReachedEnd = 0;
     _spawnTimer = 0;
     _waveTimer = 0;
-    _preparationTimer = 10.0f; // 設置為3秒準備時間
+    _preparationTimer = 50.0f; // 設置為3秒準備時間
 
     log("WaveManager: Reset complete, active zombies: %d", (int)_activeZombies.size());
 }

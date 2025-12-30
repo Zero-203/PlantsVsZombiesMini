@@ -860,7 +860,6 @@ void ResourceLoader::preloadZombieResources()
         "Images/Zombies/Conehead/walk_18.png",
         "Images/Zombies/Conehead/walk_19.png",
         "Images/Zombies/Conehead/walk_20.png",
-        "Images/Zombies/Conehead/walk_21.png"
     };
     loadAnimationFrames("zombie_conehead_walk", coneheadWalkFrames, 0.2f);
 

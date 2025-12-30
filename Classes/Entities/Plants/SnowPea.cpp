@@ -12,14 +12,6 @@ bool SnowPea::init()
         return false;
     }
 
-    // 初始化寒冰射手属性
-    initPlant(PlantType::SNOW_PEA, 150, 7.5f, 100);  // 阳光消耗150，冷却7.5秒，生命值100
-
-    // 设置攻击属性
-    _attackSpeed = 2.0f;     // 攻击速度略慢于普通豌豆
-    _attackDamage = 20;      // 伤害与普通豌豆相同
-    _attackRange = 800.0f;   // 攻击范围
-
     return true;
 }
 
